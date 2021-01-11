@@ -19,4 +19,4 @@ If you want to run the model using Mplus, you can purchase the software package 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/JeroenDMulder/RI-CLPM/blob/master/LICENSE) file for details
