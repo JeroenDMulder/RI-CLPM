@@ -11,7 +11,7 @@ bibliography: references.bib
 ---
 
 ## Setup
-Below you can find the code for installing and loading the required package `lavaan` [@lavaan], as well as for reading in the data for the Random Intercept Cross-Lagged Panel Model (RI-CLPM) and its 3 extensions. You can specify the path to the data yourself, or through a menu by using the `file.choose()`-function. You can download the simulated example datasets [here](https://github.com/ellenhamaker/RI-CLPM/tree/master/data). 
+Below you can find the code for installing and loading the required package `lavaan` [@lavaan], as well as for reading in the data for the Random Intercept Cross-Lagged Panel Model (RI-CLPM) and its 3 extensions. You can specify the path to the data yourself, or through a menu by using the `file.choose()`-function. You can download the simulated example datasets [here](https://github.com/jeroendmulder/RI-CLPM/tree/master/data). 
 
 ```{r setup, eval = F, message = F}
 # If necessary, install the 'Lavaan' package. 

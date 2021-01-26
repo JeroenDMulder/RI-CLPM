@@ -1,0 +1,57 @@
+---
+title: "Frequently Asked Questions"
+---
+
+---
+
+<script>
+function showHide1() {
+    var x = document.getElementById("faq1");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+**How do I include time-varying covariates with the RI-CLPM?** <button onclick="showHide1()"> Show/hide answer </button>
+ 
+<div id="faq1" style="display:none">
+In general we would advice to add time-varying covariates (TVC) just like “regular” X and Y outcomes in the RI-CLPM. As such, you decompose the TVCs in within-components and a between-component (the random intercept) and model these components separately. However, always think about if this makes sense for your research context. </div>
+
+---
+
+<script>
+function showHide2() {
+    var x = document.getElementById("faq2");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+ 
+**Can I run the RI-CLPM with binary/categorical outcomes?** <button onclick="showHide2()"> Show/hide answer </button>
+ 
+<div id="faq2" style="display:none">
+The RI-CLPM is currently only well-studied/well-developed for the continuous case. Research into RI-CLPMs with only categorical data, or with non-commensurate outcomes (i.e., outcomes measured in different scales, continuous and binary) is still ongoing. See, for example, [the Mplus discussion board](http://www.statmodel.com/discussion/messages/23/23001.html?1530924636). </div>
+
+---
+
+<script>
+function showHide3() {
+    var x = document.getElementById("faq3");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+ 
+**Is it possible to run an RI-CLPM with three (or more) outcomes?** <button onclick="showHide3()"> Show/hide answer </button>
+ 
+<div id="faq3" style="display:none">
+Yes, it is statistically possible to run a “trivariate” RI-CLPM and empirical researchers have done so. See for example [Burns, Crisp, and Burns (2019)](https://doi.org/10.1111/bjep.12265) and [Van Lissa et al. (2019)](10.1037/dev0000612). We don’t provide model code here for this mode, but extension to a trivariate RI-CLPM should be relatively straight forwards. </div>

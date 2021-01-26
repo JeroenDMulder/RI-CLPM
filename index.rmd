@@ -18,7 +18,7 @@ Use the top menu to navigate to the Mplus syntax, *lavaan* code, or Frequently A
 ----
 
 ### Data
-You can find simulated example datasets (1189 units, 5 repeated-measures) on [Github](https://github.com/ellenhamaker/RI-CLPM/tree/master/data) to get hands-on experience with this modeling approach. The example data are motivated by @Narmandakh2020 who obtained five waves of data from 1189 adolescents on their sleep problems and anxiety over 15 years.
+You can find simulated example datasets (1189 units, 5 repeated-measures) on [Github](https://github.com/jeroendmulder/RI-CLPM/tree/master/data) to get hands-on experience with this modeling approach. The example data are motivated by @Narmandakh2020 who obtained five waves of data from 1189 adolescents on their sleep problems and anxiety over 15 years.
 
 ----
 

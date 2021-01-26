@@ -10,7 +10,7 @@ bibliography: references.bib
 ---
 
 ## Setup
-For Mplus [@Mplus8] to work properly, make sure that you save the input file with the model specification (*example.inp*) in the same folder as the data (*example.dat*). You can download the simulated example datasets [here](https://github.com/ellenhamaker/RI-CLPM/tree/master/data). Mplus includes defaults, like that:
+For Mplus [@Mplus8] to work properly, make sure that you save the input file with the model specification (*example.inp*) in the same folder as the data (*example.dat*). You can download the simulated example datasets [here](https://github.com/jeroendmulder/RI-CLPM/tree/master/data). Mplus includes defaults, like that:
 
 * observed and latent exogenous variables are correlated, and
 * residuals of observed and latent outcome variables (which do not predict anything) in a path model are correlated.
