@@ -18,7 +18,7 @@ function showHide1() {
 **How do I include time-varying covariates with the RI-CLPM?** <button onclick="showHide1()"> Show/hide answer </button>
  
 <div id="faq1" style="display:none">
-In general we would advice to add time-varying covariates (TVC) just like “regular” X and Y outcomes in the RI-CLPM. As such, you decompose the TVCs in within-components and a between-component (the random intercept) and model these components separately. However, always think about if this makes sense for your research context. </div>
+Time-varying covariates (TVC) can be included like “regular” X and Y outcomes in the RI-CLPM; hence, rather than a bivariate RI-CLPM you would specify a tri- or more-variate RI-CLPM. As such, you decompose the TVCs in within-components and a between-component (the random intercept) and model these components separately. However, if you want to control for many TVC's, this can quickly become an unwieldly model, so researchers should think carefully about which TVC's they want to control for. </div>
 
 ---
 
@@ -33,7 +33,7 @@ function showHide2() {
 }
 </script>
  
-**Can I run the RI-CLPM with binary/categorical outcomes?** <button onclick="showHide2()"> Show/hide answer </button>
+**Can I run the RI-CLPM with binary/categorical/count outcomes?** <button onclick="showHide2()"> Show/hide answer </button>
  
 <div id="faq2" style="display:none">
 The RI-CLPM is currently only well-studied/well-developed for the continuous case. Research into RI-CLPMs with only categorical data, or with non-commensurate outcomes (i.e., outcomes measured in different scales, continuous and binary) is still ongoing. See, for example, [the Mplus discussion board](http://www.statmodel.com/discussion/messages/23/23001.html?1530924636). </div>
@@ -55,3 +55,48 @@ function showHide3() {
  
 <div id="faq3" style="display:none">
 Yes, it is statistically possible to run a “trivariate” RI-CLPM and empirical researchers have done so. See for example [Burns, Crisp, and Burns (2019)](https://doi.org/10.1111/bjep.12265) and [Van Lissa et al. (2019)](10.1037/dev0000612). We don’t provide model code here for this mode, but extension to a trivariate RI-CLPM should be relatively straight forwards. </div>
+
+---
+
+<script>
+function showHide4() {
+    var x = document.getElementById("faq4");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+ 
+**How should I interpret the standardized cross-lagged and autoregressive parameters?** <button onclick="showHide4()"> Show/hide answer </button>
+ 
+<div id="faq4" style="display:none">
+In the RI-CLPM, the standardized effects are reflective/representative of how much within-person variance in $y_{t}$ is *uniquely* explained (i.e., not also explained by other predictors) by the predictor $x_{t-1}$. Please note that this does not imply that one can make a one-on-one comparison with the percentage of explained variance. However, the standardized effects can be used to compare which effect is relatively stronger/dominant. Thus, it can help to determine and decide whether it is most efficacious to focus on the “effect” of $x_{t-1}$ or $y_{t-1}$ in further research, or in practice during therapy [(Schuurman, Ferrer, Boer-Sonnenschein, & Hamaker, 2016)](https://doi.org/10.1037/met0000062). </div>
+
+---
+
+<script>
+function showHide5() {
+    var x = document.getElementById("faq5");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+ 
+**How do standardized cross-lagged and autoregressive parameters compare to explained variance?** <button onclick="showHide5()"> Show/hide answer </button>
+ 
+<div id="faq5" style="display:none">
+The standardized lagged parameters are not equal to the (squared) semipartial correlation. Only under special circumstances, a standardized regression coefficient is equal to the pairwise correlation between the outcome and predictor, and the square of the standardized regression coefficient would then be the explained variance ($R^{2}$). This only applies in the case of (a) a simple regression, where there is only one predictor in the model, or (b) a multiple regression where the predictors are independent of each other. In the RI-CLPM, however, the multiple predictors are not independent of each other, and therefore the standardized regression coefficients are not equal to the pairwise correlation, (semi)partial correlation, or the unique explained variance. 
+
+However, the standardized coefficient is closely related to the semipartial correlation, as demonstrated in footnote 3 of [Schuurman, Ferrer, Boer-Sonnenschein, and Hamaker (2016)](https://doi.org/10.1037/met0000062). The standardized coefficient is expressed in terms of pairwise correlations in the first equation there, and the semipartial correlation expressed in terms of pairwise correlations in the second equation. They are very similar, but there is a subtle difference in the denominator.
+ 
+So, the semipartial correlation and standardized coefficient are not equal, but we can see that if the semipartical correlation for one predictor is larger than for another predictor, this will also be the case for the standardized coefficients of these predictors. The square of the semi-partial correlation is the *unique* explained variance, so we also know that the predictor with the largest standardized coefficient, will also have the largest *unique* explained variance. 
+
+*Answer by [Dr. Noémi Schuurman](https://www.uu.nl/staff/NKSchuurman).*</div>
+
+
+
