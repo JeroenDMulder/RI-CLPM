@@ -72,7 +72,7 @@ function showHide4() {
 **How should I interpret the standardized cross-lagged and autoregressive parameters?** <button onclick="showHide4()"> Show/hide answer </button>
  
 <div id="faq4" style="display:none">
-In the RI-CLPM, the standardized effects are reflective/representative of how much within-person variance in $y_{t}$ is *uniquely* explained (i.e., not also explained by other predictors) by the predictor $x_{t-1}$. Please note that this does not imply that one can make a one-on-one comparison with the percentage of explained variance. However, the standardized effects can be used to compare which effect is relatively stronger/dominant. Thus, it can help to determine and decide whether it is most efficacious to focus on the “effect” of $x_{t-1}$ or $y_{t-1}$ in further research, or in practice during therapy [(Schuurman, Ferrer, Boer-Sonnenschein, & Hamaker, 2016)](https://doi.org/10.1037/met0000062). </div>
+In the RI-CLPM, the standardized effects are reflective/representative of how much within-person variance in $y_{t}$ is *uniquely* explained (i.e., not also explained by other predictors) by the predictor $x_{t-1}$. Please note that this does not imply that one can make a one-on-one comparison with the percentage of explained variance. However, the standardized effects can be used to compare which effect is relatively stronger [(Schuurman, Ferrer, Boer-Sonnenschein, & Hamaker, 2016)](https://doi.org/10.1037/met0000062). </div>
 
 ---
 
