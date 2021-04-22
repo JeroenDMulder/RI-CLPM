@@ -2,11 +2,9 @@
 title: "Frequently Asked Questions"
 ---
 
----
-
 <script>
-function showHide1() {
-    var x = document.getElementById("faq1");
+function showHide(element) {
+    var x = document.getElementById(element);
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
@@ -15,79 +13,38 @@ function showHide1() {
 }
 </script>
 
-**How do I include time-varying covariates with the RI-CLPM?** <button onclick="showHide1()"> Show/hide answer </button>
- 
+---
+
+### Multiple outcomes / time-varying covariates
+
+---
+
+<div onclick="showHide('faq1')" style="cursor: pointer; font-weight:bold">How do I include time-varying covariates with the RI-CLPM?</div>
+
 <div id="faq1" style="display:none">
-Time-varying covariates (TVC) can be included like “regular” X and Y outcomes in the RI-CLPM; hence, rather than a bivariate RI-CLPM you would specify a tri- or more-variate RI-CLPM. As such, you decompose the TVCs in within-components and a between-component (the random intercept) and model these components separately. However, if you want to control for many TVC's, this can quickly become an unwieldly model, so researchers should think carefully about which TVC's they want to control for. </div>
+Time-varying covariates (TVC; $Z$) can be included like “regular” X and Y outcomes in the RI-CLPM; hence, rather than a bivariate RI-CLPM you would specify a tri- or more-variate RI-CLPM. As such, you decompose the TVCs in within-components (e.g. $wz1$, $wz2$, etc.) and a between-component (the random intercept; e.g. $RI_{z}$) and model these components separately. However, if you want to control for many TVC's, this can quickly become an unwieldly model, so researchers should think carefully about which TVC's they want to control for. </div>
 
 ---
 
-<script>
-function showHide2() {
-    var x = document.getElementById("faq2");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
- 
-**Can I run the RI-CLPM with binary/categorical/count outcomes?** <button onclick="showHide2()"> Show/hide answer </button>
- 
-<div id="faq2" style="display:none">
-The RI-CLPM is currently only well-studied/well-developed for the continuous case. Research into RI-CLPMs with only categorical data, or with non-commensurate outcomes (i.e., outcomes measured in different scales, continuous and binary) is still ongoing. See, for example, [the Mplus discussion board](http://www.statmodel.com/discussion/messages/23/23001.html?1530924636). </div>
-
----
-
-<script>
-function showHide3() {
-    var x = document.getElementById("faq3");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
- 
-**Is it possible to run an RI-CLPM with three (or more) outcomes?** <button onclick="showHide3()"> Show/hide answer </button>
+<div onclick="showHide('faq3')" style="cursor: pointer; font-weight:bold">Is it possible to run an RI-CLPM with three (or more) outcomes?</div>
  
 <div id="faq3" style="display:none">
-Yes, it is statistically possible to run a “trivariate” RI-CLPM and empirical researchers have done so. See for example [Burns, Crisp, and Burns (2019)](https://doi.org/10.1111/bjep.12265) and [Van Lissa et al. (2019)](10.1037/dev0000612). We don’t provide model code here for this mode, but extension to a trivariate RI-CLPM should be relatively straight forwards. </div>
+Yes, it is statistically possible to run a “trivariate” RI-CLPM and empirical researchers have done so, see for example [Burns, Crisp, and [Van Lissa et al. (2019)](https://doi.org/10.1037/dev0000612). We don’t provide model code here for this mode, but extension to a trivariate RI-CLPM should be relatively straight forwards. That is, all variables should be decomponsed into between- (random intercepts) and within-components, and relevant lagged effects, as well as (residual) variances and covariances, should be included in the model.</div>
 
 ---
 
-<script>
-function showHide4() {
-    var x = document.getElementById("faq4");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
- 
-**How should I interpret the standardized cross-lagged and autoregressive parameters?** <button onclick="showHide4()"> Show/hide answer </button>
+### Standardization
+
+---
+
+<div onclick="showHide('faq4')" style="cursor: pointer; font-weight:bold">How should I interpret the standardized cross-lagged and autoregressive parameters?</div>
  
 <div id="faq4" style="display:none">
 In the RI-CLPM, the standardized effects are reflective/representative of how much within-person variance in $y_{t}$ is *uniquely* explained (i.e., not also explained by other predictors) by the predictor $x_{t-1}$. Please note that this does not imply that one can make a one-on-one comparison with the percentage of explained variance. However, the standardized effects can be used to compare which effect is relatively stronger [(Schuurman, Ferrer, Boer-Sonnenschein, & Hamaker, 2016)](https://doi.org/10.1037/met0000062). </div>
 
 ---
 
-<script>
-function showHide5() {
-    var x = document.getElementById("faq5");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
- 
-**How do standardized cross-lagged and autoregressive parameters compare to explained variance?** <button onclick="showHide5()"> Show/hide answer </button>
+<div onclick="showHide('faq5')" style="cursor: pointer; font-weight:bold">How do standardized cross-lagged and autoregressive parameters compare to explained variance?</div>
  
 <div id="faq5" style="display:none">
 The standardized lagged parameters are not equal to the (squared) semipartial correlation. Only under special circumstances, a standardized regression coefficient is equal to the pairwise correlation between the outcome and predictor, and the square of the standardized regression coefficient would then be the explained variance ($R^{2}$). This only applies in the case of (a) a simple regression, where there is only one predictor in the model, or (b) a multiple regression where the predictors are independent of each other. In the RI-CLPM, however, the multiple predictors are not independent of each other, and therefore the standardized regression coefficients are not equal to the pairwise correlation, (semi)partial correlation, or the unique explained variance. 
@@ -98,5 +55,35 @@ So, the semipartial correlation and standardized coefficient are not equal, but 
 
 *Answer by [Dr. Noémi Schuurman](https://www.uu.nl/staff/NKSchuurman).*</div>
 
+---
+
+### Non-continuous outcomes
+
+---
+
+<div onclick="showHide('faq2')" style="cursor: pointer; font-weight:bold">Can I run the RI-CLPM with binary/categorical/count outcomes? </div>
+ 
+<div id="faq2" style="display:none">
+The RI-CLPM is currently only well-studied/well-developed for the continuous case. Research into RI-CLPMs with only categorical data, or with non-commensurate outcomes (i.e., outcomes measured in different scales, continuous and binary) is still ongoing. See, for example, [the Mplus discussion board](http://www.statmodel.com/discussion/messages/23/23001.html?1530924636). </div>
+
+---
+
+### Time & time-lags
+
+---
+
+<div onclick="showHide('faq6')" style="cursor: pointer; font-weight:bold">How to deal with unequal intervals between repeated measures?</div>
+
+<div id="faq6" style="display:none">
+The lagged regression coefficients depend on the time lag between repeated measures (in a non-linear way). If the lags between subsequent occasions vary, qualitatively different autoregressive and cross-lagged effects between each pair of adjacent measurements are estimated. The advice is to **not** constrain these parameters over time in this case, as this would lead to an uninterpretable blend of different lagged relationships. Neither should the residual variances and covariances (of the within-components) be constrained to be invariant over time, as these also depend on the interval between measurements. </div>
+
+--- 
+
+### Power
+
+---
+<div onclick="showHide('faq8')" style="cursor: pointer; font-weight:bold">How do I perform a power analysis for the RI-CLPM?</div>
+
+<div id="faq8" style="display:none">We are currently developing an R-package for performing power analyses for the RI-CLPM. It is expected to be available for download early June 2021. You can also perform a power analysis using the [MONTECARLO functionality of Mplus](https://www.statmodel.com/download/usersguide/Chapter12.pdf).</div>
 
 

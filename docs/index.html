@@ -14,22 +14,36 @@
 
 <title>The RI-CLPM &amp; Extensions</title>
 
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -42,30 +56,27 @@ if (window.hljs) {
 
 
 
+
 <style type="text/css">
-h1 {
-  font-size: 34px;
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-h1.title {
-  font-size: 38px;
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-h2 {
-  font-size: 30px;
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-h3 {
-  font-size: 24px;
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
 }
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
+div.csl-indent {
+  margin-left: 2em;
 }
 </style>
 
@@ -77,10 +88,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -97,40 +104,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -158,7 +138,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -170,7 +150,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -181,10 +161,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -196,7 +189,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -292,7 +284,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -309,11 +301,11 @@ $(document).ready(function () {
 <li>doing multiple group analysis, and</li>
 <li>using multiple indictors for variables.</li>
 </ol>
-<p>Use the top menu to navigate to the Mplus syntax, <em>lavaan</em> code, or Frequently Asked Questions (FAQ). The <em>lavaan (R)</em> tab contains additional code for performing the <span class="math inline">\(\bar{\chi}^{2}\)</span>-test (chi-bar-square test) in R. This test is used for comparing nested models where the more parsimonious model is based on constraining parameters on the bound of the parameter space (e.g., constraining a variance to 0).</p>
+<p>Use the top menu to navigate to the <a href="https://jeroendmulder.github.io/RI-CLPM/mplus.html">Mplus syntax</a>, <a href="https://jeroendmulder.github.io/RI-CLPM/lavaan.html"><em>lavaan</em> code</a>, or <a href="https://jeroendmulder.github.io/RI-CLPM/faq.html">Frequently Asked Questions (FAQ)</a>. The <em>lavaan (R)</em> tab contains additional code for performing the <span class="math inline">\(\bar{\chi}^{2}\)</span>-test (chi-bar-square test) in R. This test is used for comparing nested models where the more parsimonious model is based on constraining parameters on the bound of the parameter space (e.g., constraining a variance to 0).</p>
 <hr />
 <div id="data" class="section level3">
 <h3>Data</h3>
-<p>You can find simulated example datasets (1189 units, 5 repeated-measures) on <a href="https://github.com/jeroendmulder/RI-CLPM/tree/master/data">Github</a> to get hands-on experience with this modeling approach. The example data are motivated by <span class="citation">Narmandakh et al. (2020)</span> who obtained five waves of data from 1189 adolescents on their sleep problems and anxiety over 15 years.</p>
+<p>You can find simulated example data sets (1189 units, 5 repeated-measures) on <a href="https://github.com/jeroendmulder/RI-CLPM/tree/master/data">Github</a> to get hands-on experience with this modeling approach. The example data are motivated by <span class="citation">Narmandakh et al. (2020)</span> who obtained five waves of data from 1189 adolescents on their sleep problems and anxiety over 15 years.</p>
 <hr />
 </div>
 <div id="contact" class="section level3">
@@ -322,13 +314,13 @@ $(document).ready(function () {
 <hr />
 </div>
 <div id="references" class="section level3 unnumbered">
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-Mulder2020">
-<p>Mulder, Jeroen D., and Ellen L. Hamaker. 2020. “Three Extensions of the Random Intercept Cross-Lagged Panel Model.” <em>Structural Equation Modeling: A Multidisciplinary Journal</em>. Routledge. doi:<a href="https://doi.org/10.1080/10705511.2020.1784738">10.1080/10705511.2020.1784738</a>.</p>
+<h3 class="unnumbered">References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Mulder2020" class="csl-entry">
+Mulder, Jeroen D., and Ellen L. Hamaker. 2020. <span>“Three Extensions of the Random Intercept Cross-Lagged Panel Model.”</span> <em>Structural Equation Modeling: A Multidisciplinary Journal</em>. <a href="https://doi.org/10.1080/10705511.2020.1784738">https://doi.org/10.1080/10705511.2020.1784738</a>.
 </div>
-<div id="ref-Narmandakh2020">
-<p>Narmandakh, Altanzul, Annelieke M. Roest, Peter de Jonge, and Albertine J. Oldehinkel. 2020. “The bidirectional association between sleep problems and anxiety symptoms in adolescents: a TRAILS report.” <em>Sleep Medicine</em> 67 (March): 39–46. doi:<a href="https://doi.org/10.1016/j.sleep.2019.10.018">10.1016/j.sleep.2019.10.018</a>.</p>
+<div id="ref-Narmandakh2020" class="csl-entry">
+Narmandakh, Altanzul, Annelieke M. Roest, Peter de Jonge, and Albertine J. Oldehinkel. 2020. <span>“<span class="nocase">The bidirectional association between sleep problems and anxiety symptoms in adolescents: a TRAILS report</span>.”</span> <em>Sleep Medicine</em> 67 (March): 39–46. <a href="https://doi.org/10.1016/j.sleep.2019.10.018">https://doi.org/10.1016/j.sleep.2019.10.018</a>.
 </div>
 </div>
 </div>
@@ -354,7 +346,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -372,7 +364,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

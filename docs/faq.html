@@ -13,22 +13,36 @@
 
 <title>Frequently Asked Questions</title>
 
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -41,32 +55,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -76,10 +65,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -96,40 +81,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -157,7 +115,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -169,7 +127,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -180,10 +138,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -195,7 +166,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -291,7 +261,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -300,10 +270,9 @@ $(document).ready(function () {
 </div>
 
 
-<hr />
 <script>
-function showHide1() {
-    var x = document.getElementById("faq1");
+function showHide(element) {
+    var x = document.getElementById(element);
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
@@ -311,87 +280,77 @@ function showHide1() {
     }
 }
 </script>
-<strong>How do I include time-varying covariates with the RI-CLPM?</strong>
-<button onclick="showHide1()">
-Show/hide answer
-</button>
+<hr />
+<div id="multiple-outcomes-time-varying-covariates" class="section level3">
+<h3>Multiple outcomes / time-varying covariates</h3>
+<hr />
+<div onclick="showHide(&#39;faq1&#39;)" style="cursor: pointer; font-weight:bold">
+How do I include time-varying covariates with the RI-CLPM?
+</div>
 <div id="faq1" style="display:none">
-Time-varying covariates (TVC) can be included like “regular” X and Y outcomes in the RI-CLPM; hence, rather than a bivariate RI-CLPM you would specify a tri- or more-variate RI-CLPM. As such, you decompose the TVCs in within-components and a between-component (the random intercept) and model these components separately. However, if you want to control for many TVC’s, this can quickly become an unwieldly model, so researchers should think carefully about which TVC’s they want to control for.
+Time-varying covariates (TVC; <span class="math inline">\(Z\)</span>) can be included like “regular” X and Y outcomes in the RI-CLPM; hence, rather than a bivariate RI-CLPM you would specify a tri- or more-variate RI-CLPM. As such, you decompose the TVCs in within-components (e.g. <span class="math inline">\(wz1\)</span>, <span class="math inline">\(wz2\)</span>, etc.) and a between-component (the random intercept; e.g. <span class="math inline">\(RI_{z}\)</span>) and model these components separately. However, if you want to control for many TVC’s, this can quickly become an unwieldly model, so researchers should think carefully about which TVC’s they want to control for.
 </div>
 <hr />
-<script>
-function showHide2() {
-    var x = document.getElementById("faq2");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
-<strong>Can I run the RI-CLPM with binary/categorical/count outcomes?</strong>
-<button onclick="showHide2()">
-Show/hide answer
-</button>
-<div id="faq2" style="display:none">
-The RI-CLPM is currently only well-studied/well-developed for the continuous case. Research into RI-CLPMs with only categorical data, or with non-commensurate outcomes (i.e., outcomes measured in different scales, continuous and binary) is still ongoing. See, for example, <a href="http://www.statmodel.com/discussion/messages/23/23001.html?1530924636">the Mplus discussion board</a>.
+<div onclick="showHide(&#39;faq3&#39;)" style="cursor: pointer; font-weight:bold">
+Is it possible to run an RI-CLPM with three (or more) outcomes?
 </div>
-<hr />
-<script>
-function showHide3() {
-    var x = document.getElementById("faq3");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
-<strong>Is it possible to run an RI-CLPM with three (or more) outcomes?</strong>
-<button onclick="showHide3()">
-Show/hide answer
-</button>
 <div id="faq3" style="display:none">
-Yes, it is statistically possible to run a “trivariate” RI-CLPM and empirical researchers have done so. See for example <a href="https://doi.org/10.1111/bjep.12265">Burns, Crisp, and Burns (2019)</a> and <a href="10.1037/dev0000612">Van Lissa et al. (2019)</a>. We don’t provide model code here for this mode, but extension to a trivariate RI-CLPM should be relatively straight forwards.
+Yes, it is statistically possible to run a “trivariate” RI-CLPM and empirical researchers have done so, see for example [Burns, Crisp, and <a href="https://doi.org/10.1037/dev0000612">Van Lissa et al. (2019)</a>. We don’t provide model code here for this mode, but extension to a trivariate RI-CLPM should be relatively straight forwards. That is, all variables should be decomponsed into between- (random intercepts) and within-components, and relevant lagged effects, as well as (residual) variances and covariances, should be included in the model.
 </div>
 <hr />
-<script>
-function showHide4() {
-    var x = document.getElementById("faq4");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
-<strong>How should I interpret the standardized cross-lagged and autoregressive parameters?</strong>
-<button onclick="showHide4()">
-Show/hide answer
-</button>
+</div>
+<div id="standardization" class="section level3">
+<h3>Standardization</h3>
+<hr />
+<div onclick="showHide(&#39;faq4&#39;)" style="cursor: pointer; font-weight:bold">
+How should I interpret the standardized cross-lagged and autoregressive parameters?
+</div>
 <div id="faq4" style="display:none">
-In the RI-CLPM, the standardized effects are reflective/representative of how much within-person variance in <span class="math inline">\(y_{t}\)</span> is <em>uniquely</em> explained (i.e., not also explained by other predictors) by the predictor <span class="math inline">\(x_{t-1}\)</span>. Please note that this does not imply that one can make a one-on-one comparison with the percentage of explained variance. However, the standardized effects can be used to compare which effect is relatively stronger.<a href="https://doi.org/10.1037/met0000062">(Schuurman, Ferrer, Boer-Sonnenschein, &amp; Hamaker, 2016)</a>.
+In the RI-CLPM, the standardized effects are reflective/representative of how much within-person variance in <span class="math inline">\(y_{t}\)</span> is <em>uniquely</em> explained (i.e., not also explained by other predictors) by the predictor <span class="math inline">\(x_{t-1}\)</span>. Please note that this does not imply that one can make a one-on-one comparison with the percentage of explained variance. However, the standardized effects can be used to compare which effect is relatively stronger <a href="https://doi.org/10.1037/met0000062">(Schuurman, Ferrer, Boer-Sonnenschein, &amp; Hamaker, 2016)</a>.
 </div>
 <hr />
-<script
-function showHide5() {
-    var x = document.getElementById("faq5");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
-<strong>How do standardized cross-lagged and autoregressive parameters compare to explained variance?</strong>
-<button onclick="showHide5()">
-Show/hide answer
-</button>
+<div onclick="showHide(&#39;faq5&#39;)" style="cursor: pointer; font-weight:bold">
+How do standardized cross-lagged and autoregressive parameters compare to explained variance?
+</div>
 <div id="faq5" style="display:none">
 <p>The standardized lagged parameters are not equal to the (squared) semipartial correlation. Only under special circumstances, a standardized regression coefficient is equal to the pairwise correlation between the outcome and predictor, and the square of the standardized regression coefficient would then be the explained variance (<span class="math inline">\(R^{2}\)</span>). This only applies in the case of (a) a simple regression, where there is only one predictor in the model, or (b) a multiple regression where the predictors are independent of each other. In the RI-CLPM, however, the multiple predictors are not independent of each other, and therefore the standardized regression coefficients are not equal to the pairwise correlation, (semi)partial correlation, or the unique explained variance.</p>
 <p>However, the standardized coefficient is closely related to the semipartial correlation, as demonstrated in footnote 3 of <a href="https://doi.org/10.1037/met0000062">Schuurman, Ferrer, Boer-Sonnenschein, and Hamaker (2016)</a>. The standardized coefficient is expressed in terms of pairwise correlations in the first equation there, and the semipartial correlation expressed in terms of pairwise correlations in the second equation. They are very similar, but there is a subtle difference in the denominator.</p>
 <p>So, the semipartial correlation and standardized coefficient are not equal, but we can see that if the semipartical correlation for one predictor is larger than for another predictor, this will also be the case for the standardized coefficients of these predictors. The square of the semi-partial correlation is the <em>unique</em> explained variance, so we also know that the predictor with the largest standardized coefficient, will also have the largest <em>unique</em> explained variance.</p>
 <em>Answer by <a href="https://www.uu.nl/staff/NKSchuurman">Dr. Noémi Schuurman</a>.</em>
+</div>
+<hr />
+</div>
+<div id="non-continuous-outcomes" class="section level3">
+<h3>Non-continuous outcomes</h3>
+<hr />
+<div onclick="showHide(&#39;faq2&#39;)" style="cursor: pointer; font-weight:bold">
+Can I run the RI-CLPM with binary/categorical/count outcomes?
+</div>
+<div id="faq2" style="display:none">
+The RI-CLPM is currently only well-studied/well-developed for the continuous case. Research into RI-CLPMs with only categorical data, or with non-commensurate outcomes (i.e., outcomes measured in different scales, continuous and binary) is still ongoing. See, for example, <a href="http://www.statmodel.com/discussion/messages/23/23001.html?1530924636">the Mplus discussion board</a>.
+</div>
+<hr />
+</div>
+<div id="time-time-lags" class="section level3">
+<h3>Time &amp; time-lags</h3>
+<hr />
+<div onclick="showHide(&#39;faq6&#39;)" style="cursor: pointer; font-weight:bold">
+How to deal with unequal intervals between repeated measures?
+</div>
+<div id="faq6" style="display:none">
+The lagged regression coefficients depend on the time lag between repeated measures (in a non-linear way). If the lags between subsequent occasions vary, qualitatively different autoregressive and cross-lagged effects between each pair of adjacent measurements are estimated. The advice is to <strong>not</strong> constrain these parameters over time in this case, as this would lead to an uninterpretable blend of different lagged relationships. Neither should the residual variances and covariances (of the within-components) be constrained to be invariant over time, as these also depend on the interval between measurements.
+</div>
+<hr />
+</div>
+<div id="power" class="section level3">
+<h3>Power</h3>
+<hr />
+<div onclick="showHide(&#39;faq8&#39;)" style="cursor: pointer; font-weight:bold">
+How do I perform a power analysis for the RI-CLPM?
+</div>
+<div id="faq8" style="display:none">
+We are currently developing an R-package for performing power analyses for the RI-CLPM. It is expected to be available for download early June 2021. You can also perform a power analysis using the <a href="https://www.statmodel.com/download/usersguide/Chapter12.pdf">MONTECARLO functionality of Mplus</a>.
+</div>
 </div>
 
 &nbsp;
@@ -415,7 +374,7 @@ Show/hide answer
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -433,7 +392,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
