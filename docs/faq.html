@@ -29,6 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -218,6 +221,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -225,6 +291,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
 
 
 
@@ -281,8 +357,10 @@ function showHide(element) {
 }
 </script>
 <hr />
-<div id="multiple-outcomes-time-varying-covariates" class="section level3">
-<h3>Multiple outcomes / time-varying covariates</h3>
+<p>Below you can find a list of frequently asked questions, organized by topic, that reach us via email. Click the question to see our response.</p>
+<hr />
+<div id="time-varying-covariates" class="section level3">
+<h3>Time-varying covariates</h3>
 <hr />
 <div onclick="showHide(&#39;faq1&#39;)" style="cursor: pointer; font-weight:bold">
 How do I include time-varying covariates with the RI-CLPM?
@@ -349,7 +427,26 @@ The lagged regression coefficients depend on the time lag between repeated measu
 How do I perform a power analysis for the RI-CLPM?
 </div>
 <div id="faq8" style="display:none">
-We are currently developing an R-package for performing power analyses for the RI-CLPM. It is expected to be available for download early June 2021. You can also perform a power analysis using the <a href="https://www.statmodel.com/download/usersguide/Chapter12.pdf">MONTECARLO functionality of Mplus</a>.
+<p>We have developed an alpha version of the <code>powRICLPM</code>-package for performing power analyses for the RI-CLPM in R. It is not available for download yet because we are currently still testing it. If, however, you would like to perform a power analysis for the RI-CLPM, please contact <a href="mailto:j.d.mulder@uu.nl">Jeroen Mulder</a>. We might then be able to kill 2 birds with 1 stone: You get a power analysis, and we get an empirical test case.</p>
+You can also perform a power analysis using the <a href="https://www.statmodel.com/download/usersguide/Chapter12.pdf">MONTECARLO functionality of Mplus</a>.
+</div>
+<hr />
+</div>
+<div id="clpm-v.-riclpm" class="section level3">
+<h3>CLPM v. RICLPM</h3>
+<hr />
+<div onclick="showHide(&#39;faq9&#39;)" style="cursor: pointer; font-weight:bold">
+Why are the autoregressive effects in the RI-CLPM typically smaller than in the CLPM?
+</div>
+<div id="faq9" style="display:none">
+The autoregressive effects in the CLPM and the RI-CLPM capture two distinct phenomena. In the traditional CLPM, the autoregressive effects capture both within- and between-unit effects, and it can be interpreted as rank-order stability. In the RI-CLPM, the stable, between-person variance is separated from the within-person variance such that the autoregressive effects only capture within-person carry-over. In other words, in the RI-CLPM the autoregressive effects are typically smaller because the stable, trait-like stability is not captured anymore by the autoregressive effects (as in the CLPM), but by the random intercepts.
+</div>
+<hr />
+<div onclick="showHide(&#39;faq10&#39;)" style="cursor: pointer; font-weight:bold">
+Is it a bad sign that the standard errors are typically larger in the RI-CLPM than in the CLPM?
+</div>
+<div id="faq10" style="display:none">
+No, this is to be expected because the RI-CLPM is a more complex model than the CLPM. Therefore, the point estimates are less certain, but this does not imply that the model has a bad fit.
 </div>
 </div>
 
@@ -367,6 +464,8 @@ We are currently developing an R-package for performing power analyses for the R
 &nbsp;
 
 
+</div>
+</div>
 
 </div>
 
@@ -399,6 +498,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

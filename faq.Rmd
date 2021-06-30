@@ -1,5 +1,9 @@
 ---
 title: "Frequently Asked Questions"
+output: 
+  html_document:
+    toc:  true
+    toc_float: true
 ---
 
 <script>
@@ -15,7 +19,11 @@ function showHide(element) {
 
 ---
 
-### Multiple outcomes / time-varying covariates
+Below you can find a list of frequently asked questions, organized by topic, that reach us via email. Click the question to see our response.
+
+---
+
+### Time-varying covariates
 
 ---
 
@@ -84,6 +92,23 @@ The lagged regression coefficients depend on the time lag between repeated measu
 ---
 <div onclick="showHide('faq8')" style="cursor: pointer; font-weight:bold">How do I perform a power analysis for the RI-CLPM?</div>
 
-<div id="faq8" style="display:none">We are currently developing an R-package for performing power analyses for the RI-CLPM. It is expected to be available for download early June 2021. You can also perform a power analysis using the [MONTECARLO functionality of Mplus](https://www.statmodel.com/download/usersguide/Chapter12.pdf).</div>
+<div id="faq8" style="display:none">We have developed an alpha version of the `powRICLPM`-package for performing power analyses for the RI-CLPM in R. It is not available for download yet because we are currently still testing it. If, however, you would like to perform a power analysis for the RI-CLPM, please contact [Jeroen Mulder](mailto:j.d.mulder@uu.nl). We might then be able to kill 2 birds with 1 stone: You get a power analysis, and we get an empirical test case. 
 
+You can also perform a power analysis using the [MONTECARLO functionality of Mplus](https://www.statmodel.com/download/usersguide/Chapter12.pdf).</div>
+
+---
+
+### CLPM v. RICLPM
+
+---
+
+<div onclick="showHide('faq9')" style="cursor: pointer; font-weight:bold">Why are the autoregressive effects in the RI-CLPM typically smaller than in the CLPM?</div>
+
+<div id="faq9" style="display:none">The autoregressive effects in the CLPM and the RI-CLPM capture two distinct phenomena. In the traditional CLPM, the autoregressive effects capture both within- and between-unit effects, and it can be interpreted as rank-order stability. In the RI-CLPM, the stable, between-person variance is separated from the within-person variance such that the autoregressive effects only capture within-person carry-over. In other words, in the RI-CLPM the autoregressive effects are typically smaller because the stable, trait-like stability is not captured anymore by the autoregressive effects (as in the CLPM), but by the random intercepts.</div>
+
+---
+
+<div onclick="showHide('faq10')" style="cursor: pointer; font-weight:bold">Is it a bad sign that the standard errors are typically larger in the RI-CLPM than in the CLPM?</div>
+
+<div id="faq10" style="display:none">No, this is to be expected because the RI-CLPM is a more complex model than the CLPM. Therefore, the point estimates are less certain, but this does not imply that the model has a bad fit.</div>
 
