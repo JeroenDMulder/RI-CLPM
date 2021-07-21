@@ -116,7 +116,7 @@ You can also perform a power analysis using the [MONTECARLO functionality of Mpl
 
 ### Response to Orth et al. (2021)
 
-Lately, we have received numerous questions about statements regarding the use and appropriateness of the CLPM and RI-CLPM in "Testing Prospective Effects in Longitudinal Research: Comparing Seven Competing Cross-Lagged Models" by [Orth et al. (2021)](http://dx.doi.org/10.1037/pspp0000358). In our opinion, numerous conclusions herein are unwarranted. Below we elaborate on what we consider some of their most prominent conclusions. 
+Lately, we have received numerous questions about statements regarding the use and appropriateness of the CLPM and RI-CLPM in "Testing Prospective Effects in Longitudinal Research: Comparing Seven Competing Cross-Lagged Models" by [Orth et al. (2021)](http://dx.doi.org/10.1037/pspp0000358). In our opinion, numerous conclusions herein are incorrect. Below we elaborate on some of their most prominent conclusions. For another response to [Orth et al. (2021)](http://dx.doi.org/10.1037/pspp0000358), see [https://replicationindex.com/2020/08/22/cross-lagged](https://replicationindex.com/2020/08/22/cross-lagged/) 
 
 ---
 
