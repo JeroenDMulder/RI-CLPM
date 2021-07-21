@@ -23,7 +23,7 @@ You can find simulated example data sets (1189 units, 5 repeated-measures) on [G
 
 |                  |                                                                                                |
 | -----------------|:-----------------------------------------------------------------------------------------------|    
-| **July 7th, 2021** | We have updated the [FAQ](https://jeroendmulder.github.io/RI-CLPM/faq.html#Response_to_Orth_et_al_(2021)) with an informal response to some of the, in our opinion, problematic claims made in Orth et al. (2021) regarding the use and appropriateness of the CLPM and RI-CLPM.|
+| **July 7th, 2021** | We have updated the [FAQ](https://jeroendmulder.github.io/RI-CLPM/faq.html#Response_to_Orth_et_al_(2021)) with an informal response to some of the conclusions drawn by Orth et al. (2021) regarding the use and appropriateness of the CLPM and RI-CLPM.
 
 ---
 
