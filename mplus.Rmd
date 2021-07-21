@@ -864,7 +864,7 @@ In Mplus, the model for strong factorial invariance can be specified as the prev
                 ! for all Y-variables and constrain the factor loading to be identical
                 ! to the within-person factor loadings.
                  RIX BY RIX1 RIX2 RIX3 (a b c);
-                 RIY BY RIY1 RIY2 RIY3 (a b c);
+                 RIY BY RIY1 RIY2 RIY3 (d e f);
         
                 ! Add a covariance between these two higher-order random intercept.
                 RIX WITH RIY;

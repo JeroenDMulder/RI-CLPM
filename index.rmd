@@ -15,12 +15,17 @@ This website is a supplement to "Three Extensions of the Random Intercept Cross-
 
 Use the top menu to navigate to the [Mplus syntax](https://jeroendmulder.github.io/RI-CLPM/mplus.html), [*lavaan* code](https://jeroendmulder.github.io/RI-CLPM/lavaan.html), or [Frequently Asked Questions (FAQ)](https://jeroendmulder.github.io/RI-CLPM/faq.html). The *lavaan (R)* tab contains additional code for performing the $\bar{\chi}^{2}$-test (chi-bar-square test) in R. This test is used for comparing nested models where the more parsimonious model is based on constraining parameters on the bound of the parameter space (e.g., constraining a variance to 0).
 
-----
-
-### Data
 You can find simulated example data sets (1189 units, 5 repeated-measures) on [Github](https://github.com/jeroendmulder/RI-CLPM/tree/master/data) to get hands-on experience with this modeling approach. The example data are motivated by @Narmandakh2020 who obtained five waves of data from 1189 adolescents on their sleep problems and anxiety over 15 years.
 
 ----
+
+### News
+
+|                  |                                                                                                |
+| -----------------|:-----------------------------------------------------------------------------------------------|    
+| **July 7th, 2021** | We have updated the [FAQ](https://jeroendmulder.github.io/RI-CLPM/faq.html#Response_to_Orth_et_al_(2021)) with an informal response to some of the, in our opinion, problematic claims made in Orth et al. (2021) regarding the use and appropriateness of the CLPM and RI-CLPM.|
+
+---
 
 ### Contact
 Questions can be addressed to the first author of the corresponding article, [Jeroen Mulder](mailto:j.d.mulder@uu.nl). 
