@@ -9,10 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Jeroen Mulder and Ellen Hamaker - Utrecht University, the Netherlands" />
 
 
-<title>The RI-CLPM &amp; Extensions</title>
+<title>News</title>
 
 <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -57,28 +56,6 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-/* for pandoc --citeproc since 2.11 */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 
 
@@ -291,42 +268,30 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">The RI-CLPM &amp; Extensions</h1>
-<h4 class="author"><a href="https://www.uu.nl/medewerkers/JDMulder">Jeroen Mulder</a> and <a href="https://www.uu.nl/medewerkers/ELHamaker">Ellen Hamaker</a> - Utrecht University, the Netherlands</h4>
+<h1 class="title toc-ignore">News</h1>
 
 </div>
 
 
 <hr />
-<p>This website is a supplement to “Three Extensions of the Random Intercept Cross-Lagged Panel Model” by <span class="citation">Mulder and Hamaker (2021)</span>. It contains Mplus syntax and <em>lavaan</em> code for specifying the basic RI-CLPM and the following three extensions:</p>
-<ol style="list-style-type: decimal">
-<li>including a time-invariant predictor and outcome,</li>
-<li>doing multiple group analysis, and</li>
-<li>using multiple indictors for variables.</li>
-</ol>
-<p>Use the top menu to navigate to the <a href="https://jeroendmulder.github.io/RI-CLPM/mplus.html">Mplus syntax</a>, <a href="https://jeroendmulder.github.io/RI-CLPM/lavaan.html"><em>lavaan</em> code</a>, <a href="https://jeroendmulder.github.io/RI-CLPM/news.html">news</a>, or <a href="https://jeroendmulder.github.io/RI-CLPM/faq.html">Frequently Asked Questions (FAQ)</a>. The <em>lavaan (R)</em> tab contains additional code for performing the <span class="math inline">\(\bar{\chi}^{2}\)</span>-test (chi-bar-square test) in R. This test is used for comparing nested models where the more parsimonious model is based on constraining parameters on the bound of the parameter space (e.g., constraining a variance to 0). The <em>news</em> tab documents important updates and additions to the Mplus syntax, <em>lavaan</em> model syntax, or the FAQ on this website.</p>
+<p>This page documents important updates and additions to the Mplus syntax, <em>lavaan</em> code, or the FAQ.</p>
 <hr />
-<div id="data" class="section level3">
-<h3>Data</h3>
-<p>You can find simulated example data sets (1189 units, 5 repeated-measures) on <a href="https://github.com/jeroendmulder/RI-CLPM/tree/master/data">Github</a> to get hands-on experience with this modeling approach. The example data are motivated by <span class="citation">Narmandakh et al. (2020)</span> who obtained five waves of data from 1189 adolescents on their sleep problems and anxiety over 15 years.</p>
-<hr />
-</div>
-<div id="contact" class="section level3">
-<h3>Contact</h3>
-<p>Questions can be addressed to the first author of the corresponding article, <a href="mailto:j.d.mulder@uu.nl">Jeroen Mulder</a>.</p>
-<hr />
-</div>
-<div id="references" class="section level3 unnumbered">
-<h3 class="unnumbered">References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Mulder2020" class="csl-entry">
-Mulder, Jeroen D., and Ellen L. Hamaker. 2021. <span>“Three Extensions of the Random Intercept Cross-Lagged Panel Model.”</span> <em>Structural Equation Modeling: A Multidisciplinary Journal</em>. <a href="https://doi.org/10.1080/10705511.2020.1784738">https://doi.org/10.1080/10705511.2020.1784738</a>.
-</div>
-<div id="ref-Narmandakh2020" class="csl-entry">
-Narmandakh, Altanzul, Annelieke M. Roest, Peter de Jonge, and Albertine J. Oldehinkel. 2020. <span>“<span class="nocase">The bidirectional association between sleep problems and anxiety symptoms in adolescents: a TRAILS report</span>.”</span> <em>Sleep Medicine</em> 67 (March): 39–46. <a href="https://doi.org/10.1016/j.sleep.2019.10.018">https://doi.org/10.1016/j.sleep.2019.10.018</a>.
-</div>
-</div>
-</div>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="80%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>November 23rd, 2021</strong></td>
+<td align="left">We have added <a href="https://jeroendmulder.github.io/RI-CLPM/mplus.html#Alternative_syntax">alternative model specifications for Mplus</a>, in which we use the new “hat-notation” of Mplus version 8.7, as well as <code>PON</code> and <code>PWITH</code> statements to allow for simpler input files. Furthermore, the FAQ was updated with the latest information on <a href="https://jeroendmulder.github.io/RI-CLPM/faq.html#Non-continuous_outcomes">the RI-CLPM for categorical variables</a>, and a new question and answer concerning <a href="https://jeroendmulder.github.io/RI-CLPM/faq.html#Growth_and_development">development over time</a> in the RI-CLPM was added.</td>
+</tr>
+<tr class="even">
+<td><strong>July 7th, 2021</strong></td>
+<td align="left">We have updated the <a href="https://jeroendmulder.github.io/RI-CLPM/faq.html#Response_to_Orth_et_al_(2021)">FAQ</a> with an informal response to some of the conclusions drawn by Orth et al. (2021) regarding the use and appropriateness of the CLPM and RI-CLPM.</td>
+</tr>
+</tbody>
+</table>
 
 &nbsp;
 <hr />

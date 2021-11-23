@@ -327,6 +327,9 @@ div.tocify {
   <a href="lavaan.html">lavaan (R)</a>
 </li>
 <li>
+  <a href="news.html">News</a>
+</li>
+<li>
   <a href="faq.html">FAQ</a>
 </li>
       </ul>
@@ -405,7 +408,8 @@ How do standardized cross-lagged and autoregressive parameters compare to explai
 Can I run the RI-CLPM with binary/categorical/count outcomes?
 </div>
 <div id="faq2" style="display:none">
-The RI-CLPM is currently only well-studied/well-developed for the continuous case. Research into RI-CLPMs with only categorical data, or with non-commensurate outcomes (i.e., outcomes measured in different scales, continuous and binary) is still ongoing. See, for example, <a href="http://www.statmodel.com/discussion/messages/23/23001.html?1530924636">the Mplus discussion board</a>.
+<p>With the launch of Mplus version 8.7, it is possible to estimate the RI-CLPM for binary and ordinal variables as well (<a href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov and Muthén, 2021</a>). Compared to the RI-CLPM for continuous variables, there are two important differences: - Bayesian estimation is needed, and can be used by specifying <code>ESTIMATOR = BAYES;</code> in the <code>ANALYSIS</code> command. - The variances and residual variances of the within-components are fixed to 1, as is standard when using the probit-model in Mplus for categorical data analysis. These can be freely estimated in principle, but generally require larger sample sizes, and are prone to empirical non-identification. Several strategies for (partly) freeing up these variances are discussed in <a href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov and Muthén (2021)</a>.</p>
+The interested reader is referred to <a href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov and Muthén (2021)</a> for more details.
 </div>
 <hr />
 </div>
@@ -447,6 +451,18 @@ Is it a bad sign that the standard errors are typically larger in the RI-CLPM th
 </div>
 <div id="faq10" style="display:none">
 No, this is to be expected because the RI-CLPM is a more complex model than the CLPM. Therefore, the point estimates are less certain, but this does not imply that the estimates are biased and the model does not give us any insight in the underlying mechanism under study. In contrast, the RI-CLPM is likely less biased than results from the CLPM because the RI-CLM accounts for stable, unobserved factors that create lasting between-person differences, which can create spurious empirical relationships between the constructs under investigation when not properly accounted for.
+</div>
+<hr />
+</div>
+<div id="growth-and-development" class="section level3">
+<h3>Growth and development</h3>
+<hr />
+<div onclick="showHide(&#39;faq15&#39;)" style="cursor: pointer; font-weight:bold">
+How can the RI-CLPM incorporate growth over time?
+</div>
+<div id="faq15" style="display:none">
+<p>The RI-CLPM estimates grand means at each time point. If these are constrained to be time-invariant, this would imply that on average there is no change. However, if these constraints cannot be imposed on the model, this means that on average there is some kind of change (e.g., growth, decline, U-shape, sudden jump between two waves, etc.). In this case, the model implies that <strong>every person</strong> is modeled to have the exact same underlying trend over time, but at a constant deviation from the average trend (as captured by the random intercept factor). Hence, instead of talking about constant means over time, one would have to talk about constant deviations from an average trend.</p>
+In the latent growth curve model (LGCM) and its extension, the latent curve model with structured residuals (LCM-SR), it is assumed that individual have the same kind of trend (e.g., a linear or quadratic trend), but there can be individual differences in the parameters of this trend; as a result, the differences between individuals change over time (i.e., they may increase or decrease). When the variance of the slope components (i.e., the slope factor of both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in the bivariate case) is fixed to zero, the LGCM and LCS-SR become special cases of the RI-CLPM; if the grand means in the RI-CLPM are fixed to be invariant over time, then this is a special case of the LCM-SR <a href="https://psycnet.apa.org/fulltext/2019-21491-001.html">(Usami, Kou, &amp; Hamaker, 2019)</a>.
 </div>
 <hr />
 </div>

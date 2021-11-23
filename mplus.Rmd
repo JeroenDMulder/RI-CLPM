@@ -17,6 +17,8 @@ For Mplus [@Mplus8] to work properly, make sure that you save the input file wit
 
 These defaults are included to make the specification of many standard SEM models easier, but they are not always useful in the current modeling context. Therefore, we use the command `ANALYSIS: MODEL = NOCOV;` to overrule these defaults for the covariances and set all of them to zero.
 
+From Mplus version 8.7 onward, the Residual Structural Equation Modeling (RSEM) capabilities have been expanded [@Asparouhov2021]. This allows for considerably simpler model syntax for the RI-CLPM using the "hats-language (^)". You can find Mplus syntax using this alternative hats-notation for the basic RI-CLPM (both with and without constraints over time) in the  [Alternative syntax]() section.
+
 ---
 
 ## The RI-CLPM {.tabset .tabset-fade}
@@ -1039,6 +1041,90 @@ We have to overrule the default of Mplus to include a term for measurement error
                 WFX4 WITH WFY4;
                 WFX5 WITH WFY5;
     
+    OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;
+
+---
+
+## Alternative syntax {.tabset .tabset-fade}
+
+The basic RI-CLPM model syntax (with and without constraints) can be made considerably simpler by using the `^`-notation and pairwise `ON` and `WITH` statements: 
+
+* `^`-notation: By including a `^` after a variable (e.g., `x1^` or `y3^`) a residual latent variable is automatically created for that variable with the loading parameter fixed to 1. Moreover, this notation fixes the measurement error variance of the observed variable to 0, such that, in an RI-CLPM context, `x1^` and `y3^` can be interpreted as deviations from a person-specific mean. This notation is available from Mplus version 8.7 onward. 
+* `PON` and `PWITH`: These statements define pairwise regression and correlational relationships, respectively. For example, the `x1^-x5^ PWITH y1^-y5^;` statement in the RI-CLPM model syntax below, defines a covariance between the within-components at the first wave, a residual covariance between the within-components at the second wave, a residual covariance between the within-components at the third wave, etc. 
+
+### The basic model
+
+    TITLE:      The basic RI-CLPM, 4 waves. 
+                Using the residual-language of Mplus version 8.7.
+       
+    DATA:       FILE = RICLPM.dat;
+                    
+    VARIABLE:   NAMES = x1-x5 y1-y5;
+                
+    ANALYSIS:   MODEL = NOCOV; ! Sets all default covariances to zero
+        
+    MODEL:      ! Create two individual factors (random intercepts)
+                RIx BY x1-x5@1;
+                RIy BY y1-y5@1;
+    
+                ! Estimate the covariance between the random intercepts
+                RIx WITH RIy;
+        
+                ! Using the residual-language ("^"-notation) Mplus automatically
+                ! creates within-person centered variables with measurement 
+                ! error variances constrained at 0. 
+    
+                ! Estimate the lagged effects between within-person centered 
+                ! variables using "Pairwise ON"-notation.
+                x2^-x5^ y2^-y5^ PON x1^-x4^ y1^-y4^; ! Autoregressive effects
+                x2^-x5^ y2^-y5^ PON y1^-y4^ x1^-x4^; ! Cross-lagged effects
+        
+                ! Estimate covariance between the within-person components 
+                ! using "Pairwise WITH"-notation.
+                x1^-x5^ PWITH y1^-y5^;
+                    
+    OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;
+
+### Constraints over time
+
+    TITLE:      The basic RI-CLPM, 4 waves. 
+                Using the residual-language of Mplus version 8.7.
+       
+    DATA:       FILE = RICLPM.dat;
+                    
+    VARIABLE:   NAMES = x1-x5 y1-y5;
+                
+    ANALYSIS:   MODEL = NOCOV; ! Sets all default covariances to zero
+        
+    MODEL:      ! Create two individual factors (random intercepts)
+                RIx BY x1-x5@1;
+                RIy BY y1-y5@1;
+    
+                ! Estimate the covariance between the random intercepts
+                RIx WITH RIy;
+        
+                ! Using the residual-language ("^"-notation) Mplus automatically
+                ! creates within-person centered variables with measurement 
+                ! error variances constrained at 0. 
+    
+                ! Estimate the lagged effects between within-person centered 
+                ! variables using "Pairwise ON"-notation.
+                x2^-x5^ PON x1^-x4^ (a); ! Autoregressive effects (contrained)
+                y2^-y5^ PON y1^-y4^ (b); 
+                x2^-x5^ PON y1^-y4^ (c); ! Cross-lagged effects (constrained)
+                y2^-y5^ PON x1^-x4^ (d);
+        
+                ! Estimate (residual) (co)variance between the within-person 
+                ! components using "Pairwise WITH"-notation.
+                x1^ WITH y1^; ! Covariance
+                x2^-x5^ PWITH y2^-y5^ (cov); ! Residual covariances
+                x2^-x5^ (vx); ! Residual variance x^
+                y2^-y5^ (vy); ! Residual variance y^
+    
+                ! Constrain grand means to be invariant over time
+                [x1 x2 x3 x4 x5] (mx);
+                [y1 y2 y3 y4 y5] (my);
+                    
     OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;
 
 ---
