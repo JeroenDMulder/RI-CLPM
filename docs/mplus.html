@@ -13,7 +13,7 @@
 
 <title>Using Mplus</title>
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -317,12 +317,12 @@ div.tocify {
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row">
-<div class="col-sm-12 col-md-4 col-lg-3">
+<div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
 </div>
 
-<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -380,7 +380,7 @@ div.tocify {
 <li>residuals of observed and latent outcome variables (which do not predict anything) in a path model are correlated.</li>
 </ul>
 <p>These defaults are included to make the specification of many standard SEM models easier, but they are not always useful in the current modeling context. Therefore, we use the command <code>ANALYSIS: MODEL = NOCOV;</code> to overrule these defaults for the covariances and set all of them to zero.</p>
-<p>From Mplus version 8.7 onward, the Residual Structural Equation Modeling (RSEM) capabilities have been expanded <span class="citation">(Asparouhov and Muthén 2021)</span>. This allows for considerably simpler model syntax for the RI-CLPM using the “hats-language (^).” You can find Mplus syntax using this alternative hats-notation for the basic RI-CLPM (both with and without constraints over time) in the <a href="">Alternative syntax</a> section.</p>
+<p>From Mplus version 8.7 onward, the Residual Structural Equation Modeling (RSEM) capabilities have been expanded <span class="citation">(Asparouhov and Muthén 2021)</span>. This allows for considerably simpler model syntax for the RI-CLPM using the <code>^</code> command. You can find Mplus syntax using this alternative hats-notation for the basic RI-CLPM (both with and without constraints over time) in the <a href="https://jeroendmulder.github.io/RI-CLPM/mplus.html#Residual_syntax">Residual syntax</a> section.</p>
 <hr />
 </div>
 <div id="the-ri-clpm" class="section level2 tabset tabset-fade">
@@ -1014,11 +1014,11 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 </div>
 <div id="step-2" class="section level3">
 <h3>Step 2</h3>
-<p>In second step, we constrain the factor loadings to be invariant over time using the labels <code>(a b c)</code> and <code>(d e f)</code>.</p>
+<p>In the second step, we constrain the factor loadings to be invariant over time using the labels <code>(a b)</code> and <code>(c d)</code>. We only need to constrain the second and third loading of the factor models at each wave (i.e., <code>WFX1 BY x12 x13</code>, <code>WFX2 BY x22 x23</code>, etc.), because the first loading (i.e., <code>WFX1 BY x11</code> and <code>WFX2 BY x21</code>, etc.) is constrained to 1 by default, and is therefore already invariant over time.</p>
 <pre><code>TITLE:      Multiple indicator RI-CLPM, 5 waves, with 3 indicators for 
             each variable at each wave (30 observed variables) and with 
             random intercepts for each indicator separately. Fitting a model 
-              with constraints to ensure weak factorial invariance. 
+            with constraints to ensure weak factorial invariance. 
 
 DATA:       FILE = RICLPM-MI.dat;
         
@@ -1053,18 +1053,18 @@ MODEL:      !!!!!!!!!!!!!!!!
             ! here is only on the within part of the measurements
 
             ! Factor models for x at 5 waves
-            WFX1 BY x11-x13 (a b c);
-            WFX2 BY x21-x23 (a b c);
-            WFX3 BY x31-x33 (a b c);
-            WFX4 BY x41-x43 (a b c); 
-            WFX5 BY x51-x53 (a b c);   
+            WFX1 BY x11-x13 (a b);
+            WFX2 BY x21-x23 (a b);
+            WFX3 BY x31-x33 (a b);
+            WFX4 BY x41-x43 (a b); 
+            WFX5 BY x51-x53 (a b);   
         
             ! Factor models for y at 5 waves
-            WFY1 BY y11-y13 (d e f);
-            WFY2 BY y21-y23 (d e f);
-            WFY3 BY y31-y33 (d e f);
-            WFY4 BY y41-y43 (d e f);
-            WFY5 BY y51-y53 (d e f);
+            WFY1 BY y11-y13 (c d);
+            WFY2 BY y21-y23 (c d);
+            WFY3 BY y31-y33 (c d);
+            WFY4 BY y41-y43 (c d);
+            WFY5 BY y51-y53 (c d);
 
             !!!!!!!!!!!!!!!!!!!!!!!!!
             ! WITHIN PART: DYNAMICS !
@@ -1127,18 +1127,18 @@ MODEL:      !!!!!!!!!!!!!!!!
             ! here is only on the within part of the measurements
 
             ! Factor models for x at 5 waves
-            WFX1 BY x11-x13 (a b c);
-            WFX2 BY x21-x23 (a b c);
-            WFX3 BY x31-x33 (a b c);
-            WFX4 BY x41-x43 (a b c); 
-            WFX5 BY x51-x53 (a b c);   
-            
+            WFX1 BY x11-x13 (a b);
+            WFX2 BY x21-x23 (a b);
+            WFX3 BY x31-x33 (a b);
+            WFX4 BY x41-x43 (a b); 
+            WFX5 BY x51-x53 (a b);   
+        
             ! Factor models for y at 5 waves
-            WFY1 BY y11-y13 (d e f);
-            WFY2 BY y21-y23 (d e f);
-            WFY3 BY y31-y33 (d e f);
-            WFY4 BY y41-y43 (d e f);
-            WFY5 BY y51-y53 (d e f);
+            WFY1 BY y11-y13 (c d);
+            WFY2 BY y21-y23 (c d);
+            WFY3 BY y31-y33 (c d);
+            WFY4 BY y41-y43 (c d);
+            WFY5 BY y51-y53 (c d);
 
             ! Constrained intercepts over time (this is necessary 
             ! for strong factorial invariance; without these 
@@ -1233,18 +1233,18 @@ MODEL:      !!!!!!!!!!!!!!!!
             ! here is only on the within part of the measurements
 
             ! Factor models for x at 5 waves
-            WFX1 BY x11-x13 (a b c);
-            WFX2 BY x21-x23 (a b c);
-            WFX3 BY x31-x33 (a b c);
-            WFX4 BY x41-x43 (a b c); 
-            WFX5 BY x51-x53 (a b c);   
-            
+            WFX1 BY x11-x13 (a b);
+            WFX2 BY x21-x23 (a b);
+            WFX3 BY x31-x33 (a b);
+            WFX4 BY x41-x43 (a b); 
+            WFX5 BY x51-x53 (a b);   
+        
             ! Factor models for y at 5 waves
-            WFY1 BY y11-y13 (d e f);
-            WFY2 BY y21-y23 (d e f);
-            WFY3 BY y31-y33 (d e f);
-            WFY4 BY y41-y43 (d e f);
-            WFY5 BY y51-y53 (d e f);
+            WFY1 BY y11-y13 (c d);
+            WFY2 BY y21-y23 (c d);
+            WFY3 BY y31-y33 (c d);
+            WFY4 BY y41-y43 (c d);
+            WFY5 BY y51-y53 (c d);
 
             ! Constrained intercepts over time (this is necessary for strong 
             ! factorial invariance; without these constraints we have weak 
@@ -1310,19 +1310,19 @@ MODEL:      !!!!!!!!!!!!!!!!!!!!!
     
             ! Factor models for x at 5 waves constrained factor loadings 
             ! over time.
-            FX1 BY x11-x13 (a b c);
-            FX2 BY x21-x23 (a b c);
-            FX3 BY x31-x33 (a b c);
-            FX4 BY x41-x43 (a b c); 
-            FX5 BY x51-x53 (a b c);   
+            FX1 BY x11-x13 (a b);
+            FX2 BY x21-x23 (a b);
+            FX3 BY x31-x33 (a b);
+            FX4 BY x41-x43 (a b); 
+            FX5 BY x51-x53 (a b);   
                 
             ! Factor models for y at 5 waves constrained factor loadings 
             ! over time. 
-            FY1 BY y11-y13 (d e f);
-            FY2 BY y21-y23 (d e f);
-            FY3 BY y31-y33 (d e f);
-            FY4 BY y41-y43 (d e f);
-            FY5 BY y51-y53 (d e f);
+            FY1 BY y11-y13 (c d);
+            FY2 BY y21-y23 (c d);
+            FY3 BY y31-y33 (c d);
+            FY4 BY y41-y43 (c d);
+            FY5 BY y51-y53 (c d);
     
             ! Constrained intercepts over time (this is necessary for strong 
             ! factorial invariance; without these constraints we have weak 
@@ -1394,9 +1394,9 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 <hr />
 </div>
 </div>
-<div id="alternative-syntax" class="section level2 tabset tabset-fade">
-<h2 class="tabset tabset-fade">Alternative syntax</h2>
-<p>The basic RI-CLPM model syntax (with and without constraints) can be made considerably simpler by using the <code>^</code>-notation and pairwise <code>ON</code> and <code>WITH</code> statements:</p>
+<div id="residual-syntax" class="section level2 tabset tabset-fade">
+<h2 class="tabset tabset-fade">Residual syntax</h2>
+<p>The basic RI-CLPM model syntax (with and without constraints) can be made considerably simpler by using the <code>^</code>-notation and <code>PON</code> and <code>PWITH</code> statements (pairwise <code>ON</code> and <code>WITH</code>, respectively):</p>
 <ul>
 <li><code>^</code>-notation: By including a <code>^</code> after a variable (e.g., <code>x1^</code> or <code>y3^</code>) a residual latent variable is automatically created for that variable with the loading parameter fixed to 1. Moreover, this notation fixes the measurement error variance of the observed variable to 0, such that, in an RI-CLPM context, <code>x1^</code> and <code>y3^</code> can be interpreted as deviations from a person-specific mean. This notation is available from Mplus version 8.7 onward.</li>
 <li><code>PON</code> and <code>PWITH</code>: These statements define pairwise regression and correlational relationships, respectively. For example, the <code>x1^-x5^ PWITH y1^-y5^;</code> statement in the RI-CLPM model syntax below, defines a covariance between the within-components at the first wave, a residual covariance between the within-components at the second wave, a residual covariance between the within-components at the third wave, etc.</li>
@@ -1543,6 +1543,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')

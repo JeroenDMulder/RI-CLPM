@@ -13,7 +13,7 @@
 
 <title>Using lavaan (R)</title>
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -321,12 +321,12 @@ div.tocify {
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row">
-<div class="col-sm-12 col-md-4 col-lg-3">
+<div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
 </div>
 
-<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -403,7 +403,7 @@ datZ &lt;- read.table(&quot;/Users/jeroenmulder/Git/RICLPM/data/RICLPM-Z.dat&quo
 datMG &lt;- read.table(&quot;/Users/jeroenmulder/Git/RICLPM/data/RICLPM-MG.dat&quot;,
                     col.names = c(&quot;x1&quot;, &quot;x2&quot;, &quot;x3&quot;, &quot;x4&quot;, &quot;x5&quot;, &quot;y1&quot;, &quot;y2&quot;, &quot;y3&quot;, &quot;y4&quot;, &quot;y5&quot;, &quot;G&quot;)) 
 ## Extension 3
-datMI &lt;- read.table(&quot;/Users/jeroenmulder/Git/RICLPM/data/RICLPM-MI.dat&quot;,
+datMI &lt;- read.table(&quot;/Users/jeroenmulder/GitHub/RI-CLPM/data/RICLPM-MI.dat&quot;,
                    col.names = c(&quot;x11&quot;, &quot;x12&quot;, &quot;x13&quot;,
                                  &quot;x21&quot;, &quot;x22&quot;, &quot;x23&quot;,
                                  &quot;x31&quot;, &quot;x32&quot;, &quot;x33&quot;,
@@ -966,11 +966,11 @@ summary(RICLPM1.ext2.fit)</code></pre>
 <li>strong factorial invariance with factor loadings equal to the within-person factor loadings (Extra), and</li>
 <li>the latent RI-CLPM (Step 4).</li>
 </ul>
-<p>You can download the simulated example dataset <em>MIRICLPM.dat</em> <a href="https://jeroendmulder.github.io/RI-CLPM/data/MIRICLPM.dat">here</a>.</p>
+<p>You can download the simulated example dataset <em>MIRICLPM.dat</em> from <a href="https://jeroendmulder.github.io/RI-CLPM/data/MIRICLPM.dat">https://jeroendmulder.github.io/RI-CLPM/data/MIRICLPM.dat</a>.</p>
 <div id="step-1" class="section level3">
 <h3>Step 1</h3>
 <p>When we have three indicators <span class="math inline">\(X\)</span>, measured at five waves, we specify three random intercepts to capture the trait-like part of each indicator, that is, <code>RIX1 =~ 1*x11 1*x21 ...</code>, <code>RIX2 =~ 1*x121 1*x22@1 ...</code>, and <code>RIX3 =~ 1*x13 1*x23 ...</code>. In addition, we specify five within-unit components that capture the state-like part at each wave, using <code>WFX1 =~ x11 x12 x13; WFX2 =~ x21 x22 x23; ...</code>.</p>
-<p>At the latent within-unit level, we specify the dynamic model in Mplus using <code>WFX2 ~ WFY1 + WFX1; WFX3 ~ WFY2 + WFX2; ...</code>. In addition, we allow the within-person factors at the first wave, and their residuals at subsequent waves to be correlated within each wave, <code>WFX1 ~~ WFY1; WFX2 ~~ WFY2; ...</code>. The six random intercepts are allowed to be freely correlated with each other through <code>RIX1 + RIX2 + ... ~~ RIX1 + RIX2 + ...</code>.</p>
+<p>At the latent within-unit level, we specify the dynamic model in Mplus using <code>WFX2 ~ WFY1 + WFX1; WFX3 ~ WFY2 + WFX2; ...</code>. In addition, we allow the within-person factors at the first wave, and their residuals at subsequent waves to be correlated within each wave, <code>WFX1 ~~ WFY1; WFX2 ~~ WFY2; ...</code>. The six random intercepts are allowed to be freely correlated with each other, either through inclusion of <code>RIX1 + RIX2 + ... ~~ RIX1 + RIX2 + ...</code> in the model syntax, or by default when using the <code>cfa()</code> function as we have done below.</p>
 <pre class="r"><code>RICLPM1.ext3 &lt;- &#39;
   
   ################
@@ -1477,6 +1477,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
