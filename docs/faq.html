@@ -13,8 +13,8 @@
 
 <title>Frequently Asked Questions</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -63,6 +63,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -83,6 +84,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -308,7 +312,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -408,7 +412,11 @@ How do standardized cross-lagged and autoregressive parameters compare to explai
 Can I run the RI-CLPM with binary/categorical/count outcomes?
 </div>
 <div id="faq2" style="display:none">
-<p>With the launch of Mplus version 8.7, it is possible to estimate the RI-CLPM for binary and ordinal variables as well (<a href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov and Muthén, 2021</a>). Compared to the RI-CLPM for continuous variables, there are two important differences: - Bayesian estimation is needed, and can be used by specifying <code>ESTIMATOR = BAYES;</code> in the <code>ANALYSIS</code> command. - The variances and residual variances of the within-components are fixed to 1, as is standard when using the probit-model in Mplus for categorical data analysis. These can be freely estimated in principle, but generally require larger sample sizes, and are prone to empirical non-identification. Several strategies for (partly) freeing up these variances are discussed in <a href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov and Muthén (2021)</a>.</p>
+<p>With the launch of Mplus version 8.7, it is possible to estimate the RI-CLPM for binary and ordinal variables as well (<a href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov and Muthén, 2021</a>). Compared to the RI-CLPM for continuous variables, there are two important differences:</p>
+<ul>
+<li>Bayesian estimation is needed, and can be used by specifying <code>ESTIMATOR = BAYES;</code> in the <code>ANALYSIS</code> command.</li>
+<li>The variances and residual variances of the within-components are fixed to 1, as is standard when using the probit-model in Mplus for categorical data analysis. These can be freely estimated in principle, but generally require larger sample sizes, and are prone to empirical non-identification. Several strategies for (partly) freeing up these variances are discussed in <a href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov and Muthén (2021)</a>.</li>
+</ul>
 The interested reader is referred to <a href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov and Muthén (2021)</a> for more details.
 </div>
 <hr />
@@ -431,8 +439,7 @@ The lagged regression coefficients depend on the time lag between repeated measu
 How do I perform a power analysis for the RI-CLPM?
 </div>
 <div id="faq8" style="display:none">
-<p>We have developed an alpha version of the <code>powRICLPM</code>-package for performing power analyses for the RI-CLPM in R. It is not available for download yet because we are currently still testing it. If, however, you would like to perform a power analysis for the RI-CLPM, please contact <a href="mailto:j.d.mulder@uu.nl">Jeroen Mulder</a>. We might then be able to kill 2 birds with 1 stone: You get a power analysis, and we get an empirical test case.</p>
-You can also perform a power analysis using the <a href="https://www.statmodel.com/download/usersguide/Chapter12.pdf">MONTECARLO functionality of Mplus</a>.
+I’m currently developing the R-package <code>powRICLPM</code>: A package for user-friendly power analysis for the RI-CLPM. Currently, version 0.0.0.9003 is available on GitHub, and documentation is available via <a href="https://jeroendmulder.github.io/powRICLPM">https://jeroendmulder.github.io/powRICLPM</a>. Note, however, that this package is still a pre-release version, and can contain some unknown bugs. Suggestions for improvement of the package are much appreciated and can be raised on GitHub via <a href="https://github.com/jeroendmulder/powRICLPM">https://github.com/jeroendmulder/powRICLPM</a>. A manuscript detailing the power analysis strategy as implemented in the <code>powRICLPM</code> package is in its final stages, and soon to be submitted for review.
 </div>
 <hr />
 </div>

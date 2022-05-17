@@ -73,6 +73,7 @@ So, the semipartial correlation and standardized coefficient are not equal, but 
  
 <div id="faq2" style="display:none">
 With the launch of Mplus version 8.7, it is possible to estimate the RI-CLPM for binary and ordinal variables as well ([Asparouhov and Muthén, 2021](http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf)). Compared to the RI-CLPM for continuous variables, there are two important differences: 
+
 - Bayesian estimation is needed, and can be used by specifying `ESTIMATOR = BAYES;` in the `ANALYSIS` command.
 - The variances and residual variances of the within-components are fixed to 1, as is standard when using the probit-model in Mplus for categorical data analysis. These can be freely estimated in principle, but generally require larger sample sizes, and are prone to empirical non-identification. Several strategies for (partly) freeing up these variances are discussed in [Asparouhov and Muthén (2021)](http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf). 
 
@@ -94,11 +95,10 @@ The lagged regression coefficients depend on the time lag between repeated measu
 ### Power
 
 ---
+
 <div onclick="showHide('faq8')" style="cursor: pointer; font-weight:bold">How do I perform a power analysis for the RI-CLPM?</div>
 
-<div id="faq8" style="display:none">We have developed an alpha version of the `powRICLPM`-package for performing power analyses for the RI-CLPM in R. It is not available for download yet because we are currently still testing it. If, however, you would like to perform a power analysis for the RI-CLPM, please contact [Jeroen Mulder](mailto:j.d.mulder@uu.nl). We might then be able to kill 2 birds with 1 stone: You get a power analysis, and we get an empirical test case. 
-
-You can also perform a power analysis using the [MONTECARLO functionality of Mplus](https://www.statmodel.com/download/usersguide/Chapter12.pdf).</div>
+<div id="faq8" style="display:none">I'm currently developing the R-package `powRICLPM`: A package for user-friendly power analysis for the RI-CLPM. Currently, version 0.0.0.9003 is available on GitHub, and documentation is available via [https://jeroendmulder.github.io/powRICLPM](https://jeroendmulder.github.io/powRICLPM). Note, however, that this package is still a pre-release version, and can contain some unknown bugs. Suggestions for improvement of the package are much appreciated and can be raised on GitHub via [https://github.com/jeroendmulder/powRICLPM](https://github.com/jeroendmulder/powRICLPM). A manuscript detailing the power analysis strategy as implemented in the `powRICLPM` package is in its final stages, and soon to be submitted for review.</div>
 
 ---
 

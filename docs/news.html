@@ -13,8 +13,8 @@
 
 <title>News</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -60,6 +60,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -80,6 +81,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -232,7 +236,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -283,10 +287,14 @@ $(document).ready(function () {
 </colgroup>
 <tbody>
 <tr class="odd">
+<td><strong>May 17th, 2022</strong></td>
+<td align="left">We’ve updated the FAQ with a link to the <code>powRICLPM</code> R-package. This package is currently developed to allow for user-friendly power analysis for the RI-CLPM.</td>
+</tr>
+<tr class="even">
 <td><strong>November 23rd, 2021</strong></td>
 <td align="left">We have added <a href="https://jeroendmulder.github.io/RI-CLPM/mplus.html#Residual_syntax">residual model syntax specifications for Mplus</a>, in which we use the new “hat-notation” of Mplus version 8.7, as well as <code>PON</code> and <code>PWITH</code> statements to allow for simpler input files. Furthermore, the FAQ was updated with the latest information on <a href="https://jeroendmulder.github.io/RI-CLPM/faq.html#Non-continuous_outcomes">the RI-CLPM for categorical variables</a>, and a new question and answer concerning <a href="https://jeroendmulder.github.io/RI-CLPM/faq.html#Growth_and_development">development over time</a> in the RI-CLPM was added.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>July 7th, 2021</strong></td>
 <td align="left">We have updated the <a href="https://jeroendmulder.github.io/RI-CLPM/faq.html#Response_to_Orth_et_al_(2021)">FAQ</a> with an informal response to some of the conclusions drawn by Orth et al. (2021) regarding the use and appropriateness of the CLPM and RI-CLPM.</td>
 </tr>
