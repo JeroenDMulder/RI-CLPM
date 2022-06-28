@@ -378,23 +378,60 @@ div.tocify {
 <hr />
 <div id="setup" class="section level2">
 <h2>Setup</h2>
-<p>For Mplus <span class="citation">(Muthén and Muthén 2017)</span> to work properly, make sure that you save the input file with the model specification (<em>example.inp</em>) in the same folder as the data (<em>example.dat</em>). You can download the simulated example datasets <a href="https://github.com/jeroendmulder/RI-CLPM/tree/master/data">here</a>. Mplus includes defaults, like that:</p>
+<p>For Mplus <span class="citation">(Muthén and Muthén 2017)</span> to
+work properly, make sure that you save the input file with the model
+specification (<em>example.inp</em>) in the same folder as the data
+(<em>example.dat</em>). You can download the simulated example datasets
+<a
+href="https://github.com/jeroendmulder/RI-CLPM/tree/master/data">here</a>.
+Mplus includes defaults, like that:</p>
 <ul>
 <li>observed and latent exogenous variables are correlated, and</li>
-<li>residuals of observed and latent outcome variables (which do not predict anything) in a path model are correlated.</li>
+<li>residuals of observed and latent outcome variables (which do not
+predict anything) in a path model are correlated.</li>
 </ul>
-<p>These defaults are included to make the specification of many standard SEM models easier, but they are not always useful in the current modeling context. Therefore, we use the command <code>ANALYSIS: MODEL = NOCOV;</code> to overrule these defaults for the covariances and set all of them to zero.</p>
-<p>From Mplus version 8.7 onward, the Residual Structural Equation Modeling (RSEM) capabilities have been expanded <span class="citation">(Asparouhov and Muthén 2021)</span>. This allows for considerably simpler model syntax for the RI-CLPM using the <code>^</code> command. You can find Mplus syntax using this alternative hats-notation for the basic RI-CLPM (both with and without constraints over time) in the <a href="https://jeroendmulder.github.io/RI-CLPM/mplus.html#Residual_syntax">Residual syntax</a> section.</p>
+<p>These defaults are included to make the specification of many
+standard SEM models easier, but they are not always useful in the
+current modeling context. Therefore, we use the command
+<code>ANALYSIS: MODEL = NOCOV;</code> to overrule these defaults for the
+covariances and set all of them to zero.</p>
+<p>From Mplus version 8.7 onward, the Residual Structural Equation
+Modeling (RSEM) capabilities have been expanded <span
+class="citation">(Asparouhov and Muthén 2021)</span>. This allows for
+considerably simpler model syntax for the RI-CLPM using the
+<code>^</code> command. You can find Mplus syntax using this alternative
+hats-notation for the basic RI-CLPM (both with and without constraints
+over time) in the <a
+href="https://jeroendmulder.github.io/RI-CLPM/mplus.html#Residual_syntax">Residual
+syntax</a> section.</p>
 <hr />
 </div>
 <div id="the-ri-clpm" class="section level2 tabset tabset-fade">
 <h2 class="tabset tabset-fade">The RI-CLPM</h2>
 <p>To specify the RI-CLPM we need four parts.</p>
 <ul>
-<li>A <em>between</em> part, consisting of the random intercepts. It is specified using the <code>BY</code> command, <code>RIx BY x1@1 x2@1 ...;</code>, where <code>@1</code> fixes the factor loading to one.</li>
-<li>A <em>within</em> part, consisting of within-unit fluctuations. It is also specified using the <code>BY</code> command, <code>wx1 BY x1; wx2 BY x2; ...</code>. We do not have to constrain the factor loading to 1, as this is already the default in Mplus for the factor loading of the first indicator of a latent variable. However, we do need to constrain the measurement error variances to zero, as Mplus will include them by default when we use the <code>BY</code> statement. We do this by including <code>x1@0 x2@0 x3@0 x4@0 x5@0;</code> where <code>@0</code> fixes the measurement error variances to zero, which is the same as saying there is no measurement error.</li>
-<li>The <em>lagged regressions</em> between the within-unit components, using <code>wx2 ON wx1 wy1; wx3 ON wx2 wy2; ...</code>.</li>
-<li>Relevant <em>covariances</em> in both the between and within part. In the within part the components at wave 1, and their residuals at waves 2 and further are correlated within each wave, using <code>wx1 WITH wy1; wx2 WITH wy2;...</code>. For the between part we have to specify that the random intercepts are correlated using <code>RIx WITH RIy;</code>.</li>
+<li>A <em>between</em> part, consisting of the random intercepts. It is
+specified using the <code>BY</code> command,
+<code>RIx BY x1@1 x2@1 ...;</code>, where <code>@1</code> fixes the
+factor loading to one.</li>
+<li>A <em>within</em> part, consisting of within-unit fluctuations. It
+is also specified using the <code>BY</code> command,
+<code>wx1 BY x1; wx2 BY x2; ...</code>. We do not have to constrain the
+factor loading to 1, as this is already the default in Mplus for the
+factor loading of the first indicator of a latent variable. However, we
+do need to constrain the measurement error variances to zero, as Mplus
+will include them by default when we use the <code>BY</code> statement.
+We do this by including <code>x1@0 x2@0 x3@0 x4@0 x5@0;</code> where
+<code>@0</code> fixes the measurement error variances to zero, which is
+the same as saying there is no measurement error.</li>
+<li>The <em>lagged regressions</em> between the within-unit components,
+using <code>wx2 ON wx1 wy1; wx3 ON wx2 wy2; ...</code>.</li>
+<li>Relevant <em>covariances</em> in both the between and within part.
+In the within part the components at wave 1, and their residuals at
+waves 2 and further are correlated within each wave, using
+<code>wx1 WITH wy1; wx2 WITH wy2;...</code>. For the between part we
+have to specify that the random intercepts are correlated using
+<code>RIx WITH RIy;</code>.</li>
 </ul>
 <div id="the-basic-model" class="section level3">
 <h3>The basic model</h3>
@@ -453,11 +490,18 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 </div>
 <div id="constraints-over-time" class="section level3">
 <h3>Constraints over time</h3>
-<p>Imposing constraints to the model can be achieved by giving labels to parameters and using the same label for parameters that you want to constrain to be equal. A label is specified by adding <code>(label)</code> after a parameter. Below we specify a RI-CLPM with the following constraints:</p>
+<p>Imposing constraints to the model can be achieved by giving labels to
+parameters and using the same label for parameters that you want to
+constrain to be equal. A label is specified by adding
+<code>(label)</code> after a parameter. Below we specify a RI-CLPM with
+the following constraints:</p>
 <ul>
-<li>fixed auto-regressive and cross-lagged relations over time, <code>(a b c d)</code>,</li>
-<li>time-invariant (residual) (co-)variances in the within-person part <code>(cov)</code>, <code>(vx)</code>, and <code>(vy)</code>, and</li>
-<li>constrained grand means over time, <code>(mx)</code> and <code>(my)</code>.</li>
+<li>fixed auto-regressive and cross-lagged relations over time,
+<code>(a b c d)</code>,</li>
+<li>time-invariant (residual) (co-)variances in the within-person part
+<code>(cov)</code>, <code>(vx)</code>, and <code>(vy)</code>, and</li>
+<li>constrained grand means over time, <code>(mx)</code> and
+<code>(my)</code>.</li>
 </ul>
 <hr />
 <pre><code>TITLE:      The basic RI-CLPM, 5 waves. 
@@ -521,18 +565,29 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 <hr />
 </div>
 </div>
-<div id="ext.-1-time-invariant-variables" class="section level2 tabset tabset-fade">
+<div id="ext.-1-time-invariant-variables"
+class="section level2 tabset tabset-fade">
 <h2 class="tabset tabset-fade">Ext. 1: time-invariant variables</h2>
-<p>Use the tabs below to navigate to the model specification of the RI-CLPM with</p>
+<p>Use the tabs below to navigate to the model specification of the
+RI-CLPM with</p>
 <ul>
-<li>a time-invariant predictor <span class="math inline">\(z_{1}\)</span> of the observed variables (constrained),</li>
-<li>a time-invariant predictor <span class="math inline">\(z_{1}\)</span> of the random intercepts,</li>
-<li>random intercepts predicting a time-invariant outcome <span class="math inline">\(z_{2}\)</span>, or</li>
-<li>within components predicting a time-invariant outcome <span class="math inline">\(z_{2}\)</span>.</li>
+<li>a time-invariant predictor <span
+class="math inline">\(z_{1}\)</span> of the observed variables
+(constrained),</li>
+<li>a time-invariant predictor <span
+class="math inline">\(z_{1}\)</span> of the random intercepts,</li>
+<li>random intercepts predicting a time-invariant outcome <span
+class="math inline">\(z_{2}\)</span>, or</li>
+<li>within components predicting a time-invariant outcome <span
+class="math inline">\(z_{2}\)</span>.</li>
 </ul>
 <div id="z_1-predicting-observed" class="section level3">
 <h3><span class="math inline">\(z_{1}\)</span> predicting observed</h3>
-<p>Below you can find the syntax for a RI-CLPM with 5 waves and a time-invariant predictor <span class="math inline">\(z_{1}\)</span> for the observed variables. The effect of <span class="math inline">\(z_{1}\)</span> on the observed variables is constrained to be the same across waves.</p>
+<p>Below you can find the syntax for a RI-CLPM with 5 waves and a
+time-invariant predictor <span class="math inline">\(z_{1}\)</span> for
+the observed variables. The effect of <span
+class="math inline">\(z_{1}\)</span> on the observed variables is
+constrained to be the same across waves.</p>
 <pre><code>TITLE:      RI-CLPM, 5 waves, including a time-invariant predictor for
             the observed variables. 
    
@@ -593,7 +648,9 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 </div>
 <div id="z_1-predicting-ris" class="section level3">
 <h3><span class="math inline">\(z_{1}\)</span> predicting RI’s</h3>
-<p>Below you can find the syntax for a RI-CLPM with 5 waves and a time-invariant predictor <span class="math inline">\(z_{1}\)</span> for the random intercepts.</p>
+<p>Below you can find the syntax for a RI-CLPM with 5 waves and a
+time-invariant predictor <span class="math inline">\(z_{1}\)</span> for
+the random intercepts.</p>
 <pre><code>TITLE:      RI-CLPM, 5 waves, including a time-invariant predictor for
             the random intercepts. 
    
@@ -653,7 +710,9 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 </div>
 <div id="ris-predicting-z_2" class="section level3">
 <h3>RI’s predicting <span class="math inline">\(z_{2}\)</span></h3>
-<p>Below you can find the syntax for a RI-CLPM with 5 waves and the random intercepts predicting the time-invariant outcome <span class="math inline">\(z_{2}\)</span>.</p>
+<p>Below you can find the syntax for a RI-CLPM with 5 waves and the
+random intercepts predicting the time-invariant outcome <span
+class="math inline">\(z_{2}\)</span>.</p>
 <pre><code>TITLE:      RI-CLPM, 5 waves.
               Time-invariant predictor z1 for observed variables (constrained).
               Between components predicting time-invariant outcome z2.
@@ -717,7 +776,9 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 </div>
 <div id="within-predicting-z_2" class="section level3">
 <h3>Within predicting <span class="math inline">\(z_{2}\)</span></h3>
-<p>Below you can find the syntax for a RI-CLPM with 5 waves and the within components predicting the time-invariant outcome <span class="math inline">\(z_{2}\)</span>.</p>
+<p>Below you can find the syntax for a RI-CLPM with 5 waves and the
+within components predicting the time-invariant outcome <span
+class="math inline">\(z_{2}\)</span>.</p>
 <pre><code>TITLE:      RI-CLPM, 5 waves
               Time-invariant predictor z1 for observed variables (constrained).
               Within components predicting time-invariant outcome z2.
@@ -780,19 +841,43 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 <hr />
 </div>
 </div>
-<div id="ext.-2-multiple-group" class="section level2 tabset tabset-fade">
+<div id="ext.-2-multiple-group"
+class="section level2 tabset tabset-fade">
 <h2 class="tabset tabset-fade">Ext. 2: multiple group</h2>
-<p>Use the tabs below to navigate to the model specification of the basic multiple-group model, or the model with constrained lagged parameters (and intercepts across groups).</p>
-<p>To specify a multiple group RI-CLPM, we need to overrule some of the defaults that Mplus will impose and that are associated with multiple group factor analysis. The reason for this is that when we use the <code>BY</code> statement in combination with multiple groups, Mplus will automatically impose the defaults that are associated with strong factorial invariance (<span class="citation">Meredith (1993)</span>). These defaults are:</p>
+<p>Use the tabs below to navigate to the model specification of the
+basic multiple-group model, or the model with constrained lagged
+parameters (and intercepts across groups).</p>
+<p>To specify a multiple group RI-CLPM, we need to overrule some of the
+defaults that Mplus will impose and that are associated with multiple
+group factor analysis. The reason for this is that when we use the
+<code>BY</code> statement in combination with multiple groups, Mplus
+will automatically impose the defaults that are associated with strong
+factorial invariance (<span class="citation">Meredith (1993)</span>).
+These defaults are:</p>
 <ul>
 <li>equal factor loadings across the groups,</li>
-<li>equal intercepts for the observed variables across the groups, and</li>
+<li>equal intercepts for the observed variables across the groups,
+and</li>
 <li>free latent means in the second (and subsequent) group(s).</li>
 </ul>
-<p>In the context of a multiple-group RI-CLPM, the first constraint is not an issue as all the factor loadings are supposed to be constrained to one in both groups. However, the second constraint on the intercepts and the freeing of the latent means in the second group are not sensible here. There will be fewer observed variables than latent variables defined with a <code>BY</code> statement (i.e., a within-unit part for each observed variable, plus a random intercept for each variable); as a result, we would try to estimate more means than that there were observed. Such a model is unidentified. We should therefore overrule the defaults associated with the mean structure. We do this by adding for the second group <code>[x1 x2 ...];</code> which frees the intercepts for the observed variables in the second group. Additionally, we include <code>[wx1@0 wx2@0 ... ]; [RIx@0];</code> for the second group, which ensures all latent means are fixed to zero.</p>
+<p>In the context of a multiple-group RI-CLPM, the first constraint is
+not an issue as all the factor loadings are supposed to be constrained
+to one in both groups. However, the second constraint on the intercepts
+and the freeing of the latent means in the second group are not sensible
+here. There will be fewer observed variables than latent variables
+defined with a <code>BY</code> statement (i.e., a within-unit part for
+each observed variable, plus a random intercept for each variable); as a
+result, we would try to estimate more means than that there were
+observed. Such a model is unidentified. We should therefore overrule the
+defaults associated with the mean structure. We do this by adding for
+the second group <code>[x1 x2 ...];</code> which frees the intercepts
+for the observed variables in the second group. Additionally, we include
+<code>[wx1@0 wx2@0 ... ]; [RIx@0];</code> for the second group, which
+ensures all latent means are fixed to zero.</p>
 <div id="the-basic-model-1" class="section level3">
 <h3>The basic model</h3>
-<p>Below you can find the code for a multiple group RI-CLPM with 5 waves.</p>
+<p>Below you can find the code for a multiple group RI-CLPM with 5
+waves.</p>
 <pre><code>TITLE:      Multiple group RI-CLPM, 5 waves. 
             Overruling the Mplus multiple group factor analysis defaults.
             
@@ -858,7 +943,8 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 </div>
 <div id="constrained-lagged-parameters" class="section level3">
 <h3>Constrained lagged-parameters</h3>
-<p>Below you can find the code for a multiple group RI-CLPM, 5 waves. The lagged-parameters are constrained to be equal over time.</p>
+<p>Below you can find the code for a multiple group RI-CLPM, 5 waves.
+The lagged-parameters are constrained to be equal over time.</p>
 <pre><code>TITLE:      Multiple group RI-CLPM, 5 waves, with equal lagged parameters 
             across groups. 
             Overruling the Mplus multiple group factor analysis defaults.
@@ -931,20 +1017,37 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 <hr />
 </div>
 </div>
-<div id="ext.-3-multiple-indicator" class="section level2 tabset tabset-fade">
+<div id="ext.-3-multiple-indicator"
+class="section level2 tabset tabset-fade">
 <h2 class="tabset tabset-fade">Ext. 3: multiple indicator</h2>
-<p>Use the tabs below to navigate to the model specification of a multiple indicator RI-CLPM, 5 waves and 3 indicators for each variable at each wave. The five steps correspond to:</p>
+<p>Use the tabs below to navigate to the model specification of a
+multiple indicator RI-CLPM, 5 waves and 3 indicators for each variable
+at each wave. The five steps correspond to:</p>
 <ul>
 <li>the configural model (Step 1),</li>
 <li>weak factorial invariance (Step 2),</li>
 <li>strong factorial invariance (Step 3),</li>
-<li>strong factorial invariance with factor loadings equal to the within-person factor loadings (Extra), and</li>
+<li>strong factorial invariance with factor loadings equal to the
+within-person factor loadings (Extra), and</li>
 <li>the latent RI-CLPM (Step 4).</li>
 </ul>
 <div id="step-1" class="section level3">
 <h3>Step 1</h3>
-<p>When we have three indicators <span class="math inline">\(X\)</span>, measured at five waves, we specify three random intercepts to capture the trait-like part of each indicator, that is, <code>RIX1 BY x11@1 x21@1 ...;</code>, <code>RIX2 BY x12@1 x22@1 ...;</code>, and <code>RIX3 BY x13@1 x23@1 ...;</code>. In addition, we specify five within-unit components that capture the state-like part at each wave, using <code>WFX1 BY x11 x12 x13; WFX2 BY x21 x22 x23; ...</code>.</p>
-<p>At the latent within-unit level, we specify the dynamic model in Mplus using<code>WFX2 ON WFY1 WFX1; WFX3 ON WFY2 WFX2; ...</code>. In addition, we allow the within-person factors at the first wave, and their residuals at subsequent waves to be correlated within each wave, <code>WFX1 WITH WFY1; WFX2 WITH WFY2; ...</code>. The six random intercepts are allowed to be freely correlated with each other through <code>RIX1-RIY3 WITH RIX1-RIY3;</code>.</p>
+<p>When we have three indicators <span class="math inline">\(X\)</span>,
+measured at five waves, we specify three random intercepts to capture
+the trait-like part of each indicator, that is,
+<code>RIX1 BY x11@1 x21@1 ...;</code>,
+<code>RIX2 BY x12@1 x22@1 ...;</code>, and
+<code>RIX3 BY x13@1 x23@1 ...;</code>. In addition, we specify five
+within-unit components that capture the state-like part at each wave,
+using <code>WFX1 BY x11 x12 x13; WFX2 BY x21 x22 x23; ...</code>.</p>
+<p>At the latent within-unit level, we specify the dynamic model in
+Mplus using<code>WFX2 ON WFY1 WFX1; WFX3 ON WFY2 WFX2; ...</code>. In
+addition, we allow the within-person factors at the first wave, and
+their residuals at subsequent waves to be correlated within each wave,
+<code>WFX1 WITH WFY1; WFX2 WITH WFY2; ...</code>. The six random
+intercepts are allowed to be freely correlated with each other through
+<code>RIX1-RIY3 WITH RIX1-RIY3;</code>.</p>
 <pre><code>TITLE:      Multiple indicator RI-CLPM, 5 waves, with 3 indicators for 
             each variable at each wave (30 observed variables) and with 
             random intercepts for each indicator separately.
@@ -1018,7 +1121,14 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 </div>
 <div id="step-2" class="section level3">
 <h3>Step 2</h3>
-<p>In the second step, we constrain the factor loadings to be invariant over time using the labels <code>(a b)</code> and <code>(c d)</code>. We only need to constrain the second and third loading of the factor models at each wave (i.e., <code>WFX1 BY x12 x13</code>, <code>WFX2 BY x22 x23</code>, etc.), because the first loading (i.e., <code>WFX1 BY x11</code> and <code>WFX2 BY x21</code>, etc.) is constrained to 1 by default, and is therefore already invariant over time.</p>
+<p>In the second step, we constrain the factor loadings to be invariant
+over time using the labels <code>(a b)</code> and <code>(c d)</code>. We
+only need to constrain the second and third loading of the factor models
+at each wave (i.e., <code>WFX1 BY x12 x13</code>,
+<code>WFX2 BY x22 x23</code>, etc.), because the first loading (i.e.,
+<code>WFX1 BY x11</code> and <code>WFX2 BY x21</code>, etc.) is
+constrained to 1 by default, and is therefore already invariant over
+time.</p>
 <pre><code>TITLE:      Multiple indicator RI-CLPM, 5 waves, with 3 indicators for 
             each variable at each wave (30 observed variables) and with 
             random intercepts for each indicator separately. Fitting a model 
@@ -1092,7 +1202,12 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 </div>
 <div id="step-3" class="section level3">
 <h3>Step 3</h3>
-<p>In Mplus, the model for strong factorial invariance can be specified as the previous model with the following addition <code>[x11 x12 x13] (g h i);[x21 x22 x23] (g h i); ...</code> which ensures that the intercepts of the observed variables are constrained over time, and <code>[WFX2* WFX3* ... ];</code> which implies that the latent means at each wave can differ from zero.</p>
+<p>In Mplus, the model for strong factorial invariance can be specified
+as the previous model with the following addition
+<code>[x11 x12 x13] (g h i);[x21 x22 x23] (g h i); ...</code> which
+ensures that the intercepts of the observed variables are constrained
+over time, and <code>[WFX2* WFX3* ... ];</code> which implies that the
+latent means at each wave can differ from zero.</p>
 <pre><code>TITLE:      Multiple indicator RI-CLPM, 5 waves, with 3 indicators for 
             each variable at each wave (30 observed variables) and with 
             random intercepts for each indicator separately. Fitting a model 
@@ -1293,7 +1408,11 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 </div>
 <div id="step-4" class="section level3">
 <h3>Step 4</h3>
-<p>We have to overrule the default of Mplus to include a term for measurement error when the <code>BY</code> statement is used, through <code>FX1@0 FX2@0 ...;</code>. The two random intercepts are allowed to be freely correlated with each other, through <code>RIX WITH RIY;</code>.</p>
+<p>We have to overrule the default of Mplus to include a term for
+measurement error when the <code>BY</code> statement is used, through
+<code>FX1@0 FX2@0 ...;</code>. The two random intercepts are allowed to
+be freely correlated with each other, through
+<code>RIX WITH RIY;</code>.</p>
 <pre><code>TITLE:      Multiple indicator RI-CLPM, 5 waves with 3 indicators for each 
             variable at each wave (30 observed variables). Fitting a model 
             with constraints to ensure strong factorial invariance, with 
@@ -1400,10 +1519,26 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 </div>
 <div id="residual-syntax" class="section level2 tabset tabset-fade">
 <h2 class="tabset tabset-fade">Residual syntax</h2>
-<p>The basic RI-CLPM model syntax (with and without constraints) can be made considerably simpler by using the <code>^</code>-notation and <code>PON</code> and <code>PWITH</code> statements (pairwise <code>ON</code> and <code>WITH</code>, respectively):</p>
+<p>The basic RI-CLPM model syntax (with and without constraints) can be
+made considerably simpler by using the <code>^</code>-notation and
+<code>PON</code> and <code>PWITH</code> statements (pairwise
+<code>ON</code> and <code>WITH</code>, respectively):</p>
 <ul>
-<li><code>^</code>-notation: By including a <code>^</code> after a variable (e.g., <code>x1^</code> or <code>y3^</code>) a residual latent variable is automatically created for that variable with the loading parameter fixed to 1. Moreover, this notation fixes the measurement error variance of the observed variable to 0, such that, in an RI-CLPM context, <code>x1^</code> and <code>y3^</code> can be interpreted as deviations from a person-specific mean. This notation is available from Mplus version 8.7 onward.</li>
-<li><code>PON</code> and <code>PWITH</code>: These statements define pairwise regression and correlational relationships, respectively. For example, the <code>x1^-x5^ PWITH y1^-y5^;</code> statement in the RI-CLPM model syntax below, defines a covariance between the within-components at the first wave, a residual covariance between the within-components at the second wave, a residual covariance between the within-components at the third wave, etc.</li>
+<li><code>^</code>-notation: By including a <code>^</code> after a
+variable (e.g., <code>x1^</code> or <code>y3^</code>) a residual latent
+variable is automatically created for that variable with the loading
+parameter fixed to 1. Moreover, this notation fixes the measurement
+error variance of the observed variable to 0, such that, in an RI-CLPM
+context, <code>x1^</code> and <code>y3^</code> can be interpreted as
+deviations from a person-specific mean. This notation is available from
+Mplus version 8.7 onward.</li>
+<li><code>PON</code> and <code>PWITH</code>: These statements define
+pairwise regression and correlational relationships, respectively. For
+example, the <code>x1^-x5^ PWITH y1^-y5^;</code> statement in the
+RI-CLPM model syntax below, defines a covariance between the
+within-components at the first wave, a residual covariance between the
+within-components at the second wave, a residual covariance between the
+within-components at the third wave, etc.</li>
 </ul>
 <div id="the-basic-model-2" class="section level3">
 <h3>The basic model</h3>
@@ -1486,13 +1621,19 @@ OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 <h2 class="unnumbered">References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Asparouhov2021" class="csl-entry">
-Asparouhov, Tihomir, and Bengt O. Muthén. 2021. <span>“<span>Residual Structural Equation Models</span>.”</span>
+Asparouhov, Tihomir, and Bengt O. Muthén. 2021. <span>“<span>Residual
+Structural Equation Models</span>.”</span>
 </div>
 <div id="ref-Meredith1993" class="csl-entry">
-Meredith, William. 1993. <span>“<span class="nocase">Measurement invariance, factor analysis and factorial invariance</span>.”</span> <em>Psychometrika</em>. <a href="https://doi.org/10.1007/BF02294825">https://doi.org/10.1007/BF02294825</a>.
+Meredith, William. 1993. <span>“<span class="nocase">Measurement
+invariance, factor analysis and factorial invariance</span>.”</span>
+<em>Psychometrika</em>. <a
+href="https://doi.org/10.1007/BF02294825">https://doi.org/10.1007/BF02294825</a>.
 </div>
 <div id="ref-Mplus8" class="csl-entry">
-Muthén, L. K., and B. O. Muthén. 2017. <em>Mplus User’s Guide</em>. Eighth Edition. Los Angeles, CA: Muth<span>é</span>n &amp; Muth<span>é</span>n.
+Muthén, L. K., and B. O. Muthén. 2017. <em>Mplus User’s Guide</em>.
+Eighth Edition. Los Angeles, CA: Muth<span>é</span>n &amp;
+Muth<span>é</span>n.
 </div>
 </div>
 </div>

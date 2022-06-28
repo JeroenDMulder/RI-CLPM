@@ -24,7 +24,7 @@ require(lavaan)
 dat <- read.table("/Users/jeroenmulder/Git/RICLPM/data/RICLPM.dat", 
                   col.names = c("x1", "x2", "x3", "x4", "x5", "y1", "y2", "y3", "y4", "y5")) 
 ## Extension 1
-datZ <- read.table("/Users/jeroenmulder/Git/RICLPM/data/RICLPM-Z.dat",
+datZ <- read.table("C:\\Users\\5879167\\Documents\\GitHub\\RI-CLPM\\data\\RICLPM-Z.dat",
                    col.names = c("x1", "x2", "x3", "x4", "x5", "y1", "y2", "y3", "y4", "y5", "z2", "z1"))
 ## Extension 2
 datMG <- read.table("/Users/jeroenmulder/Git/RICLPM/data/RICLPM-MG.dat",

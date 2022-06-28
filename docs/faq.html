@@ -364,153 +364,402 @@ function showHide(element) {
 }
 </script>
 <hr />
-<p>Below you can find a list of frequently asked questions, organized by topic, that reach us via email. Click the question to see our response.</p>
+<p>Below you can find a list of frequently asked questions, organized by
+topic, that reach us via email. Click the question to see our
+response.</p>
 <hr />
 <div id="time-varying-covariates" class="section level3">
 <h3>Time-varying covariates</h3>
 <hr />
-<div onclick="showHide(&#39;faq1&#39;)" style="cursor: pointer; font-weight:bold">
+<div onclick="showHide(&#39;faq1&#39;)"
+style="cursor: pointer; font-weight:bold">
 How do I include time-varying covariates with the RI-CLPM?
 </div>
 <div id="faq1" style="display:none">
-Time-varying covariates (TVC; <span class="math inline">\(Z\)</span>) can be included like “regular” X and Y outcomes in the RI-CLPM; hence, rather than a bivariate RI-CLPM you would specify a tri- or more-variate RI-CLPM. As such, you decompose the TVCs in within-components (e.g. <span class="math inline">\(wz1\)</span>, <span class="math inline">\(wz2\)</span>, etc.) and a between-component (the random intercept; e.g. <span class="math inline">\(RI_{z}\)</span>) and model these components separately. However, if you want to control for many TVC’s, this can quickly become an unwieldly model, so researchers should think carefully about which TVC’s they want to control for.
+Time-varying covariates (TVC; <span class="math inline">\(Z\)</span>)
+can be included like “regular” X and Y outcomes in the RI-CLPM; hence,
+rather than a bivariate RI-CLPM you would specify a tri- or more-variate
+RI-CLPM. As such, you decompose the TVCs in within-components
+(e.g. <span class="math inline">\(wz1\)</span>, <span
+class="math inline">\(wz2\)</span>, etc.) and a between-component (the
+random intercept; e.g. <span class="math inline">\(RI_{z}\)</span>) and
+model these components separately. However, if you want to control for
+many TVC’s, this can quickly become an unwieldly model, so researchers
+should think carefully about which TVC’s they want to control for.
 </div>
 <hr />
-<div onclick="showHide(&#39;faq3&#39;)" style="cursor: pointer; font-weight:bold">
+<div onclick="showHide(&#39;faq3&#39;)"
+style="cursor: pointer; font-weight:bold">
 Is it possible to run an RI-CLPM with three (or more) outcomes?
 </div>
 <div id="faq3" style="display:none">
-Yes, it is statistically possible to run a “trivariate” RI-CLPM and empirical researchers have done so, see for example [Burns, Crisp, and <a href="https://doi.org/10.1037/dev0000612">Van Lissa et al. (2019)</a>. We don’t provide model code here for this mode, but extension to a trivariate RI-CLPM should be relatively straight forwards. That is, all variables should be decomponsed into between- (random intercepts) and within-components, and relevant lagged effects, as well as (residual) variances and covariances, should be included in the model.
+Yes, it is statistically possible to run a “trivariate” RI-CLPM and
+empirical researchers have done so, see for example <a
+href="https://doi.org/10.1037/dev0000612">Van Lissa, Keizer, Van Lier,
+Meeus, and Branje (2019)</a>, <a
+href="http://dx.doi.org/10.1016/j.eurpsy.2018.12.005">Flouri,
+Papachristou, Midouhas, Ploubidis, Lewis, and Joshi (2019)</a>, and <a
+href="https://doi.org/10.1016/j.chb.2022.107252">Hygen, Belsky,
+Stenseng, Steinsbekk, Wichstrom, and Skalicka (2022)</a>. We don’t
+provide model code here for this mode, but extension to a trivariate
+RI-CLPM should be relatively straight forwards. That is, all variables
+should be decomponsed into between- (random intercepts) and
+within-components, and relevant lagged effects, as well as (residual)
+variances and covariances, should be included in the model.
 </div>
 <hr />
 </div>
 <div id="standardization" class="section level3">
 <h3>Standardization</h3>
 <hr />
-<div onclick="showHide(&#39;faq4&#39;)" style="cursor: pointer; font-weight:bold">
-How should I interpret the standardized cross-lagged and autoregressive parameters?
+<div onclick="showHide(&#39;faq4&#39;)"
+style="cursor: pointer; font-weight:bold">
+How should I interpret the standardized cross-lagged and autoregressive
+parameters?
 </div>
 <div id="faq4" style="display:none">
-In the RI-CLPM, the standardized effects are reflective/representative of how much within-person variance in <span class="math inline">\(y_{t}\)</span> is <em>uniquely</em> explained (i.e., not also explained by other predictors) by the predictor <span class="math inline">\(x_{t-1}\)</span>. Please note that this does not imply that one can make a one-on-one comparison with the percentage of explained variance. However, the standardized effects can be used to compare which effect is relatively stronger <a href="https://doi.org/10.1037/met0000062">(Schuurman, Ferrer, Boer-Sonnenschein, &amp; Hamaker, 2016)</a>.
+In the RI-CLPM, the standardized effects are reflective/representative
+of how much within-person variance in <span
+class="math inline">\(y_{t}\)</span> is <em>uniquely</em> explained
+(i.e., not also explained by other predictors) by the predictor <span
+class="math inline">\(x_{t-1}\)</span>. Please note that this does not
+imply that one can make a one-on-one comparison with the percentage of
+explained variance. However, the standardized effects can be used to
+compare which effect is relatively stronger <a
+href="https://doi.org/10.1037/met0000062">(Schuurman, Ferrer,
+Boer-Sonnenschein, &amp; Hamaker, 2016)</a>.
 </div>
 <hr />
-<div onclick="showHide(&#39;faq5&#39;)" style="cursor: pointer; font-weight:bold">
-How do standardized cross-lagged and autoregressive parameters compare to explained variance?
+<div onclick="showHide(&#39;faq5&#39;)"
+style="cursor: pointer; font-weight:bold">
+How do standardized cross-lagged and autoregressive parameters compare
+to explained variance?
 </div>
 <div id="faq5" style="display:none">
-<p>The standardized lagged parameters are not equal to the (squared) semipartial correlation. Only under special circumstances, a standardized regression coefficient is equal to the pairwise correlation between the outcome and predictor, and the square of the standardized regression coefficient would then be the explained variance (<span class="math inline">\(R^{2}\)</span>). This only applies in the case of (a) a simple regression, where there is only one predictor in the model, or (b) a multiple regression where the predictors are independent of each other. In the RI-CLPM, however, the multiple predictors are not independent of each other, and therefore the standardized regression coefficients are not equal to the pairwise correlation, (semi)partial correlation, or the unique explained variance.</p>
-<p>However, the standardized coefficient is closely related to the semipartial correlation, as demonstrated in footnote 3 of <a href="https://doi.org/10.1037/met0000062">Schuurman, Ferrer, Boer-Sonnenschein, and Hamaker (2016)</a>. The standardized coefficient is expressed in terms of pairwise correlations in the first equation there, and the semipartial correlation expressed in terms of pairwise correlations in the second equation. They are very similar, but there is a subtle difference in the denominator.</p>
-<p>So, the semipartial correlation and standardized coefficient are not equal, but we can see that if the semipartical correlation for one predictor is larger than for another predictor, this will also be the case for the standardized coefficients of these predictors. The square of the semi-partial correlation is the <em>unique</em> explained variance, so we also know that the predictor with the largest standardized coefficient, will also have the largest <em>unique</em> explained variance.</p>
-<em>Answer by <a href="https://www.uu.nl/staff/NKSchuurman">Dr. Noémi Schuurman</a>.</em>
+<p>The standardized lagged parameters are not equal to the (squared)
+semipartial correlation. Only under special circumstances, a
+standardized regression coefficient is equal to the pairwise correlation
+between the outcome and predictor, and the square of the standardized
+regression coefficient would then be the explained variance (<span
+class="math inline">\(R^{2}\)</span>). This only applies in the case of
+(a) a simple regression, where there is only one predictor in the model,
+or (b) a multiple regression where the predictors are independent of
+each other. In the RI-CLPM, however, the multiple predictors are not
+independent of each other, and therefore the standardized regression
+coefficients are not equal to the pairwise correlation, (semi)partial
+correlation, or the unique explained variance.</p>
+<p>However, the standardized coefficient is closely related to the
+semipartial correlation, as demonstrated in footnote 3 of <a
+href="https://doi.org/10.1037/met0000062">Schuurman, Ferrer,
+Boer-Sonnenschein, and Hamaker (2016)</a>. The standardized coefficient
+is expressed in terms of pairwise correlations in the first equation
+there, and the semipartial correlation expressed in terms of pairwise
+correlations in the second equation. They are very similar, but there is
+a subtle difference in the denominator.</p>
+<p>So, the semipartial correlation and standardized coefficient are not
+equal, but we can see that if the semipartical correlation for one
+predictor is larger than for another predictor, this will also be the
+case for the standardized coefficients of these predictors. The square
+of the semi-partial correlation is the <em>unique</em> explained
+variance, so we also know that the predictor with the largest
+standardized coefficient, will also have the largest <em>unique</em>
+explained variance.</p>
+<em>Answer by <a href="https://www.uu.nl/staff/NKSchuurman">Dr. Noémi
+Schuurman</a>.</em>
 </div>
 <hr />
 </div>
 <div id="non-continuous-outcomes" class="section level3">
 <h3>Non-continuous outcomes</h3>
 <hr />
-<div onclick="showHide(&#39;faq2&#39;)" style="cursor: pointer; font-weight:bold">
+<div onclick="showHide(&#39;faq2&#39;)"
+style="cursor: pointer; font-weight:bold">
 Can I run the RI-CLPM with binary/categorical/count outcomes?
 </div>
 <div id="faq2" style="display:none">
-<p>With the launch of Mplus version 8.7, it is possible to estimate the RI-CLPM for binary and ordinal variables as well (<a href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov and Muthén, 2021</a>). Compared to the RI-CLPM for continuous variables, there are two important differences:</p>
+<p>With the launch of Mplus version 8.7, it is possible to estimate the
+RI-CLPM for binary and ordinal variables as well (<a
+href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov
+and Muthén, 2021</a>). Compared to the RI-CLPM for continuous variables,
+there are two important differences:</p>
 <ul>
-<li>Bayesian estimation is needed, and can be used by specifying <code>ESTIMATOR = BAYES;</code> in the <code>ANALYSIS</code> command.</li>
-<li>The variances and residual variances of the within-components are fixed to 1, as is standard when using the probit-model in Mplus for categorical data analysis. These can be freely estimated in principle, but generally require larger sample sizes, and are prone to empirical non-identification. Several strategies for (partly) freeing up these variances are discussed in <a href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov and Muthén (2021)</a>.</li>
+<li>Bayesian estimation is needed, and can be used by specifying
+<code>ESTIMATOR = BAYES;</code> in the <code>ANALYSIS</code>
+command.</li>
+<li>The variances and residual variances of the within-components are
+fixed to 1, as is standard when using the probit-model in Mplus for
+categorical data analysis. These can be freely estimated in principle,
+but generally require larger sample sizes, and are prone to empirical
+non-identification. Several strategies for (partly) freeing up these
+variances are discussed in <a
+href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov
+and Muthén (2021)</a>.</li>
 </ul>
-The interested reader is referred to <a href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov and Muthén (2021)</a> for more details.
+The interested reader is referred to <a
+href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov
+and Muthén (2021)</a> for more details.
 </div>
 <hr />
 </div>
 <div id="time-time-lags" class="section level3">
 <h3>Time &amp; time-lags</h3>
 <hr />
-<div onclick="showHide(&#39;faq6&#39;)" style="cursor: pointer; font-weight:bold">
+<div onclick="showHide(&#39;faq6&#39;)"
+style="cursor: pointer; font-weight:bold">
 How to deal with unequal intervals between repeated measures?
 </div>
 <div id="faq6" style="display:none">
-The lagged regression coefficients depend on the time lag between repeated measures (in a non-linear way). If the lags between subsequent occasions vary, qualitatively different autoregressive and cross-lagged effects between each pair of adjacent measurements are estimated. The advice is to <strong>not</strong> constrain these parameters over time in this case, as this would lead to an uninterpretable blend of different lagged relationships. Neither should the residual variances and covariances (of the within-components) be constrained to be invariant over time, as these also depend on the interval between measurements.
+The lagged regression coefficients depend on the time lag between
+repeated measures (in a non-linear way). If the lags between subsequent
+occasions vary, qualitatively different autoregressive and cross-lagged
+effects between each pair of adjacent measurements are estimated. The
+advice is to <strong>not</strong> constrain these parameters over time
+in this case, as this would lead to an uninterpretable blend of
+different lagged relationships. Neither should the residual variances
+and covariances (of the within-components) be constrained to be
+invariant over time, as these also depend on the interval between
+measurements.
 </div>
 <hr />
 </div>
 <div id="power" class="section level3">
 <h3>Power</h3>
 <hr />
-<div onclick="showHide(&#39;faq8&#39;)" style="cursor: pointer; font-weight:bold">
+<div onclick="showHide(&#39;faq8&#39;)"
+style="cursor: pointer; font-weight:bold">
 How do I perform a power analysis for the RI-CLPM?
 </div>
 <div id="faq8" style="display:none">
-I’m currently developing the R-package <code>powRICLPM</code>: A package for user-friendly power analysis for the RI-CLPM. Currently, version 0.0.0.9003 is available on GitHub, and documentation is available via <a href="https://jeroendmulder.github.io/powRICLPM">https://jeroendmulder.github.io/powRICLPM</a>. Note, however, that this package is still a pre-release version, and can contain some unknown bugs. Suggestions for improvement of the package are much appreciated and can be raised on GitHub via <a href="https://github.com/jeroendmulder/powRICLPM">https://github.com/jeroendmulder/powRICLPM</a>. A manuscript detailing the power analysis strategy as implemented in the <code>powRICLPM</code> package is in its final stages, and soon to be submitted for review.
+I’m currently developing the R-package <code>powRICLPM</code>: A package
+for user-friendly power analysis for the RI-CLPM. Currently, version
+0.0.0.9003 is available on GitHub, and documentation is available via <a
+href="https://jeroendmulder.github.io/powRICLPM">https://jeroendmulder.github.io/powRICLPM</a>.
+Note, however, that this package is still a pre-release version, and can
+contain some unknown bugs. Suggestions for improvement of the package
+are much appreciated and can be raised on GitHub via <a
+href="https://github.com/jeroendmulder/powRICLPM">https://github.com/jeroendmulder/powRICLPM</a>.
+A manuscript detailing the power analysis strategy as implemented in the
+<code>powRICLPM</code> package is in its final stages, and soon to be
+submitted for review.
 </div>
 <hr />
 </div>
 <div id="clpm-v.-riclpm" class="section level3">
 <h3>CLPM v. RICLPM</h3>
 <hr />
-<div onclick="showHide(&#39;faq9&#39;)" style="cursor: pointer; font-weight:bold">
-Why are the autoregressive effects in the RI-CLPM typically smaller than in the CLPM?
+<div onclick="showHide(&#39;faq9&#39;)"
+style="cursor: pointer; font-weight:bold">
+Why are the autoregressive effects in the RI-CLPM typically smaller than
+in the CLPM?
 </div>
 <div id="faq9" style="display:none">
-The autoregressive effects in the CLPM and the RI-CLPM capture two distinct phenomena. In the traditional CLPM, the autoregressive effects capture both within- and between-unit effects, and it can be interpreted as rank-order stability. In the RI-CLPM, the stable, between-person variance is separated from the within-person variance such that the autoregressive effects only capture within-person carry-over. In other words, in the RI-CLPM the autoregressive effects are typically smaller because the stable, trait-like stability is not captured anymore by the autoregressive effects (as in the CLPM), but by the random intercepts.
+The autoregressive effects in the CLPM and the RI-CLPM capture two
+distinct phenomena. In the traditional CLPM, the autoregressive effects
+capture both within- and between-unit effects, and it can be interpreted
+as rank-order stability. In the RI-CLPM, the stable, between-person
+variance is separated from the within-person variance such that the
+autoregressive effects only capture within-person carry-over. In other
+words, in the RI-CLPM the autoregressive effects are typically smaller
+because the stable, trait-like stability is not captured anymore by the
+autoregressive effects (as in the CLPM), but by the random intercepts.
 </div>
 <hr />
-<div onclick="showHide(&#39;faq10&#39;)" style="cursor: pointer; font-weight:bold">
-Is it a bad sign that the standard errors are typically larger in the RI-CLPM than in the CLPM?
+<div onclick="showHide(&#39;faq10&#39;)"
+style="cursor: pointer; font-weight:bold">
+Is it a bad sign that the standard errors are typically larger in the
+RI-CLPM than in the CLPM?
 </div>
 <div id="faq10" style="display:none">
-No, this is to be expected because the RI-CLPM is a more complex model than the CLPM. Therefore, the point estimates are less certain, but this does not imply that the estimates are biased and the model does not give us any insight in the underlying mechanism under study. In contrast, the RI-CLPM is likely less biased than results from the CLPM because the RI-CLM accounts for stable, unobserved factors that create lasting between-person differences, which can create spurious empirical relationships between the constructs under investigation when not properly accounted for.
+No, this is to be expected because the RI-CLPM is a more complex model
+than the CLPM. Therefore, the point estimates are less certain, but this
+does not imply that the estimates are biased and the model does not give
+us any insight in the underlying mechanism under study. In contrast, the
+RI-CLPM is likely less biased than results from the CLPM because the
+RI-CLM accounts for stable, unobserved factors that create lasting
+between-person differences, which can create spurious empirical
+relationships between the constructs under investigation when not
+properly accounted for.
 </div>
 <hr />
 </div>
 <div id="growth-and-development" class="section level3">
 <h3>Growth and development</h3>
 <hr />
-<div onclick="showHide(&#39;faq15&#39;)" style="cursor: pointer; font-weight:bold">
+<div onclick="showHide(&#39;faq15&#39;)"
+style="cursor: pointer; font-weight:bold">
 How can the RI-CLPM incorporate growth over time?
 </div>
 <div id="faq15" style="display:none">
-<p>The RI-CLPM estimates grand means at each time point. If these are constrained to be time-invariant, this would imply that on average there is no change. However, if these constraints cannot be imposed on the model, this means that on average there is some kind of change (e.g., growth, decline, U-shape, sudden jump between two waves, etc.). In this case, the model implies that <strong>every person</strong> is modeled to have the exact same underlying trend over time, but at a constant deviation from the average trend (as captured by the random intercept factor). Hence, instead of talking about constant means over time, one would have to talk about constant deviations from an average trend.</p>
-In the latent growth curve model (LGCM) and its extension, the latent curve model with structured residuals (LCM-SR), it is assumed that individual have the same kind of trend (e.g., a linear or quadratic trend), but there can be individual differences in the parameters of this trend; as a result, the differences between individuals change over time (i.e., they may increase or decrease). When the variance of the slope components (i.e., the slope factor of both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in the bivariate case) is fixed to zero, the LGCM and LCS-SR become special cases of the RI-CLPM; if the grand means in the RI-CLPM are fixed to be invariant over time, then this is a special case of the LCM-SR <a href="https://psycnet.apa.org/fulltext/2019-21491-001.html">(Usami, Kou, &amp; Hamaker, 2019)</a>.
+<p>The RI-CLPM estimates grand means at each time point. If these are
+constrained to be time-invariant, this would imply that on average there
+is no change. However, if these constraints cannot be imposed on the
+model, this means that on average there is some kind of change (e.g.,
+growth, decline, U-shape, sudden jump between two waves, etc.). In this
+case, the model implies that <strong>every person</strong> is modeled to
+have the exact same underlying trend over time, but at a constant
+deviation from the average trend (as captured by the random intercept
+factor). Hence, instead of talking about constant means over time, one
+would have to talk about constant deviations from an average trend.</p>
+In the latent growth curve model (LGCM) and its extension, the latent
+curve model with structured residuals (LCM-SR), it is assumed that
+individual have the same kind of trend (e.g., a linear or quadratic
+trend), but there can be individual differences in the parameters of
+this trend; as a result, the differences between individuals change over
+time (i.e., they may increase or decrease). When the variance of the
+slope components (i.e., the slope factor of both <span
+class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span> in the bivariate case) is fixed to
+zero, the LGCM and LCS-SR become special cases of the RI-CLPM; if the
+grand means in the RI-CLPM are fixed to be invariant over time, then
+this is a special case of the LCM-SR <a
+href="https://psycnet.apa.org/fulltext/2019-21491-001.html">(Usami, Kou,
+&amp; Hamaker, 2019)</a>.
 </div>
 <hr />
 </div>
 <div id="response-to-orth-et-al.-2021" class="section level3">
 <h3>Response to Orth et al. (2021)</h3>
-<p>Lately, we have received numerous questions about statements regarding the use and appropriateness of the CLPM and RI-CLPM in “Testing Prospective Effects in Longitudinal Research: Comparing Seven Competing Cross-Lagged Models” by <a href="http://dx.doi.org/10.1037/pspp0000358">Orth et al. (2021)</a>. In our opinion, numerous conclusions herein are incorrect. Below we elaborate on some of their most prominent conclusions. For another reaction to <a href="http://dx.doi.org/10.1037/pspp0000358">Orth et al. (2021)</a>, see <a href="https://replicationindex.com/2020/08/22/cross-lagged/">https://replicationindex.com/2020/08/22/cross-lagged</a>.</p>
+<p>Lately, we have received numerous questions about statements
+regarding the use and appropriateness of the CLPM and RI-CLPM in
+“Testing Prospective Effects in Longitudinal Research: Comparing Seven
+Competing Cross-Lagged Models” by <a
+href="http://dx.doi.org/10.1037/pspp0000358">Orth et al. (2021)</a>. In
+our opinion, numerous conclusions herein are incorrect. Below we
+elaborate on some of their most prominent conclusions. For another
+reaction to <a href="http://dx.doi.org/10.1037/pspp0000358">Orth et
+al. (2021)</a>, see <a
+href="https://replicationindex.com/2020/08/22/cross-lagged/">https://replicationindex.com/2020/08/22/cross-lagged</a>.</p>
 <hr />
-<div onclick="showHide(&#39;faq11&#39;)" style="cursor: pointer; font-weight:bold">
-The RI-CLPM is not suited for studying prospective between-person effects, whereas the CLPM is.
+<div onclick="showHide(&#39;faq11&#39;)"
+style="cursor: pointer; font-weight:bold">
+The RI-CLPM is not suited for studying prospective between-person
+effects, whereas the CLPM is.
 </div>
 <div id="faq11" style="display:none">
-<p>On page 1026, Orth et al. (2020) state that the RI-CLPM does not allow for the testing of prospective between-person effects because “(…) <em>the random intercept factors provide information only about correlational associations between the constructs</em> (…)<em>, but not about time-lagged (i.e, longitudinal) and directional between-person effects.</em>” It is true that the RI-CLPM separates stable, between-person differences from temporal, within-person fluctuations. Only the latter allow one to look at prospective effects over time, while the stable between-person differences have no particular time-order.</p>
-<p>The reasoning that Orth et al. seem to follow is this: If one is interested in trait-changes, we should not separate the stable trait components from the temporary fluctuations, as the first does not allow for the study of prospective effects and are not of interest because they are entirely stable, while the latter only contain state-like fluctuations that are less interesting to researchers who want to study in trait-changes. Orth et al. seem to consider both components separately not to be of interest, but nevertheless argue that a blend of both components is of key interest. We disagree with this reasoning.</p>
-<p>Researchers who want to use prospective effects to study certain psychological processes, should make sure that their measurements are obtained at the time scale at which they believe the process of interest operates. If the trait-changes of interest are assumed to take place from one year to the next, then measuring yearly over several years should capture the fluctuations of interest within persons over the time span covered by the study. If trait-changes are assumed to take place at a less fine time scale, such as from decade to decade, this implies researchers should obtain data measured once per decade, for several decades.</p>
-<p>Even if the stable, between-person differences are not of interest, these nevertheless need to be separated from the within-person fluctuations. The stable mean differences between persons are often referred to as trait differences, but may also be conceptualized as resulting from stable confounders, such as stable genetic and environmental factors that affect our measurements.</p>
-In sum, the focus should be on how the constructs are measured, specifically at what time scale they are measured. By definition, the random intercepts in the RI-CLPM capture variance that is stable over the duration of the study, which is why—from a data analytical perspective—these are referred to as traits. What remains is variance within persons over time, which is why—again from a data analytical perspective—this is referred to as state-like. These trait-like between-person differences and state-like, within-person fluctuations need not coincide perfectly with the trait-state distinction made by substantive researchers. Nevertheless, it is essential to separate these two sources, regardless of what they are called.
+<p>On page 1026, Orth et al. (2020) state that the RI-CLPM does not
+allow for the testing of prospective between-person effects because “(…)
+<em>the random intercept factors provide information only about
+correlational associations between the constructs</em> (…)<em>, but not
+about time-lagged (i.e, longitudinal) and directional between-person
+effects.</em>” It is true that the RI-CLPM separates stable,
+between-person differences from temporal, within-person fluctuations.
+Only the latter allow one to look at prospective effects over time,
+while the stable between-person differences have no particular
+time-order.</p>
+<p>The reasoning that Orth et al. seem to follow is this: If one is
+interested in trait-changes, we should not separate the stable trait
+components from the temporary fluctuations, as the first does not allow
+for the study of prospective effects and are not of interest because
+they are entirely stable, while the latter only contain state-like
+fluctuations that are less interesting to researchers who want to study
+in trait-changes. Orth et al. seem to consider both components
+separately not to be of interest, but nevertheless argue that a blend of
+both components is of key interest. We disagree with this reasoning.</p>
+<p>Researchers who want to use prospective effects to study certain
+psychological processes, should make sure that their measurements are
+obtained at the time scale at which they believe the process of interest
+operates. If the trait-changes of interest are assumed to take place
+from one year to the next, then measuring yearly over several years
+should capture the fluctuations of interest within persons over the time
+span covered by the study. If trait-changes are assumed to take place at
+a less fine time scale, such as from decade to decade, this implies
+researchers should obtain data measured once per decade, for several
+decades.</p>
+<p>Even if the stable, between-person differences are not of interest,
+these nevertheless need to be separated from the within-person
+fluctuations. The stable mean differences between persons are often
+referred to as trait differences, but may also be conceptualized as
+resulting from stable confounders, such as stable genetic and
+environmental factors that affect our measurements.</p>
+In sum, the focus should be on how the constructs are measured,
+specifically at what time scale they are measured. By definition, the
+random intercepts in the RI-CLPM capture variance that is stable over
+the duration of the study, which is why—from a data analytical
+perspective—these are referred to as traits. What remains is variance
+within persons over time, which is why—again from a data analytical
+perspective—this is referred to as state-like. These trait-like
+between-person differences and state-like, within-person fluctuations
+need not coincide perfectly with the trait-state distinction made by
+substantive researchers. Nevertheless, it is essential to separate these
+two sources, regardless of what they are called.
 </div>
 <hr />
-<div onclick="showHide(&#39;faq12&#39;)" style="cursor: pointer; font-weight:bold">
-The RI-CLPM is better suited for short-term studies because it cannot detect sustained prospective effects.
+<div onclick="showHide(&#39;faq12&#39;)"
+style="cursor: pointer; font-weight:bold">
+The RI-CLPM is better suited for short-term studies because it cannot
+detect sustained prospective effects.
 </div>
 <div id="faq12" style="display:none">
-<p>The characterization of the lagged effects as short- or long-term depends on the time scale at which the measurements are made. When using annual data, lagged effects capture the fluctuation from year to year; when dealing with data that were obtained every decade, the within-person fluctuations will concern the changes from decade to decade. It is all relative to how the data were measured, and even when we are focusing on trait changes by measuring people once every 10 years, for say 40 years, there will still be stable between-person differences between individuals that need to be controlled for.</p>
-Hence, the need to decompose the observations into a stable between-person component and temporal within-person components is independent of the time scale at which measurements were obtained.
+<p>The characterization of the lagged effects as short- or long-term
+depends on the time scale at which the measurements are made. When using
+annual data, lagged effects capture the fluctuation from year to year;
+when dealing with data that were obtained every decade, the
+within-person fluctuations will concern the changes from decade to
+decade. It is all relative to how the data were measured, and even when
+we are focusing on trait changes by measuring people once every 10
+years, for say 40 years, there will still be stable between-person
+differences between individuals that need to be controlled for.</p>
+Hence, the need to decompose the observations into a stable
+between-person component and temporal within-person components is
+independent of the time scale at which measurements were obtained.
 </div>
 <hr />
-<div onclick="showHide(&#39;faq13&#39;)" style="cursor: pointer; font-weight:bold">
-There should be a match between the type of research question asked and the model used: The CLPM is for the analysis of between-person prospective effects whereas the RI-CLPM should be used for within-person prospective effects.
+<div onclick="showHide(&#39;faq13&#39;)"
+style="cursor: pointer; font-weight:bold">
+There should be a match between the type of research question asked and
+the model used: The CLPM is for the analysis of between-person
+prospective effects whereas the RI-CLPM should be used for within-person
+prospective effects.
 </div>
 <div id="faq13" style="display:none">
-We agree with the authors in so far that there should be a match between the research question and the statistical model used. However, the critical distinction here is not whether one is interested in within-person or between-person prospective effects (as argued above, the RI-CLPM can capture trait-changes depending on the time scale at which measurements are gathered). Rather, we should distinguish between descriptive, predictive, and causal research questions (cf., <a href="https://doi.org/10.1016/j.dcn.2020.100867">Hamaker, Mulder, and Van IJzendoorn, 2020</a>). The CLPM is suitable for predictive research questions: e.g., “Who is at risk for heightened <span class="math inline">\(X\)</span>?” and “Who should get an intervention to reduce <span class="math inline">\(Y\)</span>?”. However, for answering causal research questions, other models should be used, because the CLPM does not control for stable, between-person difference. This is problematic as failing to properly account for such confounding effects can lead to finding spurious lagged effects, a failure to find true relationships, or more generally, biased estimates (<a href="https://doi.org/10.1037/a0038889">Hamaker, Kuiper, &amp; Grasman, 2015</a>).
+We agree with the authors in so far that there should be a match between
+the research question and the statistical model used. However, the
+critical distinction here is not whether one is interested in
+within-person or between-person prospective effects (as argued above,
+the RI-CLPM can capture trait-changes depending on the time scale at
+which measurements are gathered). Rather, we should distinguish between
+descriptive, predictive, and causal research questions (cf., <a
+href="https://doi.org/10.1016/j.dcn.2020.100867">Hamaker, Mulder, and
+Van IJzendoorn, 2020</a>). The CLPM is suitable for predictive research
+questions: e.g., “Who is at risk for heightened <span
+class="math inline">\(X\)</span>?” and “Who should get an intervention
+to reduce <span class="math inline">\(Y\)</span>?”. However, for
+answering causal research questions, other models should be used,
+because the CLPM does not control for stable, between-person difference.
+This is problematic as failing to properly account for such confounding
+effects can lead to finding spurious lagged effects, a failure to find
+true relationships, or more generally, biased estimates (<a
+href="https://doi.org/10.1037/a0038889">Hamaker, Kuiper, &amp; Grasman,
+2015</a>).
 </div>
 <hr />
-<div onclick="showHide(&#39;faq14&#39;)" style="cursor: pointer; font-weight:bold">
-The parameters from the CLPM tend to have smaller standard errors than the parameters from the RI-CLPM; hence, the results from the CLPM are easier to replicate, which may be a reason to prefer this model.
+<div onclick="showHide(&#39;faq14&#39;)"
+style="cursor: pointer; font-weight:bold">
+The parameters from the CLPM tend to have smaller standard errors than
+the parameters from the RI-CLPM; hence, the results from the CLPM are
+easier to replicate, which may be a reason to prefer this model.
 </div>
 <div id="faq14" style="display:none">
-<p>On page 1028, Orth et al. state that “For the CLPM, the structural coefficients were much more consistent compared to the RI-CLPM, both across and within samples, which is important with regard to replicability of research findings (Asendorf et al., 2013). Even if theoretical consideration have priority over replicability in model selection, replicability of estimates is—other things being equal—an important criterion of the quality of statistical models.”</p>
-<p>When the goal is prediction, this may indeed be an important consideration. However, when the goal is to gain insight in the underlying mechanism, we should not prefer a model simply based on its ability to replicate results: Replicating biased results is only giving us false confidence in erroneous conclusions.</p>
-<p>Instead, we should consider which model seems more reasonable (e.g., do we believe there may be unobserved, stable confounding that plays a role in our measurements?), and which model provides a better description of the data (e.g., comparing competing models through the use of the chi-square difference test, or information criteria).</p>
-The larger standard errors associated with the RI-CLPM imply that if we want to have the higher precision and/or increase replicability, we need to obtain data from larger samples and/or at more waves.
+<p>On page 1028, Orth et al. state that “For the CLPM, the structural
+coefficients were much more consistent compared to the RI-CLPM, both
+across and within samples, which is important with regard to
+replicability of research findings (Asendorf et al., 2013). Even if
+theoretical consideration have priority over replicability in model
+selection, replicability of estimates is—other things being equal—an
+important criterion of the quality of statistical models.”</p>
+<p>When the goal is prediction, this may indeed be an important
+consideration. However, when the goal is to gain insight in the
+underlying mechanism, we should not prefer a model simply based on its
+ability to replicate results: Replicating biased results is only giving
+us false confidence in erroneous conclusions.</p>
+<p>Instead, we should consider which model seems more reasonable (e.g.,
+do we believe there may be unobserved, stable confounding that plays a
+role in our measurements?), and which model provides a better
+description of the data (e.g., comparing competing models through the
+use of the chi-square difference test, or information criteria).</p>
+The larger standard errors associated with the RI-CLPM imply that if we
+want to have the higher precision and/or increase replicability, we need
+to obtain data from larger samples and/or at more waves.
 </div>
 </div>
 

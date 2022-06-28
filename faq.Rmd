@@ -37,7 +37,7 @@ Time-varying covariates (TVC; $Z$) can be included like “regular” X and Y ou
 <div onclick="showHide('faq3')" style="cursor: pointer; font-weight:bold">Is it possible to run an RI-CLPM with three (or more) outcomes?</div>
  
 <div id="faq3" style="display:none">
-Yes, it is statistically possible to run a “trivariate” RI-CLPM and empirical researchers have done so, see for example [Burns, Crisp, and [Van Lissa et al. (2019)](https://doi.org/10.1037/dev0000612). We don’t provide model code here for this mode, but extension to a trivariate RI-CLPM should be relatively straight forwards. That is, all variables should be decomponsed into between- (random intercepts) and within-components, and relevant lagged effects, as well as (residual) variances and covariances, should be included in the model.</div>
+Yes, it is statistically possible to run a “trivariate” RI-CLPM and empirical researchers have done so, see for example [Van Lissa, Keizer, Van Lier, Meeus, and Branje (2019)](https://doi.org/10.1037/dev0000612), [Flouri, Papachristou, Midouhas, Ploubidis, Lewis, and Joshi (2019)](http://dx.doi.org/10.1016/j.eurpsy.2018.12.005), and [Hygen, Belsky, Stenseng, Steinsbekk, Wichstrom, and Skalicka (2022)](https://doi.org/10.1016/j.chb.2022.107252). We don’t provide model code here for this mode, but extension to a trivariate RI-CLPM should be relatively straight forwards. That is, all variables should be decomponsed into between- (random intercepts) and within-components, and relevant lagged effects, as well as (residual) variances and covariances, should be included in the model.</div>
 
 ---
 

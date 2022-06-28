@@ -390,7 +390,14 @@ div.tocify {
 <hr />
 <div id="setup" class="section level2">
 <h2>Setup</h2>
-<p>Below you can find the code for installing and loading the required package <code>lavaan</code> <span class="citation">(Rosseel 2012)</span>, as well as for reading in the data for the Random Intercept Cross-Lagged Panel Model (RI-CLPM) and its 3 extensions. You can specify the path to the data yourself, or through a menu by using the <code>file.choose()</code>-function. You can download the simulated example datasets <a href="https://github.com/jeroendmulder/RI-CLPM/tree/master/data">here</a>.</p>
+<p>Below you can find the code for installing and loading the required
+package <code>lavaan</code> <span class="citation">(Rosseel
+2012)</span>, as well as for reading in the data for the Random
+Intercept Cross-Lagged Panel Model (RI-CLPM) and its 3 extensions. You
+can specify the path to the data yourself, or through a menu by using
+the <code>file.choose()</code>-function. You can download the simulated
+example datasets <a
+href="https://github.com/jeroendmulder/RI-CLPM/tree/master/data">here</a>.</p>
 <pre class="r"><code># If necessary, install the &#39;Lavaan&#39; package. 
 # install.packages(&#39;lavaan&#39;, dependencies = T)
 # Load the required packages. 
@@ -401,7 +408,7 @@ require(lavaan)
 dat &lt;- read.table(&quot;/Users/jeroenmulder/Git/RICLPM/data/RICLPM.dat&quot;, 
                   col.names = c(&quot;x1&quot;, &quot;x2&quot;, &quot;x3&quot;, &quot;x4&quot;, &quot;x5&quot;, &quot;y1&quot;, &quot;y2&quot;, &quot;y3&quot;, &quot;y4&quot;, &quot;y5&quot;)) 
 ## Extension 1
-datZ &lt;- read.table(&quot;/Users/jeroenmulder/Git/RICLPM/data/RICLPM-Z.dat&quot;,
+datZ &lt;- read.table(&quot;C:\\Users\\5879167\\Documents\\GitHub\\RI-CLPM\\data\\RICLPM-Z.dat&quot;,
                    col.names = c(&quot;x1&quot;, &quot;x2&quot;, &quot;x3&quot;, &quot;x4&quot;, &quot;x5&quot;, &quot;y1&quot;, &quot;y2&quot;, &quot;y3&quot;, &quot;y4&quot;, &quot;y5&quot;, &quot;z2&quot;, &quot;z1&quot;))
 ## Extension 2
 datMG &lt;- read.table(&quot;/Users/jeroenmulder/Git/RICLPM/data/RICLPM-MG.dat&quot;,
@@ -425,10 +432,23 @@ datMI &lt;- read.table(&quot;/Users/jeroenmulder/GitHub/RI-CLPM/data/RICLPM-MI.d
 <h2 class="tabset tabset-fade">The RI-CLPM</h2>
 <p>To specify the RI-CLPM we need four parts.</p>
 <ul>
-<li>A <em>between part</em>, consisting of the random intercepts. It is specified using the <code>=~</code> command, <code>RIx =~ 1*x1 1*x2 ...</code>, where <code>1*</code> fixes the factor loading to one.</li>
-<li>A <em>within part</em>, consisting of within-unit fluctuations. It is also specified using the <code>=~</code> command, <code>wx1 =~ 1*x1; wx2 =~ 1*x2; ...</code>.</li>
-<li>The <em>lagged regressions</em> between the within-unit components, using <code>wx2 ~ wx1 wy1; wx3 ~ wx2 wy2; ...</code>.</li>
-<li>Relevant <em>covariances</em> in both the between and within part. In the within part the components at wave 1, and their residuals at waves 2 and further are correlated within each wave, using <code>wx1 ~~ wy1; wx2 ~~ wy2;...</code>. We also need to specify their (residual) variances here using <code>wx1 ~~ wx1; wx2 ~~ wx2; ...</code>. For the between part we have to specify the variances and covariance of the random intercepts using <code>RIx ~~ RIy;</code>.</li>
+<li>A <em>between part</em>, consisting of the random intercepts. It is
+specified using the <code>=~</code> command,
+<code>RIx =~ 1*x1 1*x2 ...</code>, where <code>1*</code> fixes the
+factor loading to one.</li>
+<li>A <em>within part</em>, consisting of within-unit fluctuations. It
+is also specified using the <code>=~</code> command,
+<code>wx1 =~ 1*x1; wx2 =~ 1*x2; ...</code>.</li>
+<li>The <em>lagged regressions</em> between the within-unit components,
+using <code>wx2 ~ wx1 wy1; wx3 ~ wx2 wy2; ...</code>.</li>
+<li>Relevant <em>covariances</em> in both the between and within part.
+In the within part the components at wave 1, and their residuals at
+waves 2 and further are correlated within each wave, using
+<code>wx1 ~~ wy1; wx2 ~~ wy2;...</code>. We also need to specify their
+(residual) variances here using
+<code>wx1 ~~ wx1; wx2 ~~ wx2; ...</code>. For the between part we have
+to specify the variances and covariance of the random intercepts using
+<code>RIx ~~ RIy;</code>.</li>
 </ul>
 <div id="the-basic-model" class="section level3">
 <h3>The basic model</h3>
@@ -518,11 +538,22 @@ summary(CLPM.fit, standardized = T)</code></pre>
 </div>
 <div id="constraints-over-time" class="section level3">
 <h3>Constraints over time</h3>
-<p>Imposing constraints to the model can be achieved through <strong>pre-multiplication</strong>. It means that we have to prepend the number that we want to fix the parameter to, and an asterisk, to the parameter in the model specification. For example, <code>F =~ 0*x1</code> fixes the factor loading of item <code>x1</code> to factor <code>F</code> to 0. Using pre-multiplication we can also constrain parameters to be the same by giving them the same label. Below we specify an RI-CLPM with the following constraints:</p>
+<p>Imposing constraints to the model can be achieved through
+<strong>pre-multiplication</strong>. It means that we have to prepend
+the number that we want to fix the parameter to, and an asterisk, to the
+parameter in the model specification. For example,
+<code>F =~ 0*x1</code> fixes the factor loading of item <code>x1</code>
+to factor <code>F</code> to 0. Using pre-multiplication we can also
+constrain parameters to be the same by giving them the same label. Below
+we specify an RI-CLPM with the following constraints:</p>
 <ol style="list-style-type: decimal">
-<li>fixed auto-regressive and cross-lagged relations over time, <code>wx2 ~ a*wx1 + b*wy1; ...</code>,</li>
-<li>time-invariant (residual) (co-)variances in the within-person part <code>wx2 ~~ cov*wy2; ...</code>, <code>wx2 ~~ vx*wx2; ...</code>, and <code>wy2 ~~ vy*wy2; ...</code>, and</li>
-<li>constrained grand means over time, <code>x1 + ... ~ mx*1</code> and <code>y1 + ... ~ my*1</code>.</li>
+<li>fixed auto-regressive and cross-lagged relations over time,
+<code>wx2 ~ a*wx1 + b*wy1; ...</code>,</li>
+<li>time-invariant (residual) (co-)variances in the within-person part
+<code>wx2 ~~ cov*wy2; ...</code>, <code>wx2 ~~ vx*wx2; ...</code>, and
+<code>wy2 ~~ vy*wy2; ...</code>, and</li>
+<li>constrained grand means over time, <code>x1 + ... ~ mx*1</code> and
+<code>y1 + ... ~ my*1</code>.</li>
 </ol>
 <pre class="r"><code>RICLPM5 &lt;- &#39;
   # Create between components (random intercepts)
@@ -587,18 +618,29 @@ summary(RICLPM5.fit, standardized = T)</code></pre>
 <hr />
 </div>
 </div>
-<div id="ext.-1-time-invariant-predictor" class="section level2 tabset tabset-fade">
+<div id="ext.-1-time-invariant-predictor"
+class="section level2 tabset tabset-fade">
 <h2 class="tabset tabset-fade">Ext. 1: time-invariant predictor</h2>
-<p>Use the tabs below to navigate to the model specification of the RI-CLPM with</p>
+<p>Use the tabs below to navigate to the model specification of the
+RI-CLPM with</p>
 <ul>
-<li>a time-invariant predictor <span class="math inline">\(z_{1}\)</span> of the observed variables (constrained),</li>
-<li>a time-invariant predictor <span class="math inline">\(z_{1}\)</span> of the random intercepts,</li>
-<li>random intercepts predicting a time-invariant outcome <span class="math inline">\(z_{2}\)</span>, or</li>
-<li>within components predicting a time-invariant outcome <span class="math inline">\(z_{2}\)</span>.</li>
+<li>a time-invariant predictor <span
+class="math inline">\(z_{1}\)</span> of the observed variables
+(constrained),</li>
+<li>a time-invariant predictor <span
+class="math inline">\(z_{1}\)</span> of the random intercepts,</li>
+<li>random intercepts predicting a time-invariant outcome <span
+class="math inline">\(z_{2}\)</span>, or</li>
+<li>within components predicting a time-invariant outcome <span
+class="math inline">\(z_{2}\)</span>.</li>
 </ul>
 <div id="z_1-predicting-observed" class="section level3">
 <h3><span class="math inline">\(z_{1}\)</span> predicting observed</h3>
-<p>Below you can find the code for an RI-CLPM with 5 waves and a time-invariant predictor <span class="math inline">\(z_{1}\)</span> for the observed variables. The effect of <span class="math inline">\(z_{1}\)</span> on the observed variables is constrained to be the same across waves.</p>
+<p>Below you can find the code for an RI-CLPM with 5 waves and a
+time-invariant predictor <span class="math inline">\(z_{1}\)</span> for
+the observed variables. The effect of <span
+class="math inline">\(z_{1}\)</span> on the observed variables is
+constrained to be the same across waves.</p>
 <pre class="r"><code>RICLPM.ext1 &lt;- &#39;
   # Create between components (random intercepts)
   RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5
@@ -658,7 +700,9 @@ summary(RICLPM.ext1.fit, standardized = T)</code></pre>
 </div>
 <div id="z_1-predicting-ris" class="section level3">
 <h3><span class="math inline">\(z_{1}\)</span> predicting RIs</h3>
-<p>Below you can find the code for an RI-CLPM with 5 waves and a time-invariant predictor <span class="math inline">\(z_{1}\)</span> for the random intercepts.</p>
+<p>Below you can find the code for an RI-CLPM with 5 waves and a
+time-invariant predictor <span class="math inline">\(z_{1}\)</span> for
+the random intercepts.</p>
 <pre class="r"><code>RICLPM1.ext1 &lt;- &#39;
   # Create between components (random intercepts)
   RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5
@@ -717,7 +761,11 @@ summary(RICLPM1.ext1.fit, standardized = T)</code></pre>
 </div>
 <div id="ris-predicting-z_2" class="section level3">
 <h3>RI’s predicting <span class="math inline">\(z_{2}\)</span></h3>
-<p>Below you can find code for an RI-CLPM with the between components (the random intercepts) predicting a time-invariant outcome. For sake of completeness, the time-invariant <span class="math inline">\(z_{1}\)</span> is also included as a predictor the for observed variables (constrained).</p>
+<p>Below you can find code for an RI-CLPM with the between components
+(the random intercepts) predicting a time-invariant outcome. For sake of
+completeness, the time-invariant <span
+class="math inline">\(z_{1}\)</span> is also included as a predictor the
+for observed variables (constrained).</p>
 <pre class="r"><code>RICLPM3.ext1 &lt;- &#39;
   # Create between components (random intercepts)
   RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5
@@ -780,7 +828,10 @@ summary(RICLPM3.ext1.fit, standardized = T)</code></pre>
 </div>
 <div id="within-predicting-z_2" class="section level3">
 <h3>Within predicting <span class="math inline">\(z_{2}\)</span></h3>
-<p>Below you can find code for an RI-CLPM with the within components predicting a time-invariant outcome. For sake of completeness, the time-invariant <span class="math inline">\(z_{1}\)</span> is also included as a predictor the for observed variables (constrained).</p>
+<p>Below you can find code for an RI-CLPM with the within components
+predicting a time-invariant outcome. For sake of completeness, the
+time-invariant <span class="math inline">\(z_{1}\)</span> is also
+included as a predictor the for observed variables (constrained).</p>
 <pre class="r"><code>RICLPM4.ext1 &lt;- &#39;
   # Create between components (random intercepts)
   RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5
@@ -842,12 +893,16 @@ RICLPM4.ext1.fit &lt;- lavaan(RICLPM4.ext1, data = datZ, missing = &#39;ML&#39;,
 summary(RICLPM4.ext1.fit, standardized = T)</code></pre>
 </div>
 </div>
-<div id="ext.-2-multiple-group" class="section level2 tabset tabset-fade">
+<div id="ext.-2-multiple-group"
+class="section level2 tabset tabset-fade">
 <h2 class="tabset tabset-fade">Ext. 2: multiple group</h2>
-<p>Use the tabs below to navigate to the model specification of the basic multiple-group model, or the model with constrained lagged parameters (and intercepts across groups).</p>
+<p>Use the tabs below to navigate to the model specification of the
+basic multiple-group model, or the model with constrained lagged
+parameters (and intercepts across groups).</p>
 <div id="the-basic-model-1" class="section level3">
 <h3>The basic model</h3>
-<p>Below you can find the code for a multiple group RI-CLPM with 5 waves.</p>
+<p>Below you can find the code for a multiple group RI-CLPM with 5
+waves.</p>
 <pre class="r"><code>RICLPM.ext2 &lt;- &#39;
   # Create between components (random intercepts)
   RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5
@@ -900,7 +955,8 @@ summary(RICLPM.ext2.fit)</code></pre>
 </div>
 <div id="constrained-lagged-parameters" class="section level3">
 <h3>Constrained lagged-parameters</h3>
-<p>Below you can find the code for a multiple group RI-CLPM with 4 waves. The lagged-parameters are constrained to be equal over time.</p>
+<p>Below you can find the code for a multiple group RI-CLPM with 4
+waves. The lagged-parameters are constrained to be equal over time.</p>
 <pre class="r"><code>RICLPM1.ext2 &lt;- &#39;
   # Create between components (random intercepts)
   RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5
@@ -960,21 +1016,42 @@ summary(RICLPM1.ext2.fit)</code></pre>
 <hr />
 </div>
 </div>
-<div id="ext.-3-multiple-indicator" class="section level2 tabset tabset-fade">
+<div id="ext.-3-multiple-indicator"
+class="section level2 tabset tabset-fade">
 <h2 class="tabset tabset-fade">Ext. 3: multiple indicator</h2>
-<p>Use the tabs below to navigate to the model specification of a multiple indicator RI-CLPM, 5 waves and 3 indicators for each variable at each wave. The five steps correspond to:</p>
+<p>Use the tabs below to navigate to the model specification of a
+multiple indicator RI-CLPM, 5 waves and 3 indicators for each variable
+at each wave. The five steps correspond to:</p>
 <ul>
 <li>the configural model (Step 1),</li>
 <li>weak factorial invariance (Step 2),</li>
 <li>strong factorial invariance (Step 3),</li>
-<li>strong factorial invariance with factor loadings equal to the within-person factor loadings (Extra), and</li>
+<li>strong factorial invariance with factor loadings equal to the
+within-person factor loadings (Extra), and</li>
 <li>the latent RI-CLPM (Step 4).</li>
 </ul>
-<p>You can download the simulated example dataset <em>MIRICLPM.dat</em> from <a href="https://jeroendmulder.github.io/RI-CLPM/data/MIRICLPM.dat">https://jeroendmulder.github.io/RI-CLPM/data/MIRICLPM.dat</a>.</p>
+<p>You can download the simulated example dataset <em>MIRICLPM.dat</em>
+from <a
+href="https://jeroendmulder.github.io/RI-CLPM/data/MIRICLPM.dat">https://jeroendmulder.github.io/RI-CLPM/data/MIRICLPM.dat</a>.</p>
 <div id="step-1" class="section level3">
 <h3>Step 1</h3>
-<p>When we have three indicators <span class="math inline">\(X\)</span>, measured at five waves, we specify three random intercepts to capture the trait-like part of each indicator, that is, <code>RIX1 =~ 1*x11 1*x21 ...</code>, <code>RIX2 =~ 1*x121 1*x22@1 ...</code>, and <code>RIX3 =~ 1*x13 1*x23 ...</code>. In addition, we specify five within-unit components that capture the state-like part at each wave, using <code>WFX1 =~ x11 x12 x13; WFX2 =~ x21 x22 x23; ...</code>.</p>
-<p>At the latent within-unit level, we specify the dynamic model in Mplus using <code>WFX2 ~ WFY1 + WFX1; WFX3 ~ WFY2 + WFX2; ...</code>. In addition, we allow the within-person factors at the first wave, and their residuals at subsequent waves to be correlated within each wave, <code>WFX1 ~~ WFY1; WFX2 ~~ WFY2; ...</code>. The six random intercepts are allowed to be freely correlated with each other, either through inclusion of <code>RIX1 + RIX2 + ... ~~ RIX1 + RIX2 + ...</code> in the model syntax, or by default when using the <code>cfa()</code> function as we have done below.</p>
+<p>When we have three indicators <span class="math inline">\(X\)</span>,
+measured at five waves, we specify three random intercepts to capture
+the trait-like part of each indicator, that is,
+<code>RIX1 =~ 1*x11 1*x21 ...</code>,
+<code>RIX2 =~ 1*x121 1*x22@1 ...</code>, and
+<code>RIX3 =~ 1*x13 1*x23 ...</code>. In addition, we specify five
+within-unit components that capture the state-like part at each wave,
+using <code>WFX1 =~ x11 x12 x13; WFX2 =~ x21 x22 x23; ...</code>.</p>
+<p>At the latent within-unit level, we specify the dynamic model in
+Mplus using <code>WFX2 ~ WFY1 + WFX1; WFX3 ~ WFY2 + WFX2; ...</code>. In
+addition, we allow the within-person factors at the first wave, and
+their residuals at subsequent waves to be correlated within each wave,
+<code>WFX1 ~~ WFY1; WFX2 ~~ WFY2; ...</code>. The six random intercepts
+are allowed to be freely correlated with each other, either through
+inclusion of <code>RIX1 + RIX2 + ... ~~ RIX1 + RIX2 + ...</code> in the
+model syntax, or by default when using the <code>cfa()</code> function
+as we have done below.</p>
 <pre class="r"><code>RICLPM1.ext3 &lt;- &#39;
   
   ################
@@ -1038,7 +1115,8 @@ summary(RICLPM1.ext3.fit, standardized = T)</code></pre>
 </div>
 <div id="step-2" class="section level3">
 <h3>Step 2</h3>
-<p>In second step, we constrain the factor loadings to be invariant over time using the labels <code>a*</code>, <code>b*</code>, etc.</p>
+<p>In second step, we constrain the factor loadings to be invariant over
+time using the labels <code>a*</code>, <code>b*</code>, etc.</p>
 <pre class="r"><code>RICLPM2.ext3 &lt;- &#39;
   
   ################
@@ -1102,7 +1180,10 @@ summary(RICLPM2.ext3.fit, standardized = T)</code></pre>
 </div>
 <div id="step-3" class="section level3">
 <h3>Step 3</h3>
-<p>Multiple indicator RI-CLPM 4 waves with 3 indicators for each variable at each wave (24 observed variables). Fitting a model with constraints to ensure strong factorial invariance, with a random intercept for each indicator separately.</p>
+<p>Multiple indicator RI-CLPM 4 waves with 3 indicators for each
+variable at each wave (24 observed variables). Fitting a model with
+constraints to ensure strong factorial invariance, with a random
+intercept for each indicator separately.</p>
 <pre class="r"><code>RICLPM3.ext3 &lt;- &#39;
   
   ################
@@ -1179,7 +1260,12 @@ summary(RICLPM3.ext3.fit, standardized = T)</code></pre>
 </div>
 <div id="extra" class="section level3">
 <h3>Extra</h3>
-<p>Multiple indicator RI-CLPM, 5 waves with 3 indicators for each variable at each wave (30 observed variables). Fitting a model With constraints to ensure strong factorial invariance, with a random intercept for each indicator separately, for which a factor model is specified, with factor loadings equal to the within- person factor loadings.</p>
+<p>Multiple indicator RI-CLPM, 5 waves with 3 indicators for each
+variable at each wave (30 observed variables). Fitting a model With
+constraints to ensure strong factorial invariance, with a random
+intercept for each indicator separately, for which a factor model is
+specified, with factor loadings equal to the within- person factor
+loadings.</p>
 <pre class="r"><code>RICLPM4.ext3 &lt;- &#39;
   
   ################
@@ -1276,7 +1362,10 @@ summary(RICLPM4.ext3.fit, standardized = T)</code></pre>
 </div>
 <div id="step-4" class="section level3">
 <h3>Step 4</h3>
-<p>Multiple indicator RI-CLPM, 5 waves with 3 indicators for each variable at each wave (30 observed variables). Fitting a model with constraints to ensure strong factorial invariance, with the RI-CLPM at the latent level.</p>
+<p>Multiple indicator RI-CLPM, 5 waves with 3 indicators for each
+variable at each wave (30 observed variables). Fitting a model with
+constraints to ensure strong factorial invariance, with the RI-CLPM at
+the latent level.</p>
 <pre class="r"><code>RICLPM5.ext3 &lt;- &#39;
   
   #####################
@@ -1373,12 +1462,29 @@ summary(RICLPM5.ext3.fit, standardized = T)</code></pre>
 </div>
 <div id="barchi2-test" class="section level2">
 <h2><span class="math inline">\(\bar{\chi}^{2}\)</span>-test</h2>
-<p>The use of the chi-square difference test is wide-spread in the SEM community to test constaints on parameters. However, when constraints are placed on the bound of the parameter space, we should use the chi-bar-square test (<span class="math inline">\(\bar{\chi}^{2}\)</span>-test) <span class="citation">(Stoel et al. 2006)</span>. For example, if we constrain the variances of all random intercepts (and their covariance) in the RI-CLPM to zero, we obtain a model that is nested under the RI-CLPM, and that is statistically equivalent to the traditional cross-lagged panel model (CLPM). Below you can find R code for performing the chi-bar-square test (code by <a href="https://www.uu.nl/staff/rmkuiper/Software">Rebecca M. Kuiper</a>) for comparing these two models. It involves</p>
+<p>The use of the chi-square difference test is wide-spread in the SEM
+community to test constaints on parameters. However, when constraints
+are placed on the bound of the parameter space, we should use the
+chi-bar-square test (<span
+class="math inline">\(\bar{\chi}^{2}\)</span>-test) <span
+class="citation">(Stoel et al. 2006)</span>. For example, if we
+constrain the variances of all random intercepts (and their covariance)
+in the RI-CLPM to zero, we obtain a model that is nested under the
+RI-CLPM, and that is statistically equivalent to the traditional
+cross-lagged panel model (CLPM). Below you can find R code for
+performing the chi-bar-square test (code by <a
+href="https://www.uu.nl/staff/rmkuiper/Software">Rebecca M. Kuiper</a>)
+for comparing these two models. It involves</p>
 <ol style="list-style-type: decimal">
-<li>fitting both the RI-CLPM (<code>RICLPM.fit</code>) and CLPM (<code>CLPM.fit</code>);</li>
+<li>fitting both the RI-CLPM (<code>RICLPM.fit</code>) and CLPM
+(<code>CLPM.fit</code>);</li>
 <li>extracting the covariance matrix of the random intercepts;</li>
-<li>extracting the <span class="math inline">\(\chi^{2}\)</span> and degrees of freedom of both models; and</li>
-<li>performing the <span class="math inline">\(\bar{\chi}^{2}\)</span>-test using the <code>ChiBarSq.DiffTest</code> package <span class="citation">(Kuiper 2020)</span>.</li>
+<li>extracting the <span class="math inline">\(\chi^{2}\)</span> and
+degrees of freedom of both models; and</li>
+<li>performing the <span
+class="math inline">\(\bar{\chi}^{2}\)</span>-test using the
+<code>ChiBarSq.DiffTest</code> package <span class="citation">(Kuiper
+2020)</span>.</li>
 </ol>
 <pre class="r"><code># Install and load the required packages. 
 ## library(devtools)
@@ -1415,13 +1521,23 @@ ChiBar2DiffTest$p_value</code></pre>
 <h2 class="unnumbered">References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Kuiper2020" class="csl-entry">
-Kuiper, Rebecca M. 2020. <em><span class="nocase">ChiBarSq.DiffTest: Chi-bar-square difference test of the RI-CLPM versus the CLPM and more general.</span></em>
+Kuiper, Rebecca M. 2020. <em><span class="nocase">ChiBarSq.DiffTest:
+Chi-bar-square difference test of the RI-CLPM versus the CLPM and more
+general.</span></em>
 </div>
 <div id="ref-lavaan" class="csl-entry">
-Rosseel, Yves. 2012. <span>“<span class="nocase">lavaan</span>: An <span>R</span> Package for Structural Equation Modeling.”</span> <em>Journal of Statistical Software</em> 48 (2): 1–36. <a href="http://www.jstatsoft.org/v48/i02/">http://www.jstatsoft.org/v48/i02/</a>.
+Rosseel, Yves. 2012. <span>“<span class="nocase">lavaan</span>: An
+<span>R</span> Package for Structural Equation Modeling.”</span>
+<em>Journal of Statistical Software</em> 48 (2): 1–36. <a
+href="http://www.jstatsoft.org/v48/i02/">http://www.jstatsoft.org/v48/i02/</a>.
 </div>
 <div id="ref-Stoel2006" class="csl-entry">
-Stoel, Reinoud D., Francisca Galindo Garre, Conor Dolan, and Godfried van den Wittenboer. 2006. <span>“<span class="nocase">On the likelihood ratio test in structural equation modeling when parameters are subject to boundary constraints.</span>”</span> <em>Psychological Methods</em> 11 (4): 439–55. <a href="https://doi.org/10.1037/1082-989X.11.4.439">https://doi.org/10.1037/1082-989X.11.4.439</a>.
+Stoel, Reinoud D., Francisca Galindo Garre, Conor Dolan, and Godfried
+van den Wittenboer. 2006. <span>“<span class="nocase">On the likelihood
+ratio test in structural equation modeling when parameters are subject
+to boundary constraints.</span>”</span> <em>Psychological Methods</em>
+11 (4): 439–55. <a
+href="https://doi.org/10.1037/1082-989X.11.4.439">https://doi.org/10.1037/1082-989X.11.4.439</a>.
 </div>
 </div>
 </div>
