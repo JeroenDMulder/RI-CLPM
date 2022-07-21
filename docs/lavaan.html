@@ -617,6 +617,82 @@ RICLPM5.fit &lt;- lavaan(RICLPM5, data = dat, missing = &#39;ML&#39;, meanstruct
 summary(RICLPM5.fit, standardized = T)</code></pre>
 <hr />
 </div>
+<div id="time-invariant-standardized-lagged-effects"
+class="section level3">
+<h3>Time-invariant standardized lagged effects</h3>
+<p>Rather than imposing constraints on the unstandardized
+auto-regressive and cross-lagged relations over time, we can impose
+constraints on the standardized lagged effects, as explained in the <a
+href="https://jeroendmulder.github.io/RI-CLPM/faq.html#Standardization">FAQ</a>.
+Compared to the basic model, there are multiple changes to the syntax.
+First, we freely estimate the factor loadings that link the observed
+variables to the within-components (by premultiplying with
+<code>NA</code>), rather than fixing them to 1:</p>
+<pre class="r"><code>&#39;
+  # Create within-components with freely estimated factor loading
+  wx1 =~ NA*x1
+  wx2 =~ NA*x2
+  wx3 =~ NA*x3 
+  wx4 =~ NA*x4
+  wx5 =~ NA*x5
+  wy1 =~ NA*y1
+  wy2 =~ NA*y2
+  wy3 =~ NA*y3
+  wy4 =~ NA*y4
+  wy5 =~ NA*y5
+&#39;</code></pre>
+<p>Second, we set the variances of within-components at first wave to 1,
+and label the covariance (now also the correlation) between them:</p>
+<pre class="r"><code>&#39;
+  # Set variances of within-components at first wave to 1
+  wx1 ~~ 1*wx1
+  wy1 ~~ 1*wy1
+  
+  # Estimate correlation between within-components at first wave
+  wx1 ~~ cor1*wy1 
+&#39;</code></pre>
+<p>Third, we give the residual variance and covariances between the
+within-component each a unique label:</p>
+<pre class="r"><code>&#39;
+  # Label the residual covariances
+  wx2 ~~ rcov2*wy2
+  wx3 ~~ rcov3*wy3
+  wx4 ~~ rcov4*wy4 
+  wx5 ~~ rcov5*wy5
+  
+  # Label the residual variances
+  wx2 ~~ rvx2*wx2 
+  wy2 ~~ rvy2*wy2 
+  wx3 ~~ rvx3*wx3 
+  wy3 ~~ rvy3*wy3 
+  wx4 ~~ rvx4*wx4 
+  wy4 ~~ rvy4*wy4 
+  wx5 ~~ rvx5*wx5
+  wy5 ~~ rvy5*wy5
+
+&#39;</code></pre>
+<p>Finally, we compute the correlations between the within-components
+<em>themselves</em> at each wave, and then constrain the residual
+variances to ensure that the total variance of each within-component
+equals 1. This is done with the <code>:=</code> command:</p>
+<pre class="r"><code>&#39;
+  # Compute correlations of within-components at each wave
+  cor2 := a*c + b*d + a*d*cor1 + b*c*cor1 + rcov2
+  cor3 := a*c + b*d + a*d*cor2 + b*c*cor2 + rcov3
+  cor4 := a*c + b*d + a*d*cor3 + b*c*cor3 + rcov4
+ 
+  #! Contrain residual variances of within-components such that variance of each within-component equals 1
+  rvx2 == 1 - (a*a + b*b + 2*a*b*cor1)
+  rvy2 == 1 - (c*c + d*d + 2*c*d*cor1)
+  rvx3 == 1 - (a*a + b*b + 2*a*b*cor2)
+  rvy3 == 1 - (c*c + d*d + 2*c*d*cor2)
+  rvx4 == 1 - (a*a + b*b + 2*a*b*cor3)
+  rvy4 == 1 - (c*c + d*d + 2*c*d*cor3)
+  rvx5 == 1 - (a*a + b*b + 2*a*b*cor4)
+  rvy5 == 1 - (c*c + d*d + 2*c*d*cor4)
+&#39;</code></pre>
+<hr />
+</div>
 </div>
 <div id="ext.-1-time-invariant-predictor"
 class="section level2 tabset tabset-fade">

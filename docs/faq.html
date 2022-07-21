@@ -464,8 +464,91 @@ of the semi-partial correlation is the <em>unique</em> explained
 variance, so we also know that the predictor with the largest
 standardized coefficient, will also have the largest <em>unique</em>
 explained variance.</p>
-<em>Answer by <a href="https://www.uu.nl/staff/NKSchuurman">Dr. Noémi
+<em>Answer by <a href="https://www.uu.nl/staff/NKSchuurman">dr. Noémi
 Schuurman</a>.</em>
+</div>
+<hr />
+<div onclick="showHide(&#39;faq7&#39;)"
+style="cursor: pointer; font-weight:bold">
+How can I constrain the <em>standardized</em> parameters to be invariant
+over time?
+</div>
+<div id="faq7" style="display:none">
+<p>While the lagged parameters can be constrained to be invariant over
+time, this does not imply that the standardized parameters will be
+invariant over time as well. The reason for this is that a standardized
+parameter is a function of the unstandardized parameter, and of the
+standard deviations of the predictor and the outcome variable (i.e.,
+<span class="math inline">\(\beta_{standardized} =
+\frac{SD(x)}{SD(y}\beta\)</span>). Since the variances of the
+within-components <em>themselves</em> are not constrained to be
+invariant over time, the standard deviations of the predictor and the
+outcome variable for the lagged effects can vary over time. Therefore,
+the standardized lagged effects can vary even while the unstandardized
+lagged effects are constrained to be equal over time.</p>
+<p>To make the standardized lagged parameters time invariant, the
+within-person components need to have a variance of 1 at every occasion.
+In that case, the lagged parameters are already the standardized lagged
+parameters, and it becomes possible to impose time-constraints on them.
+At the first wave, the variances of the within-components can be set
+directly as these variables are exogenous. However, for <span
+class="math inline">\(t &gt; 1\)</span>, the variances of the
+within-components are functions of the lagged parameters, and the
+covariance between the lagged predictors. Specifically, using <a
+href="https://doi.org/10.1214/aoms/1177732676">the path tracing
+rules</a> and assuming the variance of lagged within-component is in
+fact 1, the variance of <span class="math inline">\(wx_{it}\)</span> can
+be expressed as <span class="math display">\[Var[wx_{it}] =
+\alpha^{2}_{t} + \beta^{2}_{t} + 2 \alpha_{t} \beta_{t} Cov[wx_{i,t-1},
+wy_{i,t-1}] + Var[u_{it}]\]</span> where <span
+class="math inline">\(\alpha_{t}\)</span> is the autoregressive effect
+of <span class="math inline">\(wx\)</span>, <span
+class="math inline">\(\beta_{t}\)</span> is the cross-lagged effect from
+<span class="math inline">\(wy_{i,t-1}\)</span> to <span
+class="math inline">\(wx_{it}\)</span>, and <span
+class="math inline">\(u_{Xit}\)</span> is the residual of <span
+class="math inline">\(wx\)</span>. So, the variance of <span
+class="math inline">\(wx_{it}\)</span> itself can be set 1 to 1 by
+imposing a constrain on the residual variance <span
+class="math inline">\(Var[u_{it}]\)</span>, that is <span
+class="math display">\[Var[u_{it}] = 1 - (\alpha^{2}_{t} + \beta^{2}_{t}
++ 2 \alpha_{t} \beta_{t} Cov[wx_{i,t-1}, wy_{i,t-1}])\]</span>.</p>
+<p>The final quantity that we need to compute is the covariance (here
+also the correlation) between the two lagged within-components, <span
+class="math inline">\(Cov[wx_{i,t-1}, wy_{i,t-1}]\)</span>. At wave 1,
+this is simply a model parameter (i.e., the covariance between the
+within-components can be estimated directly). For <span
+class="math inline">\(t &gt; 1\)</span>, this covariance is a function
+of the lagged coefficients, the variances of the lagged
+within-components, and the covariance between the residuals at the
+preceding occasion. Again, using <a
+href="https://doi.org/10.1214/aoms/1177732676">the path tracing
+rules</a> and assuming the variances of lagged within-components are in
+fact 1, it can be expressed as <span
+class="math display">\[Cov[wx_{i,t}, wy_{i,t}] = \alpha_{t} \gamma_{t} +
+\beta_{t} \delta_{t} + \alpha_{t} \delta_{t} Cov[wx_{i,t-1}, wy_{i,t-1}]
++ \beta_{t} \gamma_{t} Cov[wx_{i,t-1}, wy_{i,t-1}] + Cov[u_{Xit},
+u_{Yit}]\]</span> where <span class="math inline">\(\delta_{t}\)</span>
+is the autoregressive effect of <span class="math inline">\(wx\)</span>,
+<span class="math inline">\(\gamma_{t}\)</span> is the cross-lagged
+effect from <span class="math inline">\(wx_{i,t-1}\)</span> to <span
+class="math inline">\(wy_{it}\)</span>, and <span
+class="math inline">\(u_{Yit}\)</span> is the residual of <span
+class="math inline">\(wy\)</span>.</p>
+<p>To impose such constraints in Mplus or <em>lavaan</em>, we thus first
+need to compute the covariance (i.e., correlation) between the
+within-components at each occasion. Then, these can be used to constrain
+the residual variances of the within-components in such a way that the
+variances of the within-person components equal 1. Syntax has been added
+to this website to specify this model in <a
+href="https://jeroendmulder.github.io/RI-CLPM/mplus.html#The_RI-CLPM">Mplus</a>
+and <a
+href="https://jeroendmulder.github.io/RI-CLPM/lavaan.html#The_RI-CLPM">lavaan</a>.
+Note that in this model, the factor loadings that link the observed
+variables to the within-components are not fixed to 1 as is usually
+done, but they are estimated freely.</p>
+<em>Answer by <a href="https://www.uu.nl/staff/ELHamaker">prof. dr.
+Ellen L. Hamaker</a>.</em>
 </div>
 <hr />
 </div>

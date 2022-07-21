@@ -564,6 +564,68 @@ MODEL:      ! Create between components (random intercepts)
 OUTPUT:     TECH1 STDYX SAMPSTAT CINTERVAL;</code></pre>
 <hr />
 </div>
+<div id="time-invariant-standardized-lagged-effects"
+class="section level3">
+<h3>Time-invariant standardized lagged effects</h3>
+<p>Rather than imposing constraints on the unstandardized
+auto-regressive and cross-lagged relations over time, we can impose
+constraints on the standardized lagged effects, as explained in the <a
+href="https://jeroendmulder.github.io/RI-CLPM/faq.html#Standardization">FAQ</a>.
+Compared to the basic model, there are multiple changes to the syntax.
+First, we freely estimate the factor loadings that link the observed
+variables to the within-components, rather than fixing them to 1:</p>
+<pre><code>! Create within-components with freely estimated factor loading
+wx1 BY x1*; 
+wx2 BY x2*;
+wx3 BY x3*; 
+wx4 BY x4*; 
+wx5 BY x5*;
+                
+wy1 BY y1*; 
+wy2 BY y2*;
+wy3 BY y3*; 
+wy4 BY y4*; 
+wy5 BY y5*;</code></pre>
+<p>Second, we set the variances of within-components at first wave to 1,
+and label the covariance (now also the correlation) between them:</p>
+<pre><code>! Set variances of within-components at first wave to 1
+wx1@1 wy1@1;
+
+! Estimate correlation between within-components at first wave
+wx1 WITH wy1 (cor1);</code></pre>
+<p>Third, we give the residual variance and covariances between the
+within-component each a unique label:</p>
+<pre><code>wx2 WITH wy2 (rcov2); wx2 (rvx2); wy2 (rvy2);
+wx3 WITH wy3 (rcov3); wx3 (rvx3); wy3 (rvy3);
+wx4 WITH wy4 (rcov4); wx4 (rvx4); wy4 (rvy4); 
+wx5 WITH wy5 (rcov5); wx5 (rvx5); wy5 (rvy5);</code></pre>
+<p>Finally, we compute the correlations between the within-components
+<em>themselves</em> at each wave, and then constrain the residual
+variances to ensure that the total variance of each within-component
+equals 1. This is done in the <code>MODEL CONSTRAINT</code> command:</p>
+<pre><code>MODEL CONSTRAINT:
+  ! Compute correlations of within-components at each wave
+  NEW(cor2);
+  NEW(cor3);
+  NEW(cor4);
+  
+  cor2 = a*c + b*d + a*d*cor1 + b*c*cor1 + rcov2;
+  cor3 = a*c + b*d + a*d*cor2 + b*c*cor2 + rcov3;
+  cor4 = a*c + b*d + a*d*cor3 + b*c*cor3 + rcov4;
+ 
+  ! Contrain residual variances of within-components such that
+  ! variance of each within-component equals 1
+  rvx2 = 1 - (a*a + b*b + 2*a*b*cor1);
+  rvy2 = 1 - (c*c + d*d + 2*c*d*cor1);
+  rvx3 = 1 - (a*a + b*b + 2*a*b*cor2);
+  rvy3 = 1 - (c*c + d*d + 2*c*d*cor2);
+  rvx4 = 1 - (a*a + b*b + 2*a*b*cor3);
+  rvy4 = 1 - (c*c + d*d + 2*c*d*cor3);
+  rvx5 = 1 - (a*a + b*b + 2*a*b*cor4);
+  rvy5 = 1 - (c*c + d*d + 2*c*d*cor4);
+</code></pre>
+<hr />
+</div>
 </div>
 <div id="ext.-1-time-invariant-variables"
 class="section level2 tabset tabset-fade">

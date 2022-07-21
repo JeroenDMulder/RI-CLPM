@@ -395,6 +395,84 @@ summary(RICLPM5.fit, standardized = T)
 
 ---
 
+### Time-invariant standardized lagged effects
+Rather than imposing constraints on the unstandardized auto-regressive and cross-lagged relations over time, we can impose constraints on the standardized lagged effects, as explained in the [FAQ](https://jeroendmulder.github.io/RI-CLPM/faq.html#Standardization). Compared to the basic model, there are multiple changes to the syntax. First, we freely estimate the factor loadings that link the observed variables to the within-components (by premultiplying with `NA`), rather than fixing them to 1:
+
+```{r RICLPM-constrainStandardizedLagged1, eval = F, echo = T}
+'
+  # Create within-components with freely estimated factor loading
+  wx1 =~ NA*x1
+  wx2 =~ NA*x2
+  wx3 =~ NA*x3 
+  wx4 =~ NA*x4
+  wx5 =~ NA*x5
+  wy1 =~ NA*y1
+  wy2 =~ NA*y2
+  wy3 =~ NA*y3
+  wy4 =~ NA*y4
+  wy5 =~ NA*y5
+'
+```
+
+Second, we set the variances of within-components at first wave to 1, and label the covariance (now also the correlation) between them:
+
+```{r RICLPM-constrainStandardizedLagged2, eval = F, echo = T}
+'
+  # Set variances of within-components at first wave to 1
+  wx1 ~~ 1*wx1
+  wy1 ~~ 1*wy1
+  
+  # Estimate correlation between within-components at first wave
+  wx1 ~~ cor1*wy1 
+'
+```
+
+Third, we give the residual variance and covariances between the within-component each a unique label:
+
+```{r RICLPM-constrainStandardizedLagged3, eval = F, echo = T}
+'
+  # Label the residual covariances
+  wx2 ~~ rcov2*wy2
+  wx3 ~~ rcov3*wy3
+  wx4 ~~ rcov4*wy4 
+  wx5 ~~ rcov5*wy5
+  
+  # Label the residual variances
+  wx2 ~~ rvx2*wx2 
+  wy2 ~~ rvy2*wy2 
+  wx3 ~~ rvx3*wx3 
+  wy3 ~~ rvy3*wy3 
+  wx4 ~~ rvx4*wx4 
+  wy4 ~~ rvy4*wy4 
+  wx5 ~~ rvx5*wx5
+  wy5 ~~ rvy5*wy5
+
+'
+```
+
+Finally, we compute the correlations between the within-components *themselves* at each wave, and then constrain the residual variances to ensure that the total variance of each within-component equals 1. This is done with the `:=` command:
+
+```{r RICLPM-constrainStandardizedLagged4, eval = F, echo = T}
+'
+  # Compute correlations of within-components at each wave
+  cor2 := a*c + b*d + a*d*cor1 + b*c*cor1 + rcov2
+  cor3 := a*c + b*d + a*d*cor2 + b*c*cor2 + rcov3
+  cor4 := a*c + b*d + a*d*cor3 + b*c*cor3 + rcov4
+ 
+  #! Contrain residual variances of within-components such that variance of each within-component equals 1
+  rvx2 == 1 - (a*a + b*b + 2*a*b*cor1)
+  rvy2 == 1 - (c*c + d*d + 2*c*d*cor1)
+  rvx3 == 1 - (a*a + b*b + 2*a*b*cor2)
+  rvy3 == 1 - (c*c + d*d + 2*c*d*cor2)
+  rvx4 == 1 - (a*a + b*b + 2*a*b*cor3)
+  rvy4 == 1 - (c*c + d*d + 2*c*d*cor3)
+  rvx5 == 1 - (a*a + b*b + 2*a*b*cor4)
+  rvy5 == 1 - (c*c + d*d + 2*c*d*cor4)
+'
+```
+
+---
+
 ## Ext. 1: time-invariant predictor {.tabset .tabset-fade}
 Use the tabs below to navigate to the model specification of the RI-CLPM with
 
