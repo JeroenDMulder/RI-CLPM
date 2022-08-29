@@ -22,9 +22,4 @@ You can find simulated example data sets (1189 units, 5 repeated-measures) on [G
 
 ---
 
-### Contact
-Questions can be addressed to the first author of the corresponding article, [Jeroen Mulder](mailto:j.d.mulder@uu.nl). 
-
-----
-
 ### References

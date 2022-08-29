@@ -450,6 +450,12 @@ waves 2 and further are correlated within each wave, using
 to specify the variances and covariance of the random intercepts using
 <code>RIx ~~ RIy;</code>.</li>
 </ul>
+<p>Note that the models below are fitted using the <code>lavaan()</code>
+function. Other functions for fitting SEM models using
+<code>lavaan</code> include <code>sem()</code> and <code>cfa()</code>.
+These functions rely on different defaults than <code>lavaan()</code>
+and fitting the below models with these functions can result in model
+misspecification and subsequently convergence issues.</p>
 <div id="the-basic-model" class="section level3">
 <h3>The basic model</h3>
 <p>The code for specifying the basic RI-CLPM is given below.</p>

@@ -52,7 +52,9 @@ To specify the RI-CLPM we need four parts.
 * A *between part*, consisting of the random intercepts. It is specified  using the `=~` command, `RIx =~ 1*x1 1*x2 ...`, where `1*` fixes the factor loading to one.
 * A *within part*, consisting of within-unit fluctuations. It is also specified using the `=~` command, `wx1 =~ 1*x1; wx2 =~ 1*x2; ...`. 
 * The *lagged regressions* between the within-unit components, using `wx2 ~ wx1 wy1; wx3 ~ wx2 wy2; ...`. 
-* Relevant *covariances* in both the between and within part. In the within part the components at wave 1, and their residuals at waves 2 and further are correlated within each wave, using `wx1 ~~ wy1; wx2 ~~ wy2;...`. We also need to specify their (residual) variances here using `wx1 ~~ wx1; wx2 ~~ wx2; ...`. For the between part we have to specify the variances and covariance of the random intercepts using `RIx ~~ RIy;`. 
+* Relevant *covariances* in both the between and within part. In the within part the components at wave 1, and their residuals at waves 2 and further are correlated within each wave, using `wx1 ~~ wy1; wx2 ~~ wy2;...`. We also need to specify their (residual) variances here using `wx1 ~~ wx1; wx2 ~~ wx2; ...`. For the between part we have to specify the variances and covariance of the random intercepts using `RIx ~~ RIy;`.
+
+Note that the models below are fitted using the `lavaan()` function. Other functions for fitting SEM models using `lavaan` include `sem()` and `cfa()`. These functions rely on different defaults than `lavaan()` and fitting the below models with these functions can result in model misspecification and subsequently convergence issues. 
 
 ### The basic model
 The code for specifying the basic RI-CLPM is given below. 

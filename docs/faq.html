@@ -478,9 +478,9 @@ over time?
 time, this does not imply that the standardized parameters will be
 invariant over time as well. The reason for this is that a standardized
 parameter is a function of the unstandardized parameter, and of the
-standard deviations of the predictor and the outcome variable (i.e.,
-<span class="math inline">\(\beta_{standardized} =
-\frac{SD(x)}{SD(y}\beta\)</span>). Since the variances of the
+standard deviations of the predictor and the outcome variable, <span
+class="math inline">\(\beta_{standardized} =
+\frac{SD(x)}{SD(y)}\beta\)</span>. Since the variances of the
 within-components <em>themselves</em> are not constrained to be
 invariant over time, the standard deviations of the predictor and the
 outcome variable for the lagged effects can vary over time. Therefore,
@@ -499,20 +499,21 @@ href="https://doi.org/10.1214/aoms/1177732676">the path tracing
 rules</a> and assuming the variance of lagged within-component is in
 fact 1, the variance of <span class="math inline">\(wx_{it}\)</span> can
 be expressed as <span class="math display">\[Var[wx_{it}] =
-\alpha^{2}_{t} + \beta^{2}_{t} + 2 \alpha_{t} \beta_{t} Cov[wx_{i,t-1},
-wy_{i,t-1}] + Var[u_{it}]\]</span> where <span
+\alpha^{2}_{t} + \gamma^{2}_{t} + 2 \alpha_{t} \gamma_{t}
+Cov[wx_{i,t-1}, wy_{i,t-1}] + Var[u_{it}]\]</span> where <span
 class="math inline">\(\alpha_{t}\)</span> is the autoregressive effect
 of <span class="math inline">\(wx\)</span>, <span
-class="math inline">\(\beta_{t}\)</span> is the cross-lagged effect from
+class="math inline">\(\gamma{t}\)</span> is the cross-lagged effect from
 <span class="math inline">\(wy_{i,t-1}\)</span> to <span
 class="math inline">\(wx_{it}\)</span>, and <span
 class="math inline">\(u_{Xit}\)</span> is the residual of <span
 class="math inline">\(wx\)</span>. So, the variance of <span
-class="math inline">\(wx_{it}\)</span> itself can be set 1 to 1 by
+class="math inline">\(wx_{it}\)</span> itself can be set to 1 by
 imposing a constrain on the residual variance <span
 class="math inline">\(Var[u_{it}]\)</span>, that is <span
-class="math display">\[Var[u_{it}] = 1 - (\alpha^{2}_{t} + \beta^{2}_{t}
-+ 2 \alpha_{t} \beta_{t} Cov[wx_{i,t-1}, wy_{i,t-1}])\]</span>.</p>
+class="math display">\[Var[u_{it}] = 1 - (\alpha^{2}_{t} +
+\gamma^{2}_{t} + 2 \alpha_{t} \gamma_{t} Cov[wx_{i,t-1},
+wy_{i,t-1}])\]</span>.</p>
 <p>The final quantity that we need to compute is the covariance (here
 also the correlation) between the two lagged within-components, <span
 class="math inline">\(Cov[wx_{i,t-1}, wy_{i,t-1}]\)</span>. At wave 1,
@@ -524,19 +525,19 @@ within-components, and the covariance between the residuals at the
 preceding occasion. Again, using <a
 href="https://doi.org/10.1214/aoms/1177732676">the path tracing
 rules</a> and assuming the variances of lagged within-components are in
-fact 1, it can be expressed as <span
-class="math display">\[Cov[wx_{i,t}, wy_{i,t}] = \alpha_{t} \gamma_{t} +
-\beta_{t} \delta_{t} + \alpha_{t} \delta_{t} Cov[wx_{i,t-1}, wy_{i,t-1}]
-+ \beta_{t} \gamma_{t} Cov[wx_{i,t-1}, wy_{i,t-1}] + Cov[u_{Xit},
-u_{Yit}]\]</span> where <span class="math inline">\(\delta_{t}\)</span>
-is the autoregressive effect of <span class="math inline">\(wx\)</span>,
-<span class="math inline">\(\gamma_{t}\)</span> is the cross-lagged
-effect from <span class="math inline">\(wx_{i,t-1}\)</span> to <span
+fact 1, it can be expressed as <span class="math display">\[Cov[wx_{it},
+wy_{it}] = \alpha_{t} \gamma_{t} + \beta_{t} \delta_{t} + \alpha_{t}
+\delta_{t} Cov[wx_{i,t-1}, wy_{i,t-1}] + \beta_{t} \gamma_{t}
+Cov[wx_{i,t-1}, wy_{i,t-1}] + Cov[u_{Xit}, u_{Yit}]\]</span> where <span
+class="math inline">\(\delta_{t}\)</span> is the autoregressive effect
+of <span class="math inline">\(wy\)</span>, <span
+class="math inline">\(\beta_{t}\)</span> is the cross-lagged effect from
+<span class="math inline">\(wx_{i,t-1}\)</span> to <span
 class="math inline">\(wy_{it}\)</span>, and <span
 class="math inline">\(u_{Yit}\)</span> is the residual of <span
 class="math inline">\(wy\)</span>.</p>
-<p>To impose such constraints in Mplus or <em>lavaan</em>, we thus first
-need to compute the covariance (i.e., correlation) between the
+<p>To impose such constraints in Mplus or <code>lavaan</code>, we thus
+first need to compute the covariance (i.e., correlation) between the
 within-components at each occasion. Then, these can be used to constrain
 the residual variances of the within-components in such a way that the
 variances of the within-person components equal 1. Syntax has been added
@@ -581,27 +582,6 @@ and Muthén (2021)</a>.</li>
 The interested reader is referred to <a
 href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov
 and Muthén (2021)</a> for more details.
-</div>
-<hr />
-</div>
-<div id="time-time-lags" class="section level3">
-<h3>Time &amp; time-lags</h3>
-<hr />
-<div onclick="showHide(&#39;faq6&#39;)"
-style="cursor: pointer; font-weight:bold">
-How to deal with unequal intervals between repeated measures?
-</div>
-<div id="faq6" style="display:none">
-The lagged regression coefficients depend on the time lag between
-repeated measures (in a non-linear way). If the lags between subsequent
-occasions vary, qualitatively different autoregressive and cross-lagged
-effects between each pair of adjacent measurements are estimated. The
-advice is to <strong>not</strong> constrain these parameters over time
-in this case, as this would lead to an uninterpretable blend of
-different lagged relationships. Neither should the residual variances
-and covariances (of the within-components) be constrained to be
-invariant over time, as these also depend on the interval between
-measurements.
 </div>
 <hr />
 </div>
