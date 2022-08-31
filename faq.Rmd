@@ -104,7 +104,7 @@ The interested reader is referred to [Asparouhov and Muthén (2021)](http://stat
 
 <div onclick="showHide('faq8')" style="cursor: pointer; font-weight:bold">How do I perform a power analysis for the RI-CLPM?</div>
 
-<div id="faq8" style="display:none">I'm currently developing the R-package `powRICLPM`: A package for user-friendly power analysis for the RI-CLPM. Currently, version 0.0.0.9003 is available on GitHub, and documentation is available via [https://jeroendmulder.github.io/powRICLPM](https://jeroendmulder.github.io/powRICLPM). Note, however, that this package is still a pre-release version, and can contain some unknown bugs. Suggestions for improvement of the package are much appreciated and can be raised on GitHub via [https://github.com/jeroendmulder/powRICLPM](https://github.com/jeroendmulder/powRICLPM). A manuscript detailing the power analysis strategy as implemented in the `powRICLPM` package is in its final stages, and soon to be submitted for review.</div>
+<div id="faq8" style="display:none">I'm currently developing the R-package `powRICLPM`: A package for user-friendly power analysis for the RI-CLPM. Currently, version 0.0.0.9004 is available on GitHub, and documentation is available via [https://jeroendmulder.github.io/powRICLPM](https://jeroendmulder.github.io/powRICLPM). Note, however, that this package is still a pre-release version, and can contain some unknown bugs. Suggestions for improvement of the package are much appreciated and can be raised on GitHub via [https://github.com/jeroendmulder/powRICLPM](https://github.com/jeroendmulder/powRICLPM). A manuscript detailing the power analysis strategy as implemented in the `powRICLPM` package is currently under review, undergoing minor textual revisions.</div>
 
 ---
 

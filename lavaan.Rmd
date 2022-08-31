@@ -113,7 +113,7 @@ RICLPM.fit <- lavaan(RICLPM, data = dat, missing = 'ML', meanstructure = T, int.
 summary(RICLPM.fit, standardized = T)
 ```
 
-```{r CLPM, eval = F, message = F}
+```{r CLPM, eval = F, echo = F}
 CLPM <- '
   # Estimate the lagged effects between the observed variables.
   x2 + y2 ~ x1 + y1
@@ -398,11 +398,11 @@ summary(RICLPM5.fit, standardized = T)
 ---
 
 ### Time-invariant standardized lagged effects
-Rather than imposing constraints on the unstandardized auto-regressive and cross-lagged relations over time, we can impose constraints on the standardized lagged effects, as explained in the [FAQ](https://jeroendmulder.github.io/RI-CLPM/faq.html#Standardization). Compared to the basic model, there are multiple changes to the syntax. First, we freely estimate the factor loadings that link the observed variables to the within-components (by premultiplying with `NA`), rather than fixing them to 1:
+Rather than imposing constraints on the unstandardized auto-regressive and cross-lagged relations over time, we can impose constraints on the standardized lagged effects, as explained in the [FAQ](https://jeroendmulder.github.io/RI-CLPM/faq.html#Standardization). Compared to the previous model (with constraints over time on the unstandardized lagged effects), there are multiple changes to the syntax. First, we freely estimate the factor loadings that link the observed variables to the within-components (by premultiplying with `NA`), rather than fixing them to 1:
 
 ```{r RICLPM-constrainStandardizedLagged1, eval = F, echo = T}
 '
-  # Create within-components with freely estimated factor loading
+  # Create within-components with freely estimated factor loadings
   wx1 =~ NA*x1
   wx2 =~ NA*x2
   wx3 =~ NA*x3 
@@ -461,7 +461,7 @@ Finally, we compute the correlations between the within-components *themselves* 
   cor3 := a*c + b*d + a*d*cor2 + b*c*cor2 + rcov3
   cor4 := a*c + b*d + a*d*cor3 + b*c*cor3 + rcov4
  
-  #! Contrain residual variances of within-components such that variance of each within-component equals 1
+  # Contrain residual variances of within-components such that variance of each within-component equals 1
   rvx2 == 1 - (a*a + b*b + 2*a*b*cor1)
   rvy2 == 1 - (c*c + d*d + 2*c*d*cor1)
   rvx3 == 1 - (a*a + b*b + 2*a*b*cor2)
@@ -471,6 +471,89 @@ Finally, we compute the correlations between the within-components *themselves* 
   rvx5 == 1 - (a*a + b*b + 2*a*b*cor4)
   rvy5 == 1 - (c*c + d*d + 2*c*d*cor4)
 '
+```
+
+These steps ultimately result in the below syntax. Comparing the constrainted unstandardized and constrained standardized results shows that these are now equivalent. 
+
+```{r RICLPM-constrainStandardizedLagged5, eval = F, echo = T}
+RICLPM6 <- '
+  # Create between components (random intercepts)
+  RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5
+  RIy =~ 1*y1 + 1*y2 + 1*y3 + 1*y4 + 1*y5
+  
+  # Create within-components with freely estimated factor loadings
+  wx1 =~ NA*x1
+  wx2 =~ NA*x2
+  wx3 =~ NA*x3 
+  wx4 =~ NA*x4
+  wx5 =~ NA*x5
+  wy1 =~ NA*y1
+  wy2 =~ NA*y2
+  wy3 =~ NA*y3
+  wy4 =~ NA*y4
+  wy5 =~ NA*y5
+  
+  # Estimate the lagged effects between the within-person centered variables (constrained).
+  wx2 ~ a*wx1 + b*wy1 
+  wy2 ~ c*wx1 + d*wy1
+  wx3 ~ a*wx2 + b*wy2
+  wy3 ~ c*wx2 + d*wy2
+  wx4 ~ a*wx3 + b*wy3
+  wy4 ~ c*wx3 + d*wy3
+  wx5 ~ a*wx4 + b*wy4
+  wy5 ~ c*wx4 + d*wy4
+  
+  # Label the residual covariances
+  wx2 ~~ rcov2*wy2
+  wx3 ~~ rcov3*wy3
+  wx4 ~~ rcov4*wy4 
+  wx5 ~~ rcov5*wy5
+  
+  # Estimate correlation between within-components at first wave
+  wx1 ~~ cor1*wy1 
+  
+  # Estimate the variance and covariance of the random intercepts. 
+  RIx ~~ RIx
+  RIy ~~ RIy
+  RIx ~~ RIy
+  
+  # Set variances of within-components at first wave to 1
+  wx1 ~~ 1*wx1
+  wy1 ~~ 1*wy1
+  
+  # Label the residual variances
+  wx2 ~~ rvx2*wx2 
+  wy2 ~~ rvy2*wy2 
+  wx3 ~~ rvx3*wx3 
+  wy3 ~~ rvy3*wy3 
+  wx4 ~~ rvx4*wx4 
+  wy4 ~~ rvy4*wy4 
+  wx5 ~~ rvx5*wx5
+  wy5 ~~ rvy5*wy5
+  
+  # Constrain the grand means over time. 
+  x1 + x2 + x3 + x4 + x5 ~ mx*1
+  y1 + y2 + y3 + y4 + y5 ~ my*1
+  
+  # Compute correlations of within-components at each wave
+  cor2 := a*c + b*d + a*d*cor1 + b*c*cor1 + rcov2
+  cor3 := a*c + b*d + a*d*cor2 + b*c*cor2 + rcov3
+  cor4 := a*c + b*d + a*d*cor3 + b*c*cor3 + rcov4
+ 
+  # Contrain residual variances of within-components such that variance of each within-component equals 1
+  rvx2 == 1 - (a*a + b*b + 2*a*b*cor1)
+  rvy2 == 1 - (c*c + d*d + 2*c*d*cor1)
+  rvx3 == 1 - (a*a + b*b + 2*a*b*cor2)
+  rvy3 == 1 - (c*c + d*d + 2*c*d*cor2)
+  rvx4 == 1 - (a*a + b*b + 2*a*b*cor3)
+  rvy4 == 1 - (c*c + d*d + 2*c*d*cor3)
+  rvx5 == 1 - (a*a + b*b + 2*a*b*cor4)
+  rvy5 == 1 - (c*c + d*d + 2*c*d*cor4)
+'
+RICLPM6.fit <- lavaan(RICLPM6, data = dat, missing = 'ML', meanstructure = T, int.ov.free = T) 
+summary(RICLPM6.fit, standardized = F)
+summary(RICLPM6.fit, standardized = T)
+
 ```
 
 ---

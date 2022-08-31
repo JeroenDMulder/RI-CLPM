@@ -160,7 +160,7 @@ Imposing constraints to the model can be achieved by giving labels to parameters
 Rather than imposing constraints on the unstandardized auto-regressive and cross-lagged relations over time, we can impose constraints on the standardized lagged effects, as explained in the [FAQ](https://jeroendmulder.github.io/RI-CLPM/faq.html#Standardization). Compared to the basic model, there are multiple changes to the syntax. First, we freely estimate the factor loadings that link the observed variables to the within-components, rather than fixing them to 1:
 
 ```
-! Create within-components with freely estimated factor loading
+! Create within-components with freely estimated factor loadings
 wx1 BY x1*; 
 wx2 BY x2*;
 wx3 BY x3*; 
