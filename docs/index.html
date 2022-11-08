@@ -14,7 +14,7 @@
 
 <title>The RI-CLPM &amp; Extensions</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -164,11 +164,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -334,7 +338,7 @@ syntax, <em>lavaan</em> model syntax, or the FAQ on this website.</p>
 <h3>Data</h3>
 <p>You can find simulated example data sets (1189 units, 5
 repeated-measures) on <a
-href="https://github.com/jeroendmulder/RI-CLPM/tree/master/data">Github</a>
+href="https://github.com/jeroendmulder/RI-CLPM/tree/master/data">GitHub</a>
 to get hands-on experience with this modeling approach. The example data
 are motivated by <span class="citation">Narmandakh et al. (2020)</span>
 who obtained five waves of data from 1189 adolescents on their sleep
