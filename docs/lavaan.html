@@ -438,13 +438,14 @@ datMI &lt;- read.table(&quot;/Users/jeroenmulder/GitHub/RI-CLPM/data/RICLPM-MI.d
 <ul>
 <li>A <em>between part</em>, consisting of the random intercepts. It is
 specified using the <code>=~</code> command,
-<code>RIx =~ 1*x1 1*x2 ...</code>, where <code>1*</code> fixes the
+<code>RIx =~ 1*x1 + 1*x2 ...</code>, where <code>1*</code> fixes the
 factor loading to one.</li>
 <li>A <em>within part</em>, consisting of within-unit fluctuations. It
 is also specified using the <code>=~</code> command,
 <code>wx1 =~ 1*x1; wx2 =~ 1*x2; ...</code>.</li>
 <li>The <em>lagged regressions</em> between the within-unit components,
-using <code>wx2 ~ wx1 wy1; wx3 ~ wx2 wy2; ...</code>.</li>
+using
+<code>wx2 + wy2 ~ wx1 + wy1; wx3 + wy3 ~ wx2 + wy2; ...</code>.</li>
 <li>Relevant <em>covariances</em> in both the between and within part.
 In the within part the components at wave 1, and their residuals at
 waves 2 and further are correlated within each wave, using
