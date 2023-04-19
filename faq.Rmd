@@ -89,9 +89,9 @@ To impose such constraints in Mplus or `lavaan`, we thus first need to compute t
 <div onclick="showHide('faq2')" style="cursor: pointer; font-weight:bold">Can I run the RI-CLPM with binary/categorical/count outcomes? </div>
  
 <div id="faq2" style="display:none">
-With the launch of Mplus version 8.7, it is possible to estimate the RI-CLPM for binary and ordinal variables as well ([Asparouhov and Muthén, 2021](http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf)). Compared to the RI-CLPM for continuous variables, there are two important differences: 
+With Mplus version 8.7 and later, it is possible to estimate the RI-CLPM for binary and ordinal variables as well ([Asparouhov and Muthén, 2021](http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf)). Compared to the RI-CLPM for continuous variables, there are two important differences: 
 
-- Bayesian estimation is needed, and can be used by specifying `ESTIMATOR = BAYES;` in the `ANALYSIS` command.
+- A Bayesian estimator or WLSMV estimator (with theta parametrization) is needed. This can be specified by specifying either `ESTIMATOR = BAYES;` or `ESTIMATOR = WLSMV;` in the `ANALYSIS` command, as well as `PARAM = THETA;` for the WLSMV estimator. 
 - The variances and residual variances of the within-components are fixed to 1, as is standard when using the probit-model in Mplus for categorical data analysis. These can be freely estimated in principle, but generally require larger sample sizes, and are prone to empirical non-identification. Several strategies for (partly) freeing up these variances are discussed in [Asparouhov and Muthén (2021)](http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf). 
 
 The interested reader is referred to [Asparouhov and Muthén (2021)](http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf) for more details.</div>
@@ -104,7 +104,7 @@ The interested reader is referred to [Asparouhov and Muthén (2021)](http://stat
 
 <div onclick="showHide('faq8')" style="cursor: pointer; font-weight:bold">How do I perform a power analysis for the RI-CLPM?</div>
 
-<div id="faq8" style="display:none">`powRICLPM` is an R-package that performs a power analysis for the RI-CLPM in a simple and user-friendly way. It implements the strategy as proposed by Mulder (in press). `powRICLPM` is available from the Comprehensive R Archive Network (CRAN). More information can be found at [https://jeroendmulder.github.io/powRICLPM/](https://jeroendmulder.github.io/powRICLPM/).</div>
+<div id="faq8" style="display:none">`powRICLPM` is an R-package that performs a power analysis for the RI-CLPM in a simple and user-friendly way. It implements the strategy as proposed by [Mulder (2022)](https://doi.org/10.1080/10705511.2022.2122467), and includes various extensions such as the inclusion of measurement error (leading to the stable trait autoregressive trait state model by [Kenny and Zautra, 2001](https://doi.org/10.1037/10409-008)), and multiple constraints over time. `powRICLPM` is available from the Comprehensive R Archive Network (CRAN). More information can be found at [https://jeroendmulder.github.io/powRICLPM/](https://jeroendmulder.github.io/powRICLPM/).</div>
 
 ---
 

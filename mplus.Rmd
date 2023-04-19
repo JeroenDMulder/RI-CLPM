@@ -473,7 +473,7 @@ Below you can find the syntax for a RI-CLPM with 5 waves and the within componen
 ## Ext. 2: multiple group {.tabset .tabset-fade}
 Use the tabs below to navigate to the model specification of the basic multiple-group model, or the model with constrained lagged parameters (and intercepts across groups). 
 
-To specify a multiple group RI-CLPM, we need to overrule some of the defaults that Mplus will impose and that are associated with multiple group factor analysis. The reason for this is that when we use the `BY` statement in combination with multiple groups, Mplus will automatically impose the defaults that are associated with strong factorial invariance (@Meredith1993). These defaults are:
+To specify a multiple group RI-CLPM, we need to overrule some of the defaults that Mplus will impose and that are associated with multiple group factor analysis. The reason for this is that when we use the `BY` statement in combination with multiple groups, Mplus will automatically impose the defaults that are associated with strong factorial invariance [@Meredith1993]. These defaults are:
 
 * equal factor loadings across the groups,
 * equal intercepts for the observed variables across the groups, and

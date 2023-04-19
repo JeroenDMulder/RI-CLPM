@@ -13,7 +13,7 @@
 
 <title>Frequently Asked Questions</title>
 
-<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -181,8 +181,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -190,16 +190,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -565,15 +558,17 @@ style="cursor: pointer; font-weight:bold">
 Can I run the RI-CLPM with binary/categorical/count outcomes?
 </div>
 <div id="faq2" style="display:none">
-<p>With the launch of Mplus version 8.7, it is possible to estimate the
+<p>With Mplus version 8.7 and later, it is possible to estimate the
 RI-CLPM for binary and ordinal variables as well (<a
 href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov
 and Muthén, 2021</a>). Compared to the RI-CLPM for continuous variables,
 there are two important differences:</p>
 <ul>
-<li>Bayesian estimation is needed, and can be used by specifying
-<code>ESTIMATOR = BAYES;</code> in the <code>ANALYSIS</code>
-command.</li>
+<li>A Bayesian estimator or WLSMV estimator (with theta parametrization)
+is needed. This can be specified by specifying either
+<code>ESTIMATOR = BAYES;</code> or <code>ESTIMATOR = WLSMV;</code> in
+the <code>ANALYSIS</code> command, as well as
+<code>PARAM = THETA;</code> for the WLSMV estimator.</li>
 <li>The variances and residual variances of the within-components are
 fixed to 1, as is standard when using the probit-model in Mplus for
 categorical data analysis. These can be freely estimated in principle,
@@ -599,9 +594,14 @@ How do I perform a power analysis for the RI-CLPM?
 <div id="faq8" style="display:none">
 <code>powRICLPM</code> is an R-package that performs a power analysis
 for the RI-CLPM in a simple and user-friendly way. It implements the
-strategy as proposed by Mulder (in press). <code>powRICLPM</code> is
-available from the Comprehensive R Archive Network (CRAN). More
-information can be found at <a
+strategy as proposed by <a
+href="https://doi.org/10.1080/10705511.2022.2122467">Mulder (2022)</a>,
+and includes various extensions such as the inclusion of measurement
+error (leading to the stable trait autoregressive trait state model by
+<a href="https://doi.org/10.1037/10409-008">Kenny and Zautra, 2001</a>),
+and multiple constraints over time. <code>powRICLPM</code> is available
+from the Comprehensive R Archive Network (CRAN). More information can be
+found at <a
 href="https://jeroendmulder.github.io/powRICLPM/">https://jeroendmulder.github.io/powRICLPM/</a>.
 </div>
 <hr />
