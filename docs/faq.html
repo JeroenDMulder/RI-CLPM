@@ -1,917 +1,868 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-<html>
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
 
-<head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
+<title>The RI-CLPM &amp; Extensions - Frequently Asked Questions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<title>Frequently Asked Questions</title>
-
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
-
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
   }
-}
-</script>
+}</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-
-
-
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
-
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="The RI-CLPM &amp; Extensions - Frequently Asked Questions">
+<meta property="og:description" content="">
+<meta property="og:site-name" content="The RI-CLPM &amp; Extensions">
 </head>
 
-<body>
+<body class="nav-fixed">
 
-
-<div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">The RI-CLPM &amp; Extensions</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./mplus.html" rel="" target="">
+ <span class="menu-text">Mplus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./lavaan.html" rel="" target="">
+ <span class="menu-text">lavaan (R)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./news.html" rel="" target="">
+ <span class="menu-text">News</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./faq.html" rel="" target="" aria-current="page">
+ <span class="menu-text">FAQ</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">The RI-CLPM & Extensions</a>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#time-varying-covariates" id="toc-time-varying-covariates" class="nav-link active" data-scroll-target="#time-varying-covariates">Time-varying covariates</a></li>
+  <li><a href="#moderation" id="toc-moderation" class="nav-link" data-scroll-target="#moderation">Moderation</a></li>
+  <li><a href="#standardization" id="toc-standardization" class="nav-link" data-scroll-target="#standardization">Standardization</a></li>
+  <li><a href="#non-continuous-outcomes" id="toc-non-continuous-outcomes" class="nav-link" data-scroll-target="#non-continuous-outcomes">Non-continuous outcomes</a></li>
+  <li><a href="#power" id="toc-power" class="nav-link" data-scroll-target="#power">Power</a></li>
+  <li><a href="#clpm-v.-riclpm" id="toc-clpm-v.-riclpm" class="nav-link" data-scroll-target="#clpm-v.-riclpm">CLPM v. RICLPM</a></li>
+  <li><a href="#growth-and-development" id="toc-growth-and-development" class="nav-link" data-scroll-target="#growth-and-development">Growth and development</a></li>
+  <li><a href="#response-to-orth_testing_2021" id="toc-response-to-orth_testing_2021" class="nav-link" data-scroll-target="#response-to-orth_testing_2021">Response to <span class="citation" data-cites="orth_testing_2021">Orth et al. (2021)</span></a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/JeroenDMulder/RI-CLPM/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="mplus.html">Mplus</a>
-</li>
-<li>
-  <a href="lavaan.html">lavaan (R)</a>
-</li>
-<li>
-  <a href="news.html">News</a>
-</li>
-<li>
-  <a href="faq.html">FAQ</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+<!-- main -->
+<main class="content" id="quarto-document-content">
 
-<div id="header">
-
-
-
-<h1 class="title toc-ignore">Frequently Asked Questions</h1>
-
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Frequently Asked Questions</h1>
 </div>
 
 
-<script>
-function showHide(element) {
-    var x = document.getElementById(element);
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
-<hr />
-<p>Below you can find a list of frequently asked questions, organized by
-topic, that reach us via email. Click the question to see our
-response.</p>
-<hr />
-<div id="time-varying-covariates" class="section level3">
-<h3>Time-varying covariates</h3>
-<hr />
-<div onclick="showHide(&#39;faq1&#39;)"
-style="cursor: pointer; font-weight:bold">
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Below you can find a list of frequently asked questions, organized by topic, that reach us via email. Click the question to see our response.</p>
+<section id="time-varying-covariates" class="level3">
+<h3 class="anchored" data-anchor-id="time-varying-covariates">Time-varying covariates</h3>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="How do I include time-varying covariates with the RI-CLPM?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
 How do I include time-varying covariates with the RI-CLPM?
 </div>
-<div id="faq1" style="display:none">
-Time-varying covariates (TVC; <span class="math inline">\(Z\)</span>)
-can be included like “regular” X and Y outcomes in the RI-CLPM; hence,
-rather than a bivariate RI-CLPM you would specify a tri- or more-variate
-RI-CLPM. As such, you decompose the TVCs in within-components
-(e.g. <span class="math inline">\(wz1\)</span>, <span
-class="math inline">\(wz2\)</span>, etc.) and a between-component (the
-random intercept; e.g. <span class="math inline">\(RI_{z}\)</span>) and
-model these components separately. However, if you want to control for
-many TVC’s, this can quickly become an unwieldly model, so researchers
-should think carefully about which TVC’s they want to control for.
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<hr />
-<div onclick="showHide(&#39;faq3&#39;)"
-style="cursor: pointer; font-weight:bold">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Time-varying covariates (TVC; <span class="math inline">\(Z\)</span>) can be included like “regular” X and Y outcomes in the RI-CLPM; hence, rather than a bivariate RI-CLPM you would specify a tri- or more-variate RI-CLPM. As such, you decompose the TVCs in within-components (e.g.&nbsp;<span class="math inline">\(wz1\)</span>, <span class="math inline">\(wz2\)</span>, etc.) and a between-component (the random intercept; e.g.&nbsp;<span class="math inline">\(RI_{z}\)</span>) and model these components separately. However, if you want to control for many TVC’s, this can quickly become an unwieldly model, so researchers should think carefully about which TVC’s they want to control for.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="Is it possible to run an RI-CLPM with three (or more) outcomes?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
 Is it possible to run an RI-CLPM with three (or more) outcomes?
 </div>
-<div id="faq3" style="display:none">
-Yes, it is statistically possible to run a “trivariate” RI-CLPM and
-empirical researchers have done so, see for example <a
-href="https://doi.org/10.1037/dev0000612">Van Lissa, Keizer, Van Lier,
-Meeus, and Branje (2019)</a>, <a
-href="http://dx.doi.org/10.1016/j.eurpsy.2018.12.005">Flouri,
-Papachristou, Midouhas, Ploubidis, Lewis, and Joshi (2019)</a>, and <a
-href="https://doi.org/10.1016/j.chb.2022.107252">Hygen, Belsky,
-Stenseng, Steinsbekk, Wichstrom, and Skalicka (2022)</a>. We don’t
-provide model code here for this mode, but extension to a trivariate
-RI-CLPM should be relatively straight forwards. That is, all variables
-should be decomponsed into between- (random intercepts) and
-within-components, and relevant lagged effects, as well as (residual)
-variances and covariances, should be included in the model.
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<hr />
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Yes, it is statistically possible to run a “trivariate” RI-CLPM and empirical researchers have done so, see for example <span class="citation" data-cites="van_lissa_role_2019">Van Lissa et al. (<a href="#ref-van_lissa_role_2019" role="doc-biblioref">2019</a>)</span>, <span class="citation" data-cites="flouri_developmental_2019">Flouri et al. (<a href="#ref-flouri_developmental_2019" role="doc-biblioref">2019</a>)</span>, and <span class="citation" data-cites="hygen_longitudinal_2022">Hygen et al. (<a href="#ref-hygen_longitudinal_2022" role="doc-biblioref">2022</a>)</span>. We don’t provide model code here for this mode, but extension to a trivariate RI-CLPM should be relatively straight forwards. That is, all variables should be decomponsed into between- (random intercepts) and within-components, and relevant lagged effects, as well as (residual) variances and covariances, should be included in the model.</p>
 </div>
-<div id="standardization" class="section level3">
-<h3>Standardization</h3>
-<hr />
-<div onclick="showHide(&#39;faq4&#39;)"
-style="cursor: pointer; font-weight:bold">
-How should I interpret the standardized cross-lagged and autoregressive
-parameters?
 </div>
-<div id="faq4" style="display:none">
-In the RI-CLPM, the standardized effects are reflective/representative
-of how much within-person variance in <span
-class="math inline">\(y_{t}\)</span> is <em>uniquely</em> explained
-(i.e., not also explained by other predictors) by the predictor <span
-class="math inline">\(x_{t-1}\)</span>. Please note that this does not
-imply that one can make a one-on-one comparison with the percentage of
-explained variance. However, the standardized effects can be used to
-compare which effect is relatively stronger <a
-href="https://doi.org/10.1037/met0000062">(Schuurman, Ferrer,
-Boer-Sonnenschein, &amp; Hamaker, 2016)</a>.
 </div>
-<hr />
-<div onclick="showHide(&#39;faq5&#39;)"
-style="cursor: pointer; font-weight:bold">
-How do standardized cross-lagged and autoregressive parameters compare
-to explained variance?
+</section>
+<section id="moderation" class="level3">
+<h3 class="anchored" data-anchor-id="moderation">Moderation</h3>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="Is it possible to specify a moderator within the RI-CLPM?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
-<div id="faq5" style="display:none">
-<p>The standardized lagged parameters are not equal to the (squared)
-semipartial correlation. Only under special circumstances, a
-standardized regression coefficient is equal to the pairwise correlation
-between the outcome and predictor, and the square of the standardized
-regression coefficient would then be the explained variance (<span
-class="math inline">\(R^{2}\)</span>). This only applies in the case of
-(a) a simple regression, where there is only one predictor in the model,
-or (b) a multiple regression where the predictors are independent of
-each other. In the RI-CLPM, however, the multiple predictors are not
-independent of each other, and therefore the standardized regression
-coefficients are not equal to the pairwise correlation, (semi)partial
-correlation, or the unique explained variance.</p>
-<p>However, the standardized coefficient is closely related to the
-semipartial correlation, as demonstrated in footnote 3 of <a
-href="https://doi.org/10.1037/met0000062">Schuurman, Ferrer,
-Boer-Sonnenschein, and Hamaker (2016)</a>. The standardized coefficient
-is expressed in terms of pairwise correlations in the first equation
-there, and the semipartial correlation expressed in terms of pairwise
-correlations in the second equation. They are very similar, but there is
-a subtle difference in the denominator.</p>
-<p>So, the semipartial correlation and standardized coefficient are not
-equal, but we can see that if the semipartical correlation for one
-predictor is larger than for another predictor, this will also be the
-case for the standardized coefficients of these predictors. The square
-of the semi-partial correlation is the <em>unique</em> explained
-variance, so we also know that the predictor with the largest
-standardized coefficient, will also have the largest <em>unique</em>
-explained variance.</p>
-<em>Answer by <a href="https://www.uu.nl/staff/NKSchuurman">dr. Noémi
-Schuurman</a>.</em>
+<div class="callout-title-container flex-fill">
+Is it possible to specify a moderator within the RI-CLPM?
 </div>
-<hr />
-<div onclick="showHide(&#39;faq7&#39;)"
-style="cursor: pointer; font-weight:bold">
-How can I constrain the <em>standardized</em> parameters to be invariant
-over time?
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="faq7" style="display:none">
-<p>While the lagged parameters can be constrained to be invariant over
-time, this does not imply that the standardized parameters will be
-invariant over time as well. The reason for this is that a standardized
-parameter is a function of the unstandardized parameter, and of the
-standard deviations of the predictor and the outcome variable, <span
-class="math inline">\(\beta_{standardized} =
-\frac{SD(x)}{SD(y)}\beta\)</span>. Since the variances of the
-within-components <em>themselves</em> are not constrained to be
-invariant over time, the standard deviations of the predictor and the
-outcome variable for the lagged effects can vary over time. Therefore,
-the standardized lagged effects can vary even while the unstandardized
-lagged effects are constrained to be equal over time.</p>
-<p>To make the standardized lagged parameters time invariant, the
-within-person components need to have a variance of 1 at every occasion.
-In that case, the lagged parameters are already the standardized lagged
-parameters, and it becomes possible to impose time-constraints on them.
-At the first wave, the variances of the within-components can be set
-directly as these variables are exogenous. However, for <span
-class="math inline">\(t &gt; 1\)</span>, the variances of the
-within-components are functions of the lagged parameters, and the
-covariance between the lagged predictors. Specifically, using <a
-href="https://doi.org/10.1214/aoms/1177732676">the path tracing
-rules</a> and assuming the variance of lagged within-component is in
-fact 1, the variance of <span class="math inline">\(wx_{it}\)</span> can
-be expressed as <span class="math display">\[Var[wx_{it}] =
-\alpha^{2}_{t} + \gamma^{2}_{t} + 2 \alpha_{t} \gamma_{t}
-Cov[wx_{i,t-1}, wy_{i,t-1}] + Var[u_{it}]\]</span> where <span
-class="math inline">\(\alpha_{t}\)</span> is the autoregressive effect
-of <span class="math inline">\(wx\)</span>, <span
-class="math inline">\(\gamma{t}\)</span> is the cross-lagged effect from
-<span class="math inline">\(wy_{i,t-1}\)</span> to <span
-class="math inline">\(wx_{it}\)</span>, and <span
-class="math inline">\(u_{Xit}\)</span> is the residual of <span
-class="math inline">\(wx\)</span>. So, the variance of <span
-class="math inline">\(wx_{it}\)</span> itself can be set to 1 by
-imposing a constrain on the residual variance <span
-class="math inline">\(Var[u_{it}]\)</span>, that is <span
-class="math display">\[Var[u_{it}] = 1 - (\alpha^{2}_{t} +
-\gamma^{2}_{t} + 2 \alpha_{t} \gamma_{t} Cov[wx_{i,t-1},
-wy_{i,t-1}])\]</span>.</p>
-<p>The final quantity that we need to compute is the covariance (here
-also the correlation) between the two lagged within-components, <span
-class="math inline">\(Cov[wx_{i,t-1}, wy_{i,t-1}]\)</span>. At wave 1,
-this is simply a model parameter (i.e., the covariance between the
-within-components can be estimated directly). For <span
-class="math inline">\(t &gt; 1\)</span>, this covariance is a function
-of the lagged coefficients, the variances of the lagged
-within-components, and the covariance between the residuals at the
-preceding occasion. Again, using <a
-href="https://doi.org/10.1214/aoms/1177732676">the path tracing
-rules</a> and assuming the variances of lagged within-components are in
-fact 1, it can be expressed as <span class="math display">\[Cov[wx_{it},
-wy_{it}] = \alpha_{t} \gamma_{t} + \beta_{t} \delta_{t} + \alpha_{t}
-\delta_{t} Cov[wx_{i,t-1}, wy_{i,t-1}] + \beta_{t} \gamma_{t}
-Cov[wx_{i,t-1}, wy_{i,t-1}] + Cov[u_{Xit}, u_{Yit}]\]</span> where <span
-class="math inline">\(\delta_{t}\)</span> is the autoregressive effect
-of <span class="math inline">\(wy\)</span>, <span
-class="math inline">\(\beta_{t}\)</span> is the cross-lagged effect from
-<span class="math inline">\(wx_{i,t-1}\)</span> to <span
-class="math inline">\(wy_{it}\)</span>, and <span
-class="math inline">\(u_{Yit}\)</span> is the residual of <span
-class="math inline">\(wy\)</span>.</p>
-<p>To impose such constraints in Mplus or <code>lavaan</code>, we thus
-first need to compute the covariance (i.e., correlation) between the
-within-components at each occasion. Then, these can be used to constrain
-the residual variances of the within-components in such a way that the
-variances of the within-person components equal 1. Syntax has been added
-to this website to specify this model in <a
-href="https://jeroendmulder.github.io/RI-CLPM/mplus.html#The_RI-CLPM">Mplus</a>
-and <a
-href="https://jeroendmulder.github.io/RI-CLPM/lavaan.html#The_RI-CLPM">lavaan</a>.
-Note that in this model, the factor loadings that link the observed
-variables to the within-components are not fixed to 1 as is usually
-done, but they are estimated freely.</p>
-<em>Answer by <a href="https://www.uu.nl/staff/ELHamaker">prof. dr.
-Ellen L. Hamaker</a>.</em>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Yes, this is possible, although the possibilities differ a bit depending on the software you are using and the type of moderator. Moderation by a time-invariant, categorical variable can be investigated using a multiple group RI-CLPM, as described in Extension 2 of <span class="citation" data-cites="mulder_three_2021">Mulder and Hamaker (<a href="#ref-mulder_three_2021" role="doc-biblioref">2021</a>)</span>. Moderation by a time-varying, continuous variable can be investigating by creating latent interactions of the moderator <span class="math inline">\(\times\)</span> the within-components and/or random intercepts. See <span class="citation" data-cites="ozkok_interaction_2022">Ozkok et al. (<a href="#ref-ozkok_interaction_2022" role="doc-biblioref">2022</a>)</span> and <span class="citation" data-cites="speyer_testing_2023">Speyer et al. (<a href="#ref-speyer_testing_2023" role="doc-biblioref">2023</a>)</span> for detailed information on how to this.</p>
+<p><span class="citation" data-cites="ozkok_interaction_2022">Ozkok et al. (<a href="#ref-ozkok_interaction_2022" role="doc-biblioref">2022</a>)</span> addresses the high computational burden that the inclusion of a continuous time-varying moderator places on the estimation, and they make use of a Bayesian estimator. Their supplemental materials, including their Mplus model syntax, can be found at <a href="https://journals.sagepub.com/doi/suppl/10.1177/10944281211043733">https://journals.sagepub.com/doi/suppl/10.1177/10944281211043733</a>. They note that currently only Mplus supports the use of latent interactions as used here.</p>
 </div>
-<hr />
 </div>
-<div id="non-continuous-outcomes" class="section level3">
-<h3>Non-continuous outcomes</h3>
-<hr />
-<div onclick="showHide(&#39;faq2&#39;)"
-style="cursor: pointer; font-weight:bold">
+</div>
+</section>
+<section id="standardization" class="level3">
+<h3 class="anchored" data-anchor-id="standardization">Standardization</h3>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="How should I interpret the standardized cross-lagged and autoregressive parameters?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How should I interpret the standardized cross-lagged and autoregressive parameters?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In the RI-CLPM, the standardized effects are reflective/representative of how much within-person variance in <span class="math inline">\(y_{t}\)</span> is <em>uniquely</em> explained (i.e., not also explained by other predictors) by the predictor <span class="math inline">\(x_{t-1}\)</span>. Please note that this does not imply that one can make a one-on-one comparison with the percentage of explained variance. However, the standardized effects can be used to compare which effect is relatively stronger <span class="citation" data-cites="schuurman_how_2016">(<a href="#ref-schuurman_how_2016" role="doc-biblioref">Schuurman et al. 2016</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="How do standardized cross-lagged and autoregressive parameters compare to explained variance?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How do standardized cross-lagged and autoregressive parameters compare to explained variance?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The standardized lagged parameters are not equal to the (squared) semipartial correlation. Only under special circumstances, a standardized regression coefficient is equal to the pairwise correlation between the outcome and predictor, and the square of the standardized regression coefficient would then be the explained variance (<span class="math inline">\(R^{2}\)</span>). This only applies in the case of (a) a simple regression, where there is only one predictor in the model, or (b) a multiple regression where the predictors are independent of each other. In the RI-CLPM, however, the multiple predictors are not independent of each other, and therefore the standardized regression coefficients are not equal to the pairwise correlation, (semi)partial correlation, or the unique explained variance.</p>
+<p>However, the standardized coefficient is closely related to the semipartial correlation, as demonstrated in footnote 3 of <span class="citation" data-cites="schuurman_how_2016">Schuurman et al. (<a href="#ref-schuurman_how_2016" role="doc-biblioref">2016</a>)</span>. The standardized coefficient is expressed in terms of pairwise correlations in the first equation there, and the semipartial correlation expressed in terms of pairwise correlations in the second equation. They are very similar, but there is a subtle difference in the denominator.</p>
+<p>So, the semipartial correlation and standardized coefficient are not equal, but we can see that if the semipartical correlation for one predictor is larger than for another predictor, this will also be the case for the standardized coefficients of these predictors. The square of the semi-partial correlation is the <em>unique</em> explained variance, so we also know that the predictor with the largest standardized coefficient, will also have the largest <em>unique</em> explained variance.</p>
+<p><em>Answer by <a href="https://www.uu.nl/staff/NKSchuurman">dr. Noémi Schuurman</a>.</em></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="How can I constrain the *standardized* parameters to be invariant over time?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How can I constrain the <em>standardized</em> parameters to be invariant over time?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>While the lagged parameters can be constrained to be invariant over time, this does not imply that the standardized parameters will be invariant over time as well. The reason for this is that a standardized parameter is a function of the unstandardized parameter, and of the standard deviations of the predictor and the outcome variable, <span class="math inline">\(\beta_{standardized} = \frac{SD(x)}{SD(y)}\beta\)</span>. Since the variances of the within-components <em>themselves</em> are not constrained to be invariant over time, the standard deviations of the predictor and the outcome variable for the lagged effects can vary over time. Therefore, the standardized lagged effects can vary even while the unstandardized lagged effects are constrained to be equal over time.</p>
+<p>To make the standardized lagged parameters time invariant, the within-person components need to have a variance of 1 at every occasion. In that case, the lagged parameters are already the standardized lagged parameters, and it becomes possible to impose time-constraints on them. At the first wave, the variances of the within-components can be set directly as these variables are exogenous. However, for <span class="math inline">\(t &gt; 1\)</span>, the variances of the within-components are functions of the lagged parameters, and the covariance between the lagged predictors. Specifically, using <em>the path tracing rules</em> <span class="citation" data-cites="wright_method_1934">(<a href="#ref-wright_method_1934" role="doc-biblioref">Wright 1934</a>)</span> and assuming the variance of lagged within-component is in fact 1, the variance of <span class="math inline">\(wx_{it}\)</span> can be expressed as <span class="math display">\[Var[wx_{it}] = \alpha^{2}_{t} + \gamma^{2}_{t} + 2 \alpha_{t} \gamma_{t} Cov[wx_{i,t-1}, wy_{i,t-1}] + Var[u_{it}]\]</span> where <span class="math inline">\(\alpha_{t}\)</span> is the autoregressive effect of <span class="math inline">\(wx\)</span>, <span class="math inline">\(\gamma{t}\)</span> is the cross-lagged effect from <span class="math inline">\(wy_{i,t-1}\)</span> to <span class="math inline">\(wx_{it}\)</span>, and <span class="math inline">\(u_{Xit}\)</span> is the residual of <span class="math inline">\(wx\)</span>. So, the variance of <span class="math inline">\(wx_{it}\)</span> itself can be set to 1 by imposing a constrain on the residual variance <span class="math inline">\(Var[u_{it}]\)</span>, that is <span class="math display">\[Var[u_{it}] = 1 - (\alpha^{2}_{t} + \gamma^{2}_{t} + 2 \alpha_{t} \gamma_{t} Cov[wx_{i,t-1}, wy_{i,t-1}])\]</span>.</p>
+<p>The final quantity that we need to compute is the covariance (here also the correlation) between the two lagged within-components, <span class="math inline">\(Cov[wx_{i,t-1}, wy_{i,t-1}]\)</span>. At wave 1, this is simply a model parameter (i.e., the covariance between the within-components can be estimated directly). For <span class="math inline">\(t &gt; 1\)</span>, this covariance is a function of the lagged coefficients, the variances of the lagged within-components, and the covariance between the residuals at the preceding occasion. Again, using the path tracing rules and assuming the variances of lagged within-components are in fact 1, it can be expressed as <span class="math display">\[Cov[wx_{it}, wy_{it}] = \alpha_{t} \gamma_{t} + \beta_{t} \delta_{t} + \alpha_{t} \delta_{t} Cov[wx_{i,t-1}, wy_{i,t-1}] + \beta_{t} \gamma_{t} Cov[wx_{i,t-1}, wy_{i,t-1}] + Cov[u_{Xit}, u_{Yit}]\]</span> where <span class="math inline">\(\delta_{t}\)</span> is the autoregressive effect of <span class="math inline">\(wy\)</span>, <span class="math inline">\(\beta_{t}\)</span> is the cross-lagged effect from <span class="math inline">\(wx_{i,t-1}\)</span> to <span class="math inline">\(wy_{it}\)</span>, and <span class="math inline">\(u_{Yit}\)</span> is the residual of <span class="math inline">\(wy\)</span>.</p>
+<p>To impose such constraints in Mplus or <em>lavaan</em>, we thus first need to compute the covariance (i.e., correlation) between the within-components at each occasion. Then, these can be used to constrain the residual variances of the within-components in such a way that the variances of the within-person components equal 1. Syntax has been added to this website to specify this model in <a href="https://jeroendmulder.github.io/RI-CLPM/mplus.html#The_RI-CLPM">Mplus</a> and <a href="https://jeroendmulder.github.io/RI-CLPM/lavaan.html#The_RI-CLPM">lavaan</a>. Note that in this model, the factor loadings that link the observed variables to the within-components are not fixed to 1 as is usually done, but they are estimated freely.</p>
+<p><em>Answer by <a href="https://www.uu.nl/staff/ELHamaker">prof. dr. Ellen L. Hamaker</a>.</em></p>
+</div>
+</div>
+</div>
+</section>
+<section id="non-continuous-outcomes" class="level3">
+<h3 class="anchored" data-anchor-id="non-continuous-outcomes">Non-continuous outcomes</h3>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="Can I run the RI-CLPM with binary/categorical/count outcomes?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
 Can I run the RI-CLPM with binary/categorical/count outcomes?
 </div>
-<div id="faq2" style="display:none">
-<p>With Mplus version 8.7 and later, it is possible to estimate the
-RI-CLPM for binary and ordinal variables as well (<a
-href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov
-and Muthén, 2021</a>). Compared to the RI-CLPM for continuous variables,
-there are two important differences:</p>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>With Mplus version 8.7 and later, it is possible to estimate the RI-CLPM for binary and ordinal variables as well <span class="citation" data-cites="asparouhov_residual_2021">(<a href="#ref-asparouhov_residual_2021" role="doc-biblioref">Asparouhov and Muthén 2021</a>)</span>. Compared to the RI-CLPM for continuous variables, there are two important differences:</p>
 <ul>
-<li>A Bayesian estimator or WLSMV estimator (with theta parametrization)
-is needed. This can be specified by specifying either
-<code>ESTIMATOR = BAYES;</code> or <code>ESTIMATOR = WLSMV;</code> in
-the <code>ANALYSIS</code> command, as well as
-<code>PARAM = THETA;</code> for the WLSMV estimator.</li>
-<li>The variances and residual variances of the within-components are
-fixed to 1, as is standard when using the probit-model in Mplus for
-categorical data analysis. These can be freely estimated in principle,
-but generally require larger sample sizes, and are prone to empirical
-non-identification. Several strategies for (partly) freeing up these
-variances are discussed in <a
-href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov
-and Muthén (2021)</a>.</li>
+<li>A Bayesian estimator or WLSMV estimator (with theta parametrization) is needed. This can be specified by specifying either <code>ESTIMATOR = BAYES;</code> or <code>ESTIMATOR = WLSMV;</code> in the <code>ANALYSIS</code> command, as well as <code>PARAM = THETA;</code> for the WLSMV estimator.</li>
+<li>The variances and residual variances of the within-components are fixed to 1, as is standard when using the probit-model in Mplus for categorical data analysis. These can be freely estimated in principle, but generally require larger sample sizes, and are prone to empirical non-identification. Several strategies for (partly) freeing up these variances are discussed in <span class="citation" data-cites="asparouhov_residual_2021">Asparouhov and Muthén (<a href="#ref-asparouhov_residual_2021" role="doc-biblioref">2021</a>)</span>.</li>
 </ul>
-The interested reader is referred to <a
-href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">Asparouhov
-and Muthén (2021)</a> for more details.
+<p>The interested reader is referred to <span class="citation" data-cites="asparouhov_residual_2021">Asparouhov and Muthén (<a href="#ref-asparouhov_residual_2021" role="doc-biblioref">2021</a>)</span> for more details.</p>
 </div>
-<hr />
 </div>
-<div id="power" class="section level3">
-<h3>Power</h3>
-<hr />
-<div onclick="showHide(&#39;faq8&#39;)"
-style="cursor: pointer; font-weight:bold">
+</div>
+</section>
+<section id="power" class="level3">
+<h3 class="anchored" data-anchor-id="power">Power</h3>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="How do I perform a power analysis for the RI-CLPM?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
 How do I perform a power analysis for the RI-CLPM?
 </div>
-<div id="faq8" style="display:none">
-<code>powRICLPM</code> is an R-package that performs a power analysis
-for the RI-CLPM in a simple and user-friendly way. It implements the
-strategy as proposed by <a
-href="https://doi.org/10.1080/10705511.2022.2122467">Mulder (2022)</a>,
-and includes various extensions such as the inclusion of measurement
-error (leading to the stable trait autoregressive trait state model by
-<a href="https://doi.org/10.1037/10409-008">Kenny and Zautra, 2001</a>),
-and multiple constraints over time. <code>powRICLPM</code> is available
-from the Comprehensive R Archive Network (CRAN). More information can be
-found at <a
-href="https://jeroendmulder.github.io/powRICLPM/">https://jeroendmulder.github.io/powRICLPM/</a>.
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<hr />
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>powRICLPM</code> is an R-package that performs a power analysis for the RI-CLPM in a simple and user-friendly way. It implements the strategy as proposed by <span class="citation" data-cites="mulder_power_2022">Mulder (<a href="#ref-mulder_power_2022" role="doc-biblioref">2022</a>)</span>, and includes various extensions such as the inclusion of measurement error (leading to the stable trait autoregressive trait state model by <span class="citation" data-cites="collins_traitstate_2001">Kenny and Zautra (<a href="#ref-collins_traitstate_2001" role="doc-biblioref">2001</a>)</span>, and multiple constraints over time. <code>powRICLPM</code> is available from the Comprehensive R Archive Network (CRAN). More information can be found at <a href="https://jeroendmulder.github.io/powRICLPM/">https://jeroendmulder.github.io/powRICLPM/</a>.</p>
 </div>
-<div id="clpm-v.-riclpm" class="section level3">
-<h3>CLPM v. RICLPM</h3>
-<hr />
-<div onclick="showHide(&#39;faq9&#39;)"
-style="cursor: pointer; font-weight:bold">
-Why are the autoregressive effects in the RI-CLPM typically smaller than
-in the CLPM?
 </div>
-<div id="faq9" style="display:none">
-The autoregressive effects in the CLPM and the RI-CLPM capture two
-distinct phenomena. In the traditional CLPM, the autoregressive effects
-capture both within- and between-unit effects, and it can be interpreted
-as rank-order stability. In the RI-CLPM, the stable, between-person
-variance is separated from the within-person variance such that the
-autoregressive effects only capture within-person carry-over. In other
-words, in the RI-CLPM the autoregressive effects are typically smaller
-because the stable, trait-like stability is not captured anymore by the
-autoregressive effects (as in the CLPM), but by the random intercepts.
 </div>
-<hr />
-<div onclick="showHide(&#39;faq10&#39;)"
-style="cursor: pointer; font-weight:bold">
-Is it a bad sign that the standard errors are typically larger in the
-RI-CLPM than in the CLPM?
+</section>
+<section id="clpm-v.-riclpm" class="level3">
+<h3 class="anchored" data-anchor-id="clpm-v.-riclpm">CLPM v. RICLPM</h3>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="Why are the autoregressive effects in the RI-CLPM typically smaller than in the CLPM?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
-<div id="faq10" style="display:none">
-No, this is to be expected because the RI-CLPM is a more complex model
-than the CLPM. Therefore, the point estimates are less certain, but this
-does not imply that the estimates are biased and the model does not give
-us any insight in the underlying mechanism under study. In contrast, the
-RI-CLPM is likely less biased than results from the CLPM because the
-RI-CLM accounts for stable, unobserved factors that create lasting
-between-person differences, which can create spurious empirical
-relationships between the constructs under investigation when not
-properly accounted for.
+<div class="callout-title-container flex-fill">
+Why are the autoregressive effects in the RI-CLPM typically smaller than in the CLPM?
 </div>
-<hr />
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="growth-and-development" class="section level3">
-<h3>Growth and development</h3>
-<hr />
-<div onclick="showHide(&#39;faq15&#39;)"
-style="cursor: pointer; font-weight:bold">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The autoregressive effects in the CLPM and the RI-CLPM capture two distinct phenomena. In the traditional CLPM, the autoregressive effects capture both within- and between-unit effects, and it can be interpreted as rank-order stability. In the RI-CLPM, the stable, between-person variance is separated from the within-person variance such that the autoregressive effects only capture within-person carry-over. In other words, in the RI-CLPM the autoregressive effects are typically smaller because the stable, trait-like stability is not captured anymore by the autoregressive effects (as in the CLPM), but by the random intercepts.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="Is it a bad sign that the standard errors are typically larger in the RI-CLPM than in the CLPM?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Is it a bad sign that the standard errors are typically larger in the RI-CLPM than in the CLPM?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>No, this is to be expected because the RI-CLPM is a more complex model than the CLPM. Therefore, the point estimates are less certain, but this does not imply that the estimates are biased and the model does not give us any insight in the underlying mechanism under study. In contrast, the RI-CLPM is likely less biased than results from the CLPM because the RI-CLM accounts for stable, unobserved factors that create lasting between-person differences, which can create spurious empirical relationships between the constructs under investigation when not properly accounted for.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="growth-and-development" class="level3">
+<h3 class="anchored" data-anchor-id="growth-and-development">Growth and development</h3>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="How can the RI-CLPM incorporate growth over time?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
 How can the RI-CLPM incorporate growth over time?
 </div>
-<div id="faq15" style="display:none">
-<p>The RI-CLPM estimates grand means at each time point. If these are
-constrained to be time-invariant, this would imply that on average there
-is no change. However, if these constraints cannot be imposed on the
-model, this means that on average there is some kind of change (e.g.,
-growth, decline, U-shape, sudden jump between two waves, etc.). In this
-case, the model implies that <strong>every person</strong> is modeled to
-have the exact same underlying trend over time, but at a constant
-deviation from the average trend (as captured by the random intercept
-factor). Hence, instead of talking about constant means over time, one
-would have to talk about constant deviations from an average trend.</p>
-In the latent growth curve model (LGCM) and its extension, the latent
-curve model with structured residuals (LCM-SR), it is assumed that
-individual have the same kind of trend (e.g., a linear or quadratic
-trend), but there can be individual differences in the parameters of
-this trend; as a result, the differences between individuals change over
-time (i.e., they may increase or decrease). When the variance of the
-slope components (i.e., the slope factor of both <span
-class="math inline">\(X\)</span> and <span
-class="math inline">\(Y\)</span> in the bivariate case) is fixed to
-zero, the LGCM and LCS-SR become special cases of the RI-CLPM; if the
-grand means in the RI-CLPM are fixed to be invariant over time, then
-this is a special case of the LCM-SR <a
-href="https://psycnet.apa.org/fulltext/2019-21491-001.html">(Usami, Kou,
-&amp; Hamaker, 2019)</a>.
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<hr />
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The RI-CLPM estimates grand means at each time point. If these are constrained to be time-invariant, this would imply that on average there is no change. However, if these constraints cannot be imposed on the model, this means that on average there is some kind of change (e.g., growth, decline, U-shape, sudden jump between two waves, etc.). In this case, the model implies that <strong>every person</strong> is modeled to have the exact same underlying trend over time, but at a constant deviation from the average trend (as captured by the random intercept factor). Hence, instead of talking about constant means over time, one would have to talk about constant deviations from an average trend.</p>
+<p>In the latent growth curve model (LGCM) and its extension, the latent curve model with structured residuals (LCM-SR), it is assumed that individual have the same kind of trend (e.g., a linear or quadratic trend), but there can be individual differences in the parameters of this trend; as a result, the differences between individuals change over time (i.e., they may increase or decrease). When the variance of the slope components (i.e., the slope factor of both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in the bivariate case) is fixed to zero, the LGCM and LCS-SR become special cases of the RI-CLPM; if the grand means in the RI-CLPM are fixed to be invariant over time, then this is a special case of the LCM-SR <span class="citation" data-cites="usami_unified_2019">(<a href="#ref-usami_unified_2019" role="doc-biblioref">Usami, Murayama, and Hamaker 2019</a>)</span>.</p>
 </div>
-<div id="response-to-orth-et-al.-2021" class="section level3">
-<h3>Response to Orth et al. (2021)</h3>
-<p>Lately, we have received numerous questions about statements
-regarding the use and appropriateness of the CLPM and RI-CLPM in
-“Testing Prospective Effects in Longitudinal Research: Comparing Seven
-Competing Cross-Lagged Models” by <a
-href="http://dx.doi.org/10.1037/pspp0000358">Orth et al. (2021)</a>. In
-our opinion, numerous conclusions herein are incorrect. Below we
-elaborate on some of their most prominent conclusions. For another
-reaction to <a href="http://dx.doi.org/10.1037/pspp0000358">Orth et
-al. (2021)</a>, see <a
-href="https://replicationindex.com/2020/08/22/cross-lagged/">https://replicationindex.com/2020/08/22/cross-lagged</a>.</p>
-<hr />
-<div onclick="showHide(&#39;faq11&#39;)"
-style="cursor: pointer; font-weight:bold">
-The RI-CLPM is not suited for studying prospective between-person
-effects, whereas the CLPM is.
 </div>
-<div id="faq11" style="display:none">
-<p>On page 1026, Orth et al. (2020) state that the RI-CLPM does not
-allow for the testing of prospective between-person effects because “(…)
-<em>the random intercept factors provide information only about
-correlational associations between the constructs</em> (…)<em>, but not
-about time-lagged (i.e, longitudinal) and directional between-person
-effects.</em>” It is true that the RI-CLPM separates stable,
-between-person differences from temporal, within-person fluctuations.
-Only the latter allow one to look at prospective effects over time,
-while the stable between-person differences have no particular
-time-order.</p>
-<p>The reasoning that Orth et al. seem to follow is this: If one is
-interested in trait-changes, we should not separate the stable trait
-components from the temporary fluctuations, as the first does not allow
-for the study of prospective effects and are not of interest because
-they are entirely stable, while the latter only contain state-like
-fluctuations that are less interesting to researchers who want to study
-in trait-changes. Orth et al. seem to consider both components
-separately not to be of interest, but nevertheless argue that a blend of
-both components is of key interest. We disagree with this reasoning.</p>
-<p>Researchers who want to use prospective effects to study certain
-psychological processes, should make sure that their measurements are
-obtained at the time scale at which they believe the process of interest
-operates. If the trait-changes of interest are assumed to take place
-from one year to the next, then measuring yearly over several years
-should capture the fluctuations of interest within persons over the time
-span covered by the study. If trait-changes are assumed to take place at
-a less fine time scale, such as from decade to decade, this implies
-researchers should obtain data measured once per decade, for several
-decades.</p>
-<p>Even if the stable, between-person differences are not of interest,
-these nevertheless need to be separated from the within-person
-fluctuations. The stable mean differences between persons are often
-referred to as trait differences, but may also be conceptualized as
-resulting from stable confounders, such as stable genetic and
-environmental factors that affect our measurements.</p>
-In sum, the focus should be on how the constructs are measured,
-specifically at what time scale they are measured. By definition, the
-random intercepts in the RI-CLPM capture variance that is stable over
-the duration of the study, which is why—from a data analytical
-perspective—these are referred to as traits. What remains is variance
-within persons over time, which is why—again from a data analytical
-perspective—this is referred to as state-like. These trait-like
-between-person differences and state-like, within-person fluctuations
-need not coincide perfectly with the trait-state distinction made by
-substantive researchers. Nevertheless, it is essential to separate these
-two sources, regardless of what they are called.
 </div>
-<hr />
-<div onclick="showHide(&#39;faq12&#39;)"
-style="cursor: pointer; font-weight:bold">
-The RI-CLPM is better suited for short-term studies because it cannot
-detect sustained prospective effects.
+</section>
+<section id="response-to-orth_testing_2021" class="level3">
+<h3 class="anchored" data-anchor-id="response-to-orth_testing_2021">Response to <span class="citation" data-cites="orth_testing_2021">Orth et al. (<a href="#ref-orth_testing_2021" role="doc-biblioref">2021</a>)</span></h3>
+<p>Lately, we have received numerous questions about statements regarding the use and appropriateness of the CLPM and RI-CLPM in “Testing Prospective Effects in Longitudinal Research: Comparing Seven Competing Cross-Lagged Models” by <span class="citation" data-cites="orth_testing_2021">Orth et al. (<a href="#ref-orth_testing_2021" role="doc-biblioref">2021</a>)</span>. In our opinion, numerous conclusions herein are incorrect. Below we elaborate on some of their most prominent conclusions. For another reaction to this article, see <a href="https://replicationindex.com/2020/08/22/cross-lagged/">https://replicationindex.com/2020/08/22/cross-lagged</a>.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="The RI-CLPM is not suited for studying prospective between-person effects, whereas the CLPM is.">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
-<div id="faq12" style="display:none">
-<p>The characterization of the lagged effects as short- or long-term
-depends on the time scale at which the measurements are made. When using
-annual data, lagged effects capture the fluctuation from year to year;
-when dealing with data that were obtained every decade, the
-within-person fluctuations will concern the changes from decade to
-decade. It is all relative to how the data were measured, and even when
-we are focusing on trait changes by measuring people once every 10
-years, for say 40 years, there will still be stable between-person
-differences between individuals that need to be controlled for.</p>
-Hence, the need to decompose the observations into a stable
-between-person component and temporal within-person components is
-independent of the time scale at which measurements were obtained.
+<div class="callout-title-container flex-fill">
+The RI-CLPM is not suited for studying prospective between-person effects, whereas the CLPM is.
 </div>
-<hr />
-<div onclick="showHide(&#39;faq13&#39;)"
-style="cursor: pointer; font-weight:bold">
-There should be a match between the type of research question asked and
-the model used: The CLPM is for the analysis of between-person
-prospective effects whereas the RI-CLPM should be used for within-person
-prospective effects.
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="faq13" style="display:none">
-We agree with the authors in so far that there should be a match between
-the research question and the statistical model used. However, the
-critical distinction here is not whether one is interested in
-within-person or between-person prospective effects (as argued above,
-the RI-CLPM can capture trait-changes depending on the time scale at
-which measurements are gathered). Rather, we should distinguish between
-descriptive, predictive, and causal research questions (cf., <a
-href="https://doi.org/10.1016/j.dcn.2020.100867">Hamaker, Mulder, and
-Van IJzendoorn, 2020</a>). The CLPM is suitable for predictive research
-questions: e.g., “Who is at risk for heightened <span
-class="math inline">\(X\)</span>?” and “Who should get an intervention
-to reduce <span class="math inline">\(Y\)</span>?”. However, for
-answering causal research questions, other models should be used,
-because the CLPM does not control for stable, between-person difference.
-This is problematic as failing to properly account for such confounding
-effects can lead to finding spurious lagged effects, a failure to find
-true relationships, or more generally, biased estimates (<a
-href="https://doi.org/10.1037/a0038889">Hamaker, Kuiper, &amp; Grasman,
-2015</a>).
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On page 1026, <span class="citation" data-cites="orth_testing_2021">Orth et al. (<a href="#ref-orth_testing_2021" role="doc-biblioref">2021</a>)</span> state that the RI-CLPM does not allow for the testing of prospective between-person effects because “(…) <em>the random intercept factors provide information only about correlational associations between the constructs</em> (…)<em>, but not about time-lagged (i.e, longitudinal) and directional between-person effects.</em>” It is true that the RI-CLPM separates stable, between-person differences from temporal, within-person fluctuations. Only the latter allow one to look at prospective effects over time, while the stable between-person differences have no particular time-order.</p>
+<p>The reasoning that <span class="citation" data-cites="orth_testing_2021">Orth et al. (<a href="#ref-orth_testing_2021" role="doc-biblioref">2021</a>)</span> seem to follow is this: If one is interested in trait-changes, we should not separate the stable trait components from the temporary fluctuations, as the first does not allow for the study of prospective effects and are not of interest because they are entirely stable, while the latter only contain state-like fluctuations that are less interesting to researchers who want to study in trait-changes. <span class="citation" data-cites="orth_testing_2021">Orth et al. (<a href="#ref-orth_testing_2021" role="doc-biblioref">2021</a>)</span> seem to consider both components separately not to be of interest, but nevertheless argue that a blend of both components is of key interest. We disagree with this reasoning.</p>
+<p>Researchers who want to use prospective effects to study certain psychological processes, should make sure that their measurements are obtained at the time scale at which they believe the process of interest operates. If the trait-changes of interest are assumed to take place from one year to the next, then measuring yearly over several years should capture the fluctuations of interest within persons over the time span covered by the study. If trait-changes are assumed to take place at a less fine time scale, such as from decade to decade, this implies researchers should obtain data measured once per decade, for several decades.</p>
+<p>Even if the stable, between-person differences are not of interest, these nevertheless need to be separated from the within-person fluctuations. The stable mean differences between persons are often referred to as trait differences, but may also be conceptualized as resulting from stable confounders, such as stable genetic and environmental factors that affect our measurements.</p>
+<p>In sum, the focus should be on how the constructs are measured, specifically at what time scale they are measured. By definition, the random intercepts in the RI-CLPM capture variance that is stable over the duration of the study, which is why—from a data analytical perspective—these are referred to as traits. What remains is variance within persons over time, which is why—again from a data analytical perspective—this is referred to as state-like. These trait-like between-person differences and state-like, within-person fluctuations need not coincide perfectly with the trait-state distinction made by substantive researchers. Nevertheless, it is essential to separate these two sources, regardless of what they are called.</p>
 </div>
-<hr />
-<div onclick="showHide(&#39;faq14&#39;)"
-style="cursor: pointer; font-weight:bold">
-The parameters from the CLPM tend to have smaller standard errors than
-the parameters from the RI-CLPM; hence, the results from the CLPM are
-easier to replicate, which may be a reason to prefer this model.
 </div>
-<div id="faq14" style="display:none">
-<p>On page 1028, Orth et al. state that “For the CLPM, the structural
-coefficients were much more consistent compared to the RI-CLPM, both
-across and within samples, which is important with regard to
-replicability of research findings (Asendorf et al., 2013). Even if
-theoretical consideration have priority over replicability in model
-selection, replicability of estimates is—other things being equal—an
-important criterion of the quality of statistical models.”</p>
-<p>When the goal is prediction, this may indeed be an important
-consideration. However, when the goal is to gain insight in the
-underlying mechanism, we should not prefer a model simply based on its
-ability to replicate results: Replicating biased results is only giving
-us false confidence in erroneous conclusions.</p>
-<p>Instead, we should consider which model seems more reasonable (e.g.,
-do we believe there may be unobserved, stable confounding that plays a
-role in our measurements?), and which model provides a better
-description of the data (e.g., comparing competing models through the
-use of the chi-square difference test, or information criteria).</p>
-The larger standard errors associated with the RI-CLPM imply that if we
-want to have the higher precision and/or increase replicability, we need
-to obtain data from larger samples and/or at more waves.
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="The RI-CLPM is better suited for short-term studies because it cannot detect sustained prospective effects.">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The RI-CLPM is better suited for short-term studies because it cannot detect sustained prospective effects.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The characterization of the lagged effects as short- or long-term depends on the time scale at which the measurements are made. When using annual data, lagged effects capture the fluctuation from year to year; when dealing with data that were obtained every decade, the within-person fluctuations will concern the changes from decade to decade. It is all relative to how the data were measured, and even when we are focusing on trait changes by measuring people once every 10 years, for say 40 years, there will still be stable between-person differences between individuals that need to be controlled for.</p>
+<p>Hence, the need to decompose the observations into a stable between-person component and temporal within-person components is independent of the time scale at which measurements were obtained.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="There should be a match between the type of research question asked and the model used: The CLPM is for the analysis of between-person prospective effects whereas the RI-CLPM should be used for within-person prospective effects.">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+There should be a match between the type of research question asked and the model used: The CLPM is for the analysis of between-person prospective effects whereas the RI-CLPM should be used for within-person prospective effects.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We agree with the authors in so far that there should be a match between the research question and the statistical model used. However, the critical distinction here is not whether one is interested in within-person or between-person prospective effects (as argued above, the RI-CLPM can capture trait-changes depending on the time scale at which measurements are gathered). Rather, we should distinguish between descriptive, predictive, and causal research questions <span class="citation" data-cites="hamaker_description_2020">(<a href="#ref-hamaker_description_2020" role="doc-biblioref">Hamaker, Mulder, and Van IJzendoorn 2020</a>)</span>. The CLPM is suitable for predictive research questions: e.g., “Who is at risk for heightened <span class="math inline">\(X\)</span>?” and “Who should get an intervention to reduce <span class="math inline">\(Y\)</span>?”. However, for answering causal research questions, other models should be used, because the CLPM does not control for stable, between-person difference. This is problematic as failing to properly account for such confounding effects can lead to finding spurious lagged effects, a failure to find true relationships, or more generally, biased estimates <span class="citation" data-cites="hamaker_critique_2015">(<a href="#ref-hamaker_critique_2015" role="doc-biblioref">Hamaker, Kuiper, and Grasman 2015</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="The parameters from the CLPM tend to have smaller standard errors than the parameters from the RI-CLPM; hence, the results from the CLPM are easier to replicate, which may be a reason to prefer this model.">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The parameters from the CLPM tend to have smaller standard errors than the parameters from the RI-CLPM; hence, the results from the CLPM are easier to replicate, which may be a reason to prefer this model.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On page 1028, <span class="citation" data-cites="orth_testing_2021">Orth et al. (<a href="#ref-orth_testing_2021" role="doc-biblioref">2021</a>)</span> state that “For the CLPM, the structural coefficients were much more consistent compared to the RI-CLPM, both across and within samples, which is important with regard to replicability of research findings (Asendorf et al., 2013). Even if theoretical consideration have priority over replicability in model selection, replicability of estimates is—other things being equal—an important criterion of the quality of statistical models.”</p>
+<p>When the goal is prediction, this may indeed be an important consideration. However, when the goal is to gain insight in the underlying mechanism, we should not prefer a model simply based on its ability to replicate results: Replicating biased results is only giving us false confidence in erroneous conclusions.</p>
+<p>Instead, we should consider which model seems more reasonable (e.g., do we believe there may be unobserved, stable confounding that plays a role in our measurements?), and which model provides a better description of the data (e.g., comparing competing models through the use of the chi-square difference test, or information criteria).</p>
+<p>The larger standard errors associated with the RI-CLPM imply that if we want to have the higher precision and/or increase replicability, we need to obtain data from larger samples and/or at more waves.</p>
+</div>
 </div>
 </div>
 
-&nbsp;
-<hr />
-<!-- Add icon library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- Add font icons -->
-<p style="text-align: center;">
-    <a href="https://github.com/jeroendmulder/" class="fa fa-github"></a>
-    <a href="https://www.uu.nl/staff/JDMulder" class="fa fa-university"></a>
-</p>
-
-&nbsp;
 
 
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-asparouhov_residual_2021" class="csl-entry" role="listitem">
+Asparouhov, Tihomir, and Bengt Muthén. 2021. <span>“Residual <span>Structural</span> <span>Equation</span> <span>Models</span>.”</span> <a href="http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf">http://statmodel.com/download/Asparouhov_Muthen_2021a.pdf</a>.
 </div>
+<div id="ref-flouri_developmental_2019" class="csl-entry" role="listitem">
+Flouri, Eirini, Efstathios Papachristou, Emily Midouhas, George B. Ploubidis, Glyn Lewis, and Heather Joshi. 2019. <span>“Developmental Cascades of Internalising Symptoms, Externalising Problems and Cognitive Ability from Early Childhood to Middle Adolescence.”</span> <em>European Psychiatry</em> 57 (April): 61–69. <a href="https://doi.org/10.1016/j.eurpsy.2018.12.005">https://doi.org/10.1016/j.eurpsy.2018.12.005</a>.
 </div>
-
+<div id="ref-hamaker_critique_2015" class="csl-entry" role="listitem">
+Hamaker, Ellen L., Rebecca M. Kuiper, and Raoul P. P. P. Grasman. 2015. <span>“A Critique of the Cross-Lagged Panel Model.”</span> <em>Psychological Methods</em> 20 (1): 102–16. <a href="https://doi.org/10.1037/a0038889">https://doi.org/10.1037/a0038889</a>.
 </div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
+<div id="ref-hamaker_description_2020" class="csl-entry" role="listitem">
+Hamaker, Ellen L., Jeroen D. Mulder, and Marinus H. Van IJzendoorn. 2020. <span>“Description, Prediction and Causation: <span>Methodological</span> Challenges of Studying Child and Adolescent Development.”</span> <em>Developmental Cognitive Neuroscience</em> 46 (December): 100867. <a href="https://doi.org/10.1016/j.dcn.2020.100867">https://doi.org/10.1016/j.dcn.2020.100867</a>.
+</div>
+<div id="ref-hygen_longitudinal_2022" class="csl-entry" role="listitem">
+Hygen, Beate W., Jay Belsky, Frode Stenseng, Silje Steinsbekk, Lars Wichstrøm, and Vera Skalicka. 2022. <span>“Longitudinal Relations Between Gaming, Physical Activity, and Athletic Self-Esteem.”</span> <em>Computers in Human Behavior</em> 132 (July): 107252. <a href="https://doi.org/10.1016/j.chb.2022.107252">https://doi.org/10.1016/j.chb.2022.107252</a>.
+</div>
+<div id="ref-collins_traitstate_2001" class="csl-entry" role="listitem">
+Kenny, David A., and Alex Zautra. 2001. <span>“Trait–State Models for Longitudinal Data.”</span> In <em>New Methods for the Analysis of Change.</em>, edited by Linda M. Collins and Aline G. Sayer, 243–63. Washington: American Psychological Association. <a href="https://doi.org/10.1037/10409-008">https://doi.org/10.1037/10409-008</a>.
+</div>
+<div id="ref-mulder_power_2022" class="csl-entry" role="listitem">
+Mulder, Jeroen D. 2022. <span>“Power <span>Analysis</span> for the <span>Random</span> <span>Intercept</span> <span>Cross</span>-<span>Lagged</span> <span>Panel</span> <span>Model</span> <span>Using</span> the <span class="nocase">powRICLPM</span> <span>R</span>-<span>Package</span>.”</span> <em>Structural Equation Modeling: A Multidisciplinary Journal</em>, November, 1–14. <a href="https://doi.org/10.1080/10705511.2022.2122467">https://doi.org/10.1080/10705511.2022.2122467</a>.
+</div>
+<div id="ref-mulder_three_2021" class="csl-entry" role="listitem">
+Mulder, Jeroen D., and Ellen L. Hamaker. 2021. <span>“Three Extensions of the Random Intercept Cross-Lagged Panel Model.”</span> <em>Structural Equation Modeling: A Multidisciplinary Journal</em> 28 (4): 638–48. <a href="https://doi.org/10.1080/10705511.2020.1784738">https://doi.org/10.1080/10705511.2020.1784738</a>.
+</div>
+<div id="ref-orth_testing_2021" class="csl-entry" role="listitem">
+Orth, Ulrich, D. Angus Clark, M. Brent Donnellan, and Richard W. Robins. 2021. <span>“Testing Prospective Effects in Longitudinal Research: <span>Comparing</span> Seven Competing Cross-Lagged Models.”</span> <em>Journal of Personality and Social Psychology</em> 120 (4): 1013–34. <a href="https://doi.org/10.1037/pspp0000358">https://doi.org/10.1037/pspp0000358</a>.
+</div>
+<div id="ref-ozkok_interaction_2022" class="csl-entry" role="listitem">
+Ozkok, Ozlem, Manuel J. Vaulont, Michael J. Zyphur, Zhen Zhang, Kristopher J. Preacher, Peter Koval, and Yixia Zheng. 2022. <span>“Interaction <span>Effects</span> in <span>Cross</span>-<span>Lagged</span> <span>Panel</span> <span>Models</span>: <span>SEM</span> with <span>Latent</span> <span>Interactions</span> <span>Applied</span> to <span>Work</span>-<span>Family</span> <span>Conflict</span>, <span>Job</span> <span>Satisfaction</span>, and <span>Gender</span>.”</span> <em>Organizational Research Methods</em> 25 (4): 673–715. <a href="https://doi.org/10.1177/10944281211043733">https://doi.org/10.1177/10944281211043733</a>.
+</div>
+<div id="ref-schuurman_how_2016" class="csl-entry" role="listitem">
+Schuurman, Noémi K., Emilio Ferrer, Mieke De Boer-Sonnenschein, and Ellen L. Hamaker. 2016. <span>“How to Compare Cross-Lagged Associations in a Multilevel Autoregressive Model.”</span> <em>Psychological Methods</em> 21 (2): 206–21. <a href="https://doi.org/10.1037/met0000062">https://doi.org/10.1037/met0000062</a>.
+</div>
+<div id="ref-speyer_testing_2023" class="csl-entry" role="listitem">
+Speyer, Lydia Gabriela, Anastasia Ushakova, Sarah-Jayne Blakemore, Aja Louise Murray, and Rogier Kievit. 2023. <span>“Testing for <em><span>Within</span> × <span>Within</span></em> and <em><span>Between</span> × <span>Within</span></em> <span>Moderation</span> <span>Using</span> <span>Random</span> <span>Intercept</span> <span>Cross</span>-<span>Lagged</span> <span>Panel</span> <span>Models</span>.”</span> <em>Structural Equation Modeling: A Multidisciplinary Journal</em> 30 (2): 315–27. <a href="https://doi.org/10.1080/10705511.2022.2096613">https://doi.org/10.1080/10705511.2022.2096613</a>.
+</div>
+<div id="ref-usami_unified_2019" class="csl-entry" role="listitem">
+Usami, Satoshi, Kou Murayama, and Ellen L. Hamaker. 2019. <span>“A Unified Framework of Longitudinal Models to Examine Reciprocal Relations.”</span> <em>Psychological Methods</em> 24 (5): 637–57. <a href="https://doi.org/10.1037/met0000210">https://doi.org/10.1037/met0000210</a>.
+</div>
+<div id="ref-van_lissa_role_2019" class="csl-entry" role="listitem">
+Van Lissa, Caspar J., Renske Keizer, Pol A. C. Van Lier, Wim H. J. Meeus, and Susan Branje. 2019. <span>“The Role of Fathers’ Versus Mothers’ Parenting in Emotion-Regulation Development from Mid–Late Adolescence: <span>Disentangling</span> Between-Family Differences from Within-Family Effects.”</span> <em>Developmental Psychology</em> 55 (2): 377–89. <a href="https://doi.org/10.1037/dev0000612">https://doi.org/10.1037/dev0000612</a>.
+</div>
+<div id="ref-wright_method_1934" class="csl-entry" role="listitem">
+Wright, Sewall. 1934. <span>“The <span>Method</span> of <span>Path</span> <span>Coefficients</span>.”</span> <em>The Annals of Mathematical Statistics</em> 5 (3): 161–215. <a href="https://doi.org/10.1214/aoms/1177732676">https://doi.org/10.1214/aoms/1177732676</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
   });
-});
-</script>
-
-<!-- code folding -->
-
-<script>
-$(document).ready(function ()  {
-
-    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
-    $('.unlisted.unnumbered').addClass('toc-ignore')
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
       },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
     };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
 });
 </script>
+</div> <!-- /content -->
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
-</body>
-</html>
+
+</body></html>

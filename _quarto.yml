@@ -1,0 +1,42 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "The RI-CLPM & Extensions"
+  description: "Online supplementary material of Mulder and Hamaker (2021)."
+  site-url: "https://jeroendmulder.github.io/RI-CLPM"
+
+  repo-url: https://github.com/JeroenDMulder/RI-CLPM
+  repo-actions: [issue]
+
+  open-graph: true
+
+  navbar:
+    background: primary
+    search: true
+    page-navigation: true
+    repo-url: https://github.com/JeroenDMulder/RI-CLPM
+    repo-actions: [issue]
+    left:
+      - text: "Home"
+        href: index.html
+      - text: "Mplus"
+        href: mplus.html
+      - text: "lavaan (R)"
+        href: lavaan.html
+      - text: "News"
+        href: news.html
+      - text: "FAQ"
+        href: faq.html
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+
+
+
