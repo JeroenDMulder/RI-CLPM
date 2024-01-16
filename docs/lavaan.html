@@ -182,6 +182,9 @@ div.csl-indent {
   <li><a href="#extension-2-multiple-group" id="toc-extension-2-multiple-group" class="nav-link" data-scroll-target="#extension-2-multiple-group">Extension 2: Multiple group</a></li>
   <li><a href="#extension-3-multiple-indicators" id="toc-extension-3-multiple-indicators" class="nav-link" data-scroll-target="#extension-3-multiple-indicators">Extension 3: Multiple indicators</a></li>
   <li><a href="#barchi2-test" id="toc-barchi2-test" class="nav-link" data-scroll-target="#barchi2-test"><span class="math inline">\(\bar{\chi}^{2}\)</span>-test</a></li>
+  <li><a href="#gorica" id="toc-gorica" class="nav-link" data-scroll-target="#gorica">GORICA</a></li>
+  <li><a href="#time-varying-lagged-effects" id="toc-time-varying-lagged-effects" class="nav-link" data-scroll-target="#time-varying-lagged-effects">### Time-varying lagged-effects</a></li>
+  <li><a href="#gorica-1" id="toc-gorica-1" class="nav-link" data-scroll-target="#gorica-1">GORICA</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/JeroenDMulder/RI-CLPM/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -322,14 +325,7 @@ div.csl-indent {
 <span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="st">  wy4 ~~ wy4 </span></span>
 <span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="st">  wx5 ~~ wx5</span></span>
 <span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="st">  wy5 ~~ wy5</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>RICLPM.fit <span class="ot">&lt;-</span> <span class="fu">lavaan</span>(RICLPM,</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dat, </span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing =</span> <span class="st">"ML"</span>, </span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  <span class="at">meanstructure =</span> T, </span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  <span class="at">int.ov.free =</span> T</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(RICLPM.fit, <span class="at">standardized =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
@@ -1071,9 +1067,10 @@ div.csl-indent {
 <span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
 <span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a>RICLPM1.ext3.fit <span class="ot">&lt;-</span> <span class="fu">cfa</span>(RICLPM1.ext3, </span>
 <span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datMI, </span>
-<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing =</span> <span class="st">'ML'</span></span>
-<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(RICLPM1.ext3.fit, <span class="at">standardized =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing =</span> <span class="st">'ML'</span>,</span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a>  <span class="at">meanstructure =</span> <span class="cn">TRUE</span></span>
+<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(RICLPM1.ext3.fit, <span class="at">standardized =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
@@ -1428,7 +1425,7 @@ div.csl-indent {
 </section>
 <section id="barchi2-test" class="level1">
 <h1><span class="math inline">\(\bar{\chi}^{2}\)</span>-test</h1>
-<p>The use of the chi-square difference test is wide-spread in the SEM community to test constaints on parameters. However, when constraints are placed on the bound of the parameter space, we should use the chi-bar-square test (<span class="math inline">\(\bar{\chi}^{2}\)</span>-test) <span class="citation" data-cites="stoel_likelihood_2006">(<a href="#ref-stoel_likelihood_2006" role="doc-biblioref">Stoel et al. 2006</a>)</span>. For example, if we constrain the variances of all random intercepts (and their covariance) in the RI-CLPM to zero, we obtain a model that is nested under the RI-CLPM, and that is statistically equivalent to the traditional cross-lagged panel model (CLPM). Below you can find R code for performing the chi-bar-square test (code by <a href="https://www.uu.nl/staff/rmkuiper/Software">Rebecca M. Kuiper</a>) for comparing these two models. It involves</p>
+<p>The use of the chi-square difference test is wide-spread in the SEM community to test constraints on parameters. However, when constraints are placed on the bound of the parameter space, we should use the chi-bar-square test (<span class="math inline">\(\bar{\chi}^{2}\)</span>-test) <span class="citation" data-cites="stoel_likelihood_2006">(<a href="#ref-stoel_likelihood_2006" role="doc-biblioref">Stoel et al. 2006</a>)</span>. For example, if we constrain the variances of all random intercepts (and their covariance) in the RI-CLPM to zero, we obtain a model that is nested under the RI-CLPM, and that is statistically equivalent to the traditional cross-lagged panel model (CLPM). Below you can find R code for performing the chi-bar-square test (code by <a href="https://www.uu.nl/staff/rmkuiper/Software">Rebecca M. Kuiper</a>) for comparing these two models. It involves</p>
 <ol type="1">
 <li>fitting both the RI-CLPM (<code>RICLPM.fit</code>) and CLPM (<code>CLPM.fit</code>);</li>
 <li>extracting the covariance matrix of the random intercepts;</li>
@@ -1461,20 +1458,240 @@ div.csl-indent {
 <span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>ChiBar2DiffTest</span>
 <span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>ChiBar2DiffTest<span class="sc">$</span>p_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<hr>
+</section>
+<section id="gorica" class="level1">
+<h1>GORICA</h1>
+<p>Rather than evaluating a null-hypothesis of no effect, researchers may be interested in evaluating a theory-based, informative hypothesis <span class="citation" data-cites="altinisik_evaluation_2021">(<a href="#ref-altinisik_evaluation_2021" role="doc-biblioref">Altinisik et al. 2021</a>)</span>. Informative hypotheses can reflect a priori theories, and often contain orderings of (standardized) parameters. For example, one may hypothesize that one cross-lagged relationship is higher than another one; often referred to as “causal dominance”. Such a causal dominance hypothesis can be evaluated with an AIC-type criterion called the GORICA <span class="citation" data-cites="sukpan_evaluate_2023">(<a href="#ref-sukpan_evaluate_2023" role="doc-biblioref">Sukpan and Kuiper 2023</a>)</span>. Below you find code for evaluating a causal dominance hypothesis using the GORICA, for both the RI-CLPM with time-independent and time-specific parameters. We make use of the example data provided with these online supplementary materials. For more information, we refer to <a href="https://github.com/rebeccakuiper/Tutorials">https://github.com/rebeccakuiper/Tutorials</a>.</p>
+<p>::: {.panel-tabset}</p>
+</section>
+<section id="time-varying-lagged-effects" class="level1">
+<h1>### Time-varying lagged-effects</h1>
+</section>
+<section id="gorica-1" class="level1">
+<h1>GORICA</h1>
+<p>Rather than evaluating a null-hypothesis of no effect, researchers may be interested in evaluating a theory-based, informative hypothesis <span class="citation" data-cites="altinisik_evaluation_2021">(<a href="#ref-altinisik_evaluation_2021" role="doc-biblioref">Altinisik et al. 2021</a>)</span>. Informative hypotheses can reflect a priori theories, and often contain orderings of (standardized) parameters. For example, one may hypothesize that one cross-lagged relationship is higher than another one; often referred to as “causal dominance”. Such a causal dominance hypothesis can be evaluated with an AIC-type criterion called the GORICA <span class="citation" data-cites="sukpan_evaluate_2023">(<a href="#ref-sukpan_evaluate_2023" role="doc-biblioref">Sukpan and Kuiper 2023</a>)</span>. Below you find code for evaluating a causal dominance hypothesis using the GORICA, for both the RI-CLPM with time-independent and time-specific parameters. We make use of the example data provided with these online supplementary materials. For more information, we refer to <a href="https://github.com/rebeccakuiper/Tutorials">https://github.com/rebeccakuiper/Tutorials</a>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Time-varying lagged-effects</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>d862b70c06b0a1bfbd01f9450f9c709375a1c132 In the below R code, we use the GORICA to test the informative hypothesis that the cross-lagged effects from <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> are stronger than those from <span class="math inline">\(Y\)</span> to <span class="math inline">\(X\)</span> (i.e., <span class="math inline">\(X\)</span> is causally dominant). For the specification of this hypothesis we need to label the cross-lagged parameters, which in the below model specification are allowed to vary over time. Analysis using the GORICA shows that the informative hypothesis has 13.137 times more support than its complement (i.e., that there is no causal dominance, or that <span class="math inline">\(Y\)</span> is causally dominant).</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R package for testing of linear (in)equality restrictions on parameters in linear models</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(restriktor)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Informative hypothesis about cross-lagged effects (using parameter labels in model)</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>H1 <span class="ot">&lt;-</span> <span class="st">"abs(b2) &lt; abs(c2); abs(b3) &lt; abs(c3); </span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="st">       abs(b4) &lt; abs(c4); abs(b5) &lt; abs(c5)"</span> </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit RI-CLPM</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>RICLPM_H1 <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="st">  # Create between components (random intercepts)</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="st">  RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="st">  RIy =~ 1*y1 + 1*y2 + 1*y3 + 1*y4 + 1*y5</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="st">  # Create within-person centered variables</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="st">  wx1 =~ 1*x1</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="st">  wx2 =~ 1*x2</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="st">  wx3 =~ 1*x3 </span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="st">  wx4 =~ 1*x4</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="st">  wx5 =~ 1*x5</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a><span class="st">  wy1 =~ 1*y1</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a><span class="st">  wy2 =~ 1*y2</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a><span class="st">  wy3 =~ 1*y3</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a><span class="st">  wy4 =~ 1*y4</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a><span class="st">  wy5 =~ 1*y5</span></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a><span class="st">  # Estimate lagged effects between within-person centered variables</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="st">  wx2 ~ a2*wx1 + b2*wy1 </span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="st">  wy2 ~ c2*wx1 + d2*wy1</span></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a><span class="st">  wx3 ~ a3*wx2 + b3*wy2</span></span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a><span class="st">  wy3 ~ c3*wx2 + d3*wy2</span></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a><span class="st">  wx4 ~ a4*wx3 + b4*wy3</span></span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a><span class="st">  wy4 ~ c4*wx3 + d4*wy3</span></span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a><span class="st">  wx5 ~ a5*wx4 + b5*wy4</span></span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a><span class="st">  wy5 ~ c5*wx4 + d5*wy4</span></span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a><span class="st">  # Estimate covariance between within-person centered variables at first wave</span></span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a><span class="st">  wx1 ~~ wy1 # Covariance</span></span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a><span class="st">  # Estimate covariances between residuals of within-person centered variables </span></span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a><span class="st">  # (i.e., innovations)</span></span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a><span class="st">  wx2 ~~ wy2</span></span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a><span class="st">  wx3 ~~ wy3</span></span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a><span class="st">  wx4 ~~ wy4</span></span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a><span class="st">  wx5 ~~ wy5</span></span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a><span class="st">  # Estimate variance and covariance of random intercepts</span></span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a><span class="st">  RIx ~~ RIx</span></span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a><span class="st">  RIy ~~ RIy</span></span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a><span class="st">  RIx ~~ RIy</span></span>
+<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a><span class="st">  # Estimate (residual) variance of within-person centered variables</span></span>
+<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a><span class="st">  wx1 ~~ wx1 # Variances</span></span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a><span class="st">  wy1 ~~ wy1 </span></span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a><span class="st">  wx2 ~~ wx2 # Residual variances</span></span>
+<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a><span class="st">  wy2 ~~ wy2 </span></span>
+<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a><span class="st">  wx3 ~~ wx3 </span></span>
+<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a><span class="st">  wy3 ~~ wy3 </span></span>
+<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a><span class="st">  wx4 ~~ wx4 </span></span>
+<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a><span class="st">  wy4 ~~ wy4 </span></span>
+<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a><span class="st">  wx5 ~~ wx5</span></span>
+<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a><span class="st">  wy5 ~~ wy5</span></span>
+<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a>fit_H1 <span class="ot">&lt;-</span> <span class="fu">lavaan</span>(</span>
+<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> RICLPM_H1,</span>
+<span id="cb21-70"><a href="#cb21-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dat, </span>
+<span id="cb21-71"><a href="#cb21-71" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing =</span> <span class="st">"ML"</span>, </span>
+<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a>  <span class="at">meanstructure =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a>  <span class="at">int.ov.free =</span> <span class="cn">TRUE</span></span>
+<span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-75"><a href="#cb21-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-76"><a href="#cb21-76" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_H1, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute GORICA values and weights (use `standardized = TRUE`)</span></span>
+<span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a>GORICA_H1 <span class="ot">&lt;-</span> <span class="fu">goric</span>(</span>
+<span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a>  fit_H1, </span>
+<span id="cb21-81"><a href="#cb21-81" aria-hidden="true" tabindex="-1"></a>  <span class="at">standardized =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb21-82"><a href="#cb21-82" aria-hidden="true" tabindex="-1"></a>  <span class="at">hypotheses =</span> <span class="fu">list</span>(<span class="at">H1ws.l =</span> H1), </span>
+<span id="cb21-83"><a href="#cb21-83" aria-hidden="true" tabindex="-1"></a>  <span class="at">comparison =</span> <span class="st">"complement"</span>, <span class="co"># Test informative hypothesis versus its complement</span></span>
+<span id="cb21-84"><a href="#cb21-84" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"gorica"</span></span>
+<span id="cb21-85"><a href="#cb21-85" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-87"><a href="#cb21-87" aria-hidden="true" tabindex="-1"></a>GORICA_H1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD ### Constrained parameters ======= ## Constrained parameters &gt;&gt;&gt;&gt;&gt;&gt;&gt; d862b70c06b0a1bfbd01f9450f9c709375a1c132 The GORICA can also be used to test informative hypotheses when parameters are constrained over time. In the below R code, the lagged effects, residuals variances, and intercepts are restricted to be time-invariant. We again use the GORICA to test the informative hypothesis that the cross-lagged effects from <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> are stronger than those from <span class="math inline">\(Y\)</span> to <span class="math inline">\(X\)</span> (i.e., <span class="math inline">\(X\)</span> is causally dominant). Analysis shows that the informative hypothesis has 785.564 times more support than its complement. (i.e., that there is no causal dominance, or that <span class="math inline">\(Y\)</span> is causally dominant).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Informative hypothesis about time-invariant cross-lagged effects </span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>H2 <span class="ot">&lt;-</span> <span class="st">"abs(b) &lt; abs(c)"</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit RI-CLPM</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>RICLPM_H2 <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="st">  # Create between components (random intercepts)</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="st">  RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="st">  RIy =~ 1*y1 + 1*y2 + 1*y3 + 1*y4 + 1*y5</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="st">  # Create within-person centered variables</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="st">  wx1 =~ 1*x1</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="st">  wx2 =~ 1*x2</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="st">  wx3 =~ 1*x3 </span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="st">  wx4 =~ 1*x4</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="st">  wx5 =~ 1*x5</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="st">  wy1 =~ 1*y1</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="st">  wy2 =~ 1*y2</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="st">  wy3 =~ 1*y3</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="st">  wy4 =~ 1*y4</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="st">  wy5 =~ 1*y5</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="st">  # Estimate lagged effects between within-person centered variables </span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="st">  # (constrained)</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="st">  wx2 ~ a*wx1 + b*wy1 </span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="st">  wy2 ~ c*wx1 + d*wy1</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="st">  wx3 ~ a*wx2 + b*wy2</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="st">  wy3 ~ c*wx2 + d*wy2</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="st">  wx4 ~ a*wx3 + b*wy3</span></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="st">  wy4 ~ c*wx3 + d*wy3</span></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="st">  wx5 ~ a*wx4 + b*wy4</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="st">  wy5 ~ c*wx4 + d*wy4</span></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a><span class="st">  # Estimate covariances between residuals of within-person centered variables </span></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a><span class="st">  # (i.e., innovations, constrained)</span></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a><span class="st">  wx2 ~~ cov*wy2</span></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a><span class="st">  wx3 ~~ cov*wy3</span></span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a><span class="st">  wx4 ~~ cov*wy4 </span></span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a><span class="st">  wx5 ~~ cov*wy5</span></span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a><span class="st">  # Estimate covariance between within-person centered variables at first wave</span></span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a><span class="st">  wx1 ~~ wy1 # Covariance</span></span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a><span class="st">  # Estimate variance and covariance of random intercepts</span></span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a><span class="st">  RIx ~~ RIx</span></span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a><span class="st">  RIy ~~ RIy</span></span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a><span class="st">  RIx ~~ RIy</span></span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a><span class="st">  # Estimate (residual) variance of within-person centered variables </span></span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a><span class="st">  # (constrained)</span></span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a><span class="st">  wx1 ~~ wx1 # Variance</span></span>
+<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a><span class="st">  wy1 ~~ wy1 </span></span>
+<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a><span class="st">  wx2 ~~ vx*wx2 # Residual variance</span></span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a><span class="st">  wy2 ~~ vy*wy2 </span></span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a><span class="st">  wx3 ~~ vx*wx3 </span></span>
+<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a><span class="st">  wy3 ~~ vy*wy3 </span></span>
+<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a><span class="st">  wx4 ~~ vx*wx4 </span></span>
+<span id="cb22-57"><a href="#cb22-57" aria-hidden="true" tabindex="-1"></a><span class="st">  wy4 ~~ vy*wy4 </span></span>
+<span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a><span class="st">  wx5 ~~ vx*wx5</span></span>
+<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a><span class="st">  wy5 ~~ vy*wy5</span></span>
+<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a><span class="st">  # Constrain grand means over time</span></span>
+<span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a><span class="st">  x1 + x2 + x3 + x4 + x5 ~ mx*1</span></span>
+<span id="cb22-63"><a href="#cb22-63" aria-hidden="true" tabindex="-1"></a><span class="st">  y1 + y2 + y3 + y4 + y5 ~ my*1</span></span>
+<span id="cb22-64"><a href="#cb22-64" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb22-65"><a href="#cb22-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-66"><a href="#cb22-66" aria-hidden="true" tabindex="-1"></a>fit_H2 <span class="ot">&lt;-</span> <span class="fu">lavaan</span>(</span>
+<span id="cb22-67"><a href="#cb22-67" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> RICLPM_H2,</span>
+<span id="cb22-68"><a href="#cb22-68" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dat, </span>
+<span id="cb22-69"><a href="#cb22-69" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing =</span> <span class="st">"ML"</span>, </span>
+<span id="cb22-70"><a href="#cb22-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">meanstructure =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb22-71"><a href="#cb22-71" aria-hidden="true" tabindex="-1"></a>  <span class="at">int.ov.free =</span> <span class="cn">TRUE</span></span>
+<span id="cb22-72"><a href="#cb22-72" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-73"><a href="#cb22-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-74"><a href="#cb22-74" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_H2, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-75"><a href="#cb22-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-76"><a href="#cb22-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute GORICA values and weights</span></span>
+<span id="cb22-77"><a href="#cb22-77" aria-hidden="true" tabindex="-1"></a>GORICA_H2 <span class="ot">&lt;-</span> <span class="fu">goric</span>(</span>
+<span id="cb22-78"><a href="#cb22-78" aria-hidden="true" tabindex="-1"></a>  fit_H2, </span>
+<span id="cb22-79"><a href="#cb22-79" aria-hidden="true" tabindex="-1"></a>  <span class="at">hypotheses =</span> <span class="fu">list</span>(H2), </span>
+<span id="cb22-80"><a href="#cb22-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">comparison =</span> <span class="st">"complement"</span>, <span class="co"># Test informative hypothesis versus its complement</span></span>
+<span id="cb22-81"><a href="#cb22-81" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"gorica"</span></span>
+<span id="cb22-82"><a href="#cb22-82" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-83"><a href="#cb22-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-84"><a href="#cb22-84" aria-hidden="true" tabindex="-1"></a>GORICA_H2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+</div>
+</div>
+</div>
+<p>======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; d862b70c06b0a1bfbd01f9450f9c709375a1c132</p>
 
 
 
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-altinisik_evaluation_2021" class="csl-entry" role="listitem">
+Altinisik, Yasin, Caspar J. Van Lissa, Herbert Hoijtink, Albertine J. Oldehinkel, and Rebecca M. Kuiper. 2021. <span>“Evaluation of Inequality Constrained Hypotheses Using a Generalization of the <span>AIC</span>.”</span> <em>Psychological Methods</em> 26 (5): 599–621. <a href="https://doi.org/10.1037/met0000406">https://doi.org/10.1037/met0000406</a>.
+</div>
 <div id="ref-kuiper_chibarsq_2020" class="csl-entry" role="listitem">
-Kuiper, Rebecca M. 2020. <em><span class="nocase">ChiBarSq.DiffTest: Chi-bar-square difference test of the RI-CLPM versus the CLPM and more general.</span></em>
+Kuiper, Rebecca M. 2020. <em><span class="nocase">ChiBarSq.DiffTest: Chi-bar-square difference test of the RI-CLPM versus the CLPM and more general</span></em>.
 </div>
 <div id="ref-lavaan" class="csl-entry" role="listitem">
 Rosseel, Yves. 2012. <span>“<span class="nocase">lavaan</span>: An <span>R</span> Package for Structural Equation Modeling.”</span> <em>Journal of Statistical Software</em> 48 (2): 1–36. <a href="http://www.jstatsoft.org/v48/i02/">http://www.jstatsoft.org/v48/i02/</a>.
 </div>
 <div id="ref-stoel_likelihood_2006" class="csl-entry" role="listitem">
-Stoel, Reinoud D., Francisca Galindo Garre, Conor Dolan, and Godfried van den Wittenboer. 2006. <span>“<span class="nocase">On the likelihood ratio test in structural equation modeling when parameters are subject to boundary constraints.</span>”</span> <em>Psychological Methods</em> 11 (4): 439–55. <a href="https://doi.org/10.1037/1082-989X.11.4.439">https://doi.org/10.1037/1082-989X.11.4.439</a>.
+Stoel, Reinoud D., Francisca Galindo Garre, Conor Dolan, and Godfried van den Wittenboer. 2006. <span>“<span class="nocase">On the likelihood ratio test in structural equation modeling when parameters are subject to boundary constraints</span>.”</span> <em>Psychological Methods</em> 11 (4): 439–55. <a href="https://doi.org/10.1037/1082-989X.11.4.439">https://doi.org/10.1037/1082-989X.11.4.439</a>.
+</div>
+<div id="ref-sukpan_evaluate_2023" class="csl-entry" role="listitem">
+Sukpan, Chuenjai, and Rebecca M. Kuiper. 2023. <span>“How to Evaluate Causal Dominance Hypotheses in Lagged Effects Models.”</span> <em>Structural Equation Modeling: A Multidisciplinary Journal</em> 0 (0): 1–16. <a href="https://doi.org/10.1080/10705511.2023.2265065">https://doi.org/10.1080/10705511.2023.2265065</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
