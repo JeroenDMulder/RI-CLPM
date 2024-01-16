@@ -183,8 +183,6 @@ div.csl-indent {
   <li><a href="#extension-3-multiple-indicators" id="toc-extension-3-multiple-indicators" class="nav-link" data-scroll-target="#extension-3-multiple-indicators">Extension 3: Multiple indicators</a></li>
   <li><a href="#barchi2-test" id="toc-barchi2-test" class="nav-link" data-scroll-target="#barchi2-test"><span class="math inline">\(\bar{\chi}^{2}\)</span>-test</a></li>
   <li><a href="#gorica" id="toc-gorica" class="nav-link" data-scroll-target="#gorica">GORICA</a></li>
-  <li><a href="#time-varying-lagged-effects" id="toc-time-varying-lagged-effects" class="nav-link" data-scroll-target="#time-varying-lagged-effects">### Time-varying lagged-effects</a></li>
-  <li><a href="#gorica-1" id="toc-gorica-1" class="nav-link" data-scroll-target="#gorica-1">GORICA</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/JeroenDMulder/RI-CLPM/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -1458,39 +1456,16 @@ div.csl-indent {
 <span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>ChiBar2DiffTest</span>
 <span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>ChiBar2DiffTest<span class="sc">$</span>p_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 <hr>
 </section>
 <section id="gorica" class="level1">
 <h1>GORICA</h1>
 <p>Rather than evaluating a null-hypothesis of no effect, researchers may be interested in evaluating a theory-based, informative hypothesis <span class="citation" data-cites="altinisik_evaluation_2021">(<a href="#ref-altinisik_evaluation_2021" role="doc-biblioref">Altinisik et al. 2021</a>)</span>. Informative hypotheses can reflect a priori theories, and often contain orderings of (standardized) parameters. For example, one may hypothesize that one cross-lagged relationship is higher than another one; often referred to as “causal dominance”. Such a causal dominance hypothesis can be evaluated with an AIC-type criterion called the GORICA <span class="citation" data-cites="sukpan_evaluate_2023">(<a href="#ref-sukpan_evaluate_2023" role="doc-biblioref">Sukpan and Kuiper 2023</a>)</span>. Below you find code for evaluating a causal dominance hypothesis using the GORICA, for both the RI-CLPM with time-independent and time-specific parameters. We make use of the example data provided with these online supplementary materials. For more information, we refer to <a href="https://github.com/rebeccakuiper/Tutorials">https://github.com/rebeccakuiper/Tutorials</a>.</p>
-<p>::: {.panel-tabset}</p>
-</section>
-<section id="time-varying-lagged-effects" class="level1">
-<h1>### Time-varying lagged-effects</h1>
-</section>
-<section id="gorica-1" class="level1">
-<h1>GORICA</h1>
-<p>Rather than evaluating a null-hypothesis of no effect, researchers may be interested in evaluating a theory-based, informative hypothesis <span class="citation" data-cites="altinisik_evaluation_2021">(<a href="#ref-altinisik_evaluation_2021" role="doc-biblioref">Altinisik et al. 2021</a>)</span>. Informative hypotheses can reflect a priori theories, and often contain orderings of (standardized) parameters. For example, one may hypothesize that one cross-lagged relationship is higher than another one; often referred to as “causal dominance”. Such a causal dominance hypothesis can be evaluated with an AIC-type criterion called the GORICA <span class="citation" data-cites="sukpan_evaluate_2023">(<a href="#ref-sukpan_evaluate_2023" role="doc-biblioref">Sukpan and Kuiper 2023</a>)</span>. Below you find code for evaluating a causal dominance hypothesis using the GORICA, for both the RI-CLPM with time-independent and time-specific parameters. We make use of the example data provided with these online supplementary materials. For more information, we refer to <a href="https://github.com/rebeccakuiper/Tutorials">https://github.com/rebeccakuiper/Tutorials</a>.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Time-varying lagged-effects</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Time-varying lagged-effects</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Constrained parameters</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>d862b70c06b0a1bfbd01f9450f9c709375a1c132 In the below R code, we use the GORICA to test the informative hypothesis that the cross-lagged effects from <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> are stronger than those from <span class="math inline">\(Y\)</span> to <span class="math inline">\(X\)</span> (i.e., <span class="math inline">\(X\)</span> is causally dominant). For the specification of this hypothesis we need to label the cross-lagged parameters, which in the below model specification are allowed to vary over time. Analysis using the GORICA shows that the informative hypothesis has 13.137 times more support than its complement (i.e., that there is no causal dominance, or that <span class="math inline">\(Y\)</span> is causally dominant).</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
+<p>Rather than evaluating a null-hypothesis of no effect, researchers may be interested in evaluating a theory-based, informative hypothesis <span class="citation" data-cites="altinisik_evaluation_2021">(<a href="#ref-altinisik_evaluation_2021" role="doc-biblioref">Altinisik et al. 2021</a>)</span>. Informative hypotheses can reflect a priori theories, and often contain orderings of (standardized) parameters. For example, one may hypothesize that one cross-lagged relationship is higher than another one; often referred to as “causal dominance”. Such a causal dominance hypothesis can be evaluated with an AIC-type criterion called the GORICA <span class="citation" data-cites="sukpan_evaluate_2023">(<a href="#ref-sukpan_evaluate_2023" role="doc-biblioref">Sukpan and Kuiper 2023</a>)</span>. Below you find code for evaluating a causal dominance hypothesis using the GORICA, for both the RI-CLPM with time-independent and time-specific parameters. We make use of the example data provided with these online supplementary materials. For more information, we refer to <a href="https://github.com/rebeccakuiper/Tutorials">https://github.com/rebeccakuiper/Tutorials</a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R package for testing of linear (in)equality restrictions on parameters in linear models</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(restriktor)</span>
@@ -1580,7 +1555,9 @@ div.csl-indent {
 <span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-87"><a href="#cb21-87" aria-hidden="true" tabindex="-1"></a>GORICA_H1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD ### Constrained parameters ======= ## Constrained parameters &gt;&gt;&gt;&gt;&gt;&gt;&gt; d862b70c06b0a1bfbd01f9450f9c709375a1c132 The GORICA can also be used to test informative hypotheses when parameters are constrained over time. In the below R code, the lagged effects, residuals variances, and intercepts are restricted to be time-invariant. We again use the GORICA to test the informative hypothesis that the cross-lagged effects from <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> are stronger than those from <span class="math inline">\(Y\)</span> to <span class="math inline">\(X\)</span> (i.e., <span class="math inline">\(X\)</span> is causally dominant). Analysis shows that the informative hypothesis has 785.564 times more support than its complement. (i.e., that there is no causal dominance, or that <span class="math inline">\(Y\)</span> is causally dominant).</p>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<p>The GORICA can also be used to test informative hypotheses when parameters are constrained over time. In the below R code, the lagged effects, residuals variances, and intercepts are restricted to be time-invariant. We again use the GORICA to test the informative hypothesis that the cross-lagged effects from <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> are stronger than those from <span class="math inline">\(Y\)</span> to <span class="math inline">\(X\)</span> (i.e., <span class="math inline">\(X\)</span> is causally dominant). Analysis shows that the informative hypothesis has 785.564 times more support than its complement. (i.e., that there is no causal dominance, or that <span class="math inline">\(Y\)</span> is causally dominant).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Informative hypothesis about time-invariant cross-lagged effects </span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>H2 <span class="ot">&lt;-</span> <span class="st">"abs(b) &lt; abs(c)"</span> </span>
@@ -1667,11 +1644,9 @@ div.csl-indent {
 <span id="cb22-83"><a href="#cb22-83" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-84"><a href="#cb22-84" aria-hidden="true" tabindex="-1"></a>GORICA_H2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 </div>
 </div>
 </div>
-<p>======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; d862b70c06b0a1bfbd01f9450f9c709375a1c132</p>
 
 
 
