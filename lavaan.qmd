@@ -119,13 +119,7 @@ RICLPM <- '
   wx5 ~~ wx5
   wy5 ~~ wy5
 '
-RICLPM.fit <- lavaan(RICLPM,
-  data = dat, 
-  missing = "ML", 
-  meanstructure = T, 
-  int.ov.free = T
-)
-summary(RICLPM.fit, standardized = T)
+ 
 ```
 
 ```{r CLPM, eval = F, echo = F}
@@ -1108,7 +1102,8 @@ RICLPM1.ext3 <- '
 '
 RICLPM1.ext3.fit <- cfa(RICLPM1.ext3, 
   data = datMI, 
-  missing = 'ML'
+  missing = 'ML',
+  meanstructure = TRUE
 )
 summary(RICLPM1.ext3.fit, standardized = T)
 ```
@@ -1469,7 +1464,7 @@ summary(RICLPM5.ext3.fit, standardized = T)
 :::
 
 # $\bar{\chi}^{2}$-test
-The use of the chi-square difference test is wide-spread in the SEM community to test constaints on parameters. However, when constraints are placed on the bound of the parameter space, we should use the chi-bar-square test ($\bar{\chi}^{2}$-test) [@stoel_likelihood_2006]. For example, if we constrain the variances of all random intercepts (and their covariance) in the RI-CLPM to zero, we obtain a model that is nested under the RI-CLPM, and that is statistically equivalent to the traditional cross-lagged panel model (CLPM). Below you can find R code for performing the chi-bar-square test (code by [Rebecca M. Kuiper](https://www.uu.nl/staff/rmkuiper/Software)) for comparing these two models. It involves 
+The use of the chi-square difference test is wide-spread in the SEM community to test constraints on parameters. However, when constraints are placed on the bound of the parameter space, we should use the chi-bar-square test ($\bar{\chi}^{2}$-test) [@stoel_likelihood_2006]. For example, if we constrain the variances of all random intercepts (and their covariance) in the RI-CLPM to zero, we obtain a model that is nested under the RI-CLPM, and that is statistically equivalent to the traditional cross-lagged panel model (CLPM). Below you can find R code for performing the chi-bar-square test (code by [Rebecca M. Kuiper](https://www.uu.nl/staff/rmkuiper/Software)) for comparing these two models. It involves 
 
 1. fitting both the RI-CLPM (`RICLPM.fit`) and CLPM (`CLPM.fit`);
 2. extracting the covariance matrix of the random intercepts;
@@ -1503,4 +1498,190 @@ ChiBar2DiffTest
 ChiBar2DiffTest$p_value
 ```
 
+# GORICA
+Rather than evaluating a null-hypothesis of no effect, researchers may be interested in evaluating a theory-based, informative hypothesis [@altinisik_evaluation_2021]. Informative hypotheses can reflect a priori theories, and often contain orderings of (standardized) parameters. For example, one may hypothesize that one cross-lagged relationship is higher than another one; often referred to as "causal dominance". Such a causal dominance hypothesis can be evaluated with an AIC-type criterion called the GORICA [@sukpan_evaluate_2023]. Below you find code for evaluating a causal dominance hypothesis using the GORICA, for both the RI-CLPM with time-independent and time-specific parameters. We make use of the example data provided with these online supplementary materials. For more information, we refer to [https://github.com/rebeccakuiper/Tutorials](https://github.com/rebeccakuiper/Tutorials).
 
+::: {.panel-tabset}
+
+## Time-varying lagged-effects
+In the below R code, we use the GORICA to test the informative hypothesis that the cross-lagged effects from $X$ to $Y$ are stronger than those from $Y$ to $X$ (i.e., $X$ is causally dominant). For the specification of this hypothesis we need to label the cross-lagged parameters, which in the below model specification are allowed to vary over time. Analysis using the GORICA shows that the informative hypothesis has 13.137 times more support than its complement (i.e., that there is no causal dominance, or that $Y$ is causally dominant). 
+
+```{r GORICA1, eval = F, message = F}
+# R package for testing of linear (in)equality restrictions on parameters in linear models
+library(restriktor)
+
+# Informative hypothesis about cross-lagged effects (using parameter labels in model)
+H1 <- "abs(b2) < abs(c2); abs(b3) < abs(c3); 
+       abs(b4) < abs(c4); abs(b5) < abs(c5)" 
+
+# Fit RI-CLPM
+RICLPM_H1 <- '
+  # Create between components (random intercepts)
+  RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5
+  RIy =~ 1*y1 + 1*y2 + 1*y3 + 1*y4 + 1*y5
+  
+  # Create within-person centered variables
+  wx1 =~ 1*x1
+  wx2 =~ 1*x2
+  wx3 =~ 1*x3 
+  wx4 =~ 1*x4
+  wx5 =~ 1*x5
+  
+  wy1 =~ 1*y1
+  wy2 =~ 1*y2
+  wy3 =~ 1*y3
+  wy4 =~ 1*y4
+  wy5 =~ 1*y5
+
+  # Estimate lagged effects between within-person centered variables
+  wx2 ~ a2*wx1 + b2*wy1 
+  wy2 ~ c2*wx1 + d2*wy1
+  
+  wx3 ~ a3*wx2 + b3*wy2
+  wy3 ~ c3*wx2 + d3*wy2
+  
+  wx4 ~ a4*wx3 + b4*wy3
+  wy4 ~ c4*wx3 + d4*wy3
+  
+  wx5 ~ a5*wx4 + b5*wy4
+  wy5 ~ c5*wx4 + d5*wy4
+
+  # Estimate covariance between within-person centered variables at first wave
+  wx1 ~~ wy1 # Covariance
+  
+  # Estimate covariances between residuals of within-person centered variables 
+  # (i.e., innovations)
+  wx2 ~~ wy2
+  wx3 ~~ wy3
+  wx4 ~~ wy4
+  wx5 ~~ wy5
+  
+  # Estimate variance and covariance of random intercepts
+  RIx ~~ RIx
+  RIy ~~ RIy
+  RIx ~~ RIy
+
+  # Estimate (residual) variance of within-person centered variables
+  wx1 ~~ wx1 # Variances
+  wy1 ~~ wy1 
+  wx2 ~~ wx2 # Residual variances
+  wy2 ~~ wy2 
+  wx3 ~~ wx3 
+  wy3 ~~ wy3 
+  wx4 ~~ wx4 
+  wy4 ~~ wy4 
+  wx5 ~~ wx5
+  wy5 ~~ wy5
+'
+
+fit_H1 <- lavaan(
+  model = RICLPM_H1,
+  data = dat, 
+  missing = "ML", 
+  meanstructure = TRUE, 
+  int.ov.free = TRUE
+)
+
+summary(fit_H1, standardized = TRUE)
+
+# Compute GORICA values and weights (use `standardized = TRUE`)
+GORICA_H1 <- goric(
+  fit_H1, 
+  standardized = TRUE,
+  hypotheses = list(H1ws.l = H1), 
+  comparison = "complement", # Test informative hypothesis versus its complement
+  type = "gorica"
+)
+
+GORICA_H1
+```
+
+## Constrained parameters
+The GORICA can also be used to test informative hypotheses when parameters are constrained over time. In the below R code, the lagged effects, residuals variances, and intercepts are restricted to be time-invariant. We again use the GORICA to test the informative hypothesis that the cross-lagged effects from $X$ to $Y$ are stronger than those from $Y$ to $X$ (i.e., $X$ is causally dominant). Analysis shows that the informative hypothesis has 785.564 times more support than its complement. (i.e., that there is no causal dominance, or that $Y$ is causally dominant). 
+
+```{r GORICA2, eval = F, message = F}
+# Informative hypothesis about time-invariant cross-lagged effects 
+H2 <- "abs(b) < abs(c)" 
+
+# Fit RI-CLPM
+RICLPM_H2 <- '
+  # Create between components (random intercepts)
+  RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5
+  RIy =~ 1*y1 + 1*y2 + 1*y3 + 1*y4 + 1*y5
+  
+  # Create within-person centered variables
+  wx1 =~ 1*x1
+  wx2 =~ 1*x2
+  wx3 =~ 1*x3 
+  wx4 =~ 1*x4
+  wx5 =~ 1*x5
+  wy1 =~ 1*y1
+  wy2 =~ 1*y2
+  wy3 =~ 1*y3
+  wy4 =~ 1*y4
+  wy5 =~ 1*y5
+  
+  # Estimate lagged effects between within-person centered variables 
+  # (constrained)
+  wx2 ~ a*wx1 + b*wy1 
+  wy2 ~ c*wx1 + d*wy1
+  wx3 ~ a*wx2 + b*wy2
+  wy3 ~ c*wx2 + d*wy2
+  wx4 ~ a*wx3 + b*wy3
+  wy4 ~ c*wx3 + d*wy3
+  wx5 ~ a*wx4 + b*wy4
+  wy5 ~ c*wx4 + d*wy4
+  
+  # Estimate covariances between residuals of within-person centered variables 
+  # (i.e., innovations, constrained)
+  wx2 ~~ cov*wy2
+  wx3 ~~ cov*wy3
+  wx4 ~~ cov*wy4 
+  wx5 ~~ cov*wy5
+  
+  # Estimate covariance between within-person centered variables at first wave
+  wx1 ~~ wy1 # Covariance
+  
+  # Estimate variance and covariance of random intercepts
+  RIx ~~ RIx
+  RIy ~~ RIy
+  RIx ~~ RIy
+  
+  # Estimate (residual) variance of within-person centered variables 
+  # (constrained)
+  wx1 ~~ wx1 # Variance
+  wy1 ~~ wy1 
+  wx2 ~~ vx*wx2 # Residual variance
+  wy2 ~~ vy*wy2 
+  wx3 ~~ vx*wx3 
+  wy3 ~~ vy*wy3 
+  wx4 ~~ vx*wx4 
+  wy4 ~~ vy*wy4 
+  wx5 ~~ vx*wx5
+  wy5 ~~ vy*wy5
+  
+  # Constrain grand means over time
+  x1 + x2 + x3 + x4 + x5 ~ mx*1
+  y1 + y2 + y3 + y4 + y5 ~ my*1
+'
+
+fit_H2 <- lavaan(
+  model = RICLPM_H2,
+  data = dat, 
+  missing = "ML", 
+  meanstructure = TRUE, 
+  int.ov.free = TRUE
+)
+
+summary(fit_H2, standardized = TRUE)
+
+# Compute GORICA values and weights
+GORICA_H2 <- goric(
+  fit_H2, 
+  hypotheses = list(H2), 
+  comparison = "complement", # Test informative hypothesis versus its complement
+  type = "gorica"
+)
+
+GORICA_H2
+```

@@ -143,7 +143,7 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#time-varying-covariates" id="toc-time-varying-covariates" class="nav-link active" data-scroll-target="#time-varying-covariates">Time-varying covariates</a></li>
+  <li><a href="#including-covariates" id="toc-including-covariates" class="nav-link active" data-scroll-target="#including-covariates">Including covariates</a></li>
   <li><a href="#moderation-and-mediation" id="toc-moderation-and-mediation" class="nav-link" data-scroll-target="#moderation-and-mediation">Moderation and mediation</a></li>
   <li><a href="#standardization" id="toc-standardization" class="nav-link" data-scroll-target="#standardization">Standardization</a></li>
   <li><a href="#non-continuous-outcomes" id="toc-non-continuous-outcomes" class="nav-link" data-scroll-target="#non-continuous-outcomes">Non-continuous outcomes</a></li>
@@ -175,26 +175,42 @@ div.csl-indent {
 </header>
 
 <p>Below you can find a list of frequently asked questions, organized by topic, that reach us via email. Click the question to see our response.</p>
-<section id="time-varying-covariates" class="level3">
-<h3 class="anchored" data-anchor-id="time-varying-covariates">Time-varying covariates</h3>
-<div class="callout callout-style-simple callout-note no-icon callout-titled" title="How do I include time-varying covariates with the RI-CLPM?">
+<section id="including-covariates" class="level3">
+<h3 class="anchored" data-anchor-id="including-covariates">Including covariates</h3>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="How do I include *time-varying* covariates with the RI-CLPM?">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-How do I include time-varying covariates with the RI-CLPM?
+How do I include <em>time-varying</em> covariates with the RI-CLPM?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Time-varying covariates (TVC; <span class="math inline">\(Z\)</span>) can be included like “regular” X and Y outcomes in the RI-CLPM; hence, rather than a bivariate RI-CLPM you would specify a tri- or more-variate RI-CLPM. As such, you decompose the TVCs in within-components (e.g.&nbsp;<span class="math inline">\(wz1\)</span>, <span class="math inline">\(wz2\)</span>, etc.) and a between-component (the random intercept; e.g.&nbsp;<span class="math inline">\(RI_{z}\)</span>) and model these components separately. However, if you want to control for many TVC’s, this can quickly become an unwieldly model, so researchers should think carefully about which TVC’s they want to control for.</p>
+<p>The inclusion of a single additional time-varying covariate (TVC) <span class="math inline">\(Z\)</span> is commonly done similarly to how “regular” <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> outcomes are treated in the RI-CLPM; hence, rather than a bivariate RI-CLPM you would specify a tri- (or more-variate) RI-CLPM. As such, you decompose the TVC in within-components (e.g.&nbsp;<span class="math inline">\(wz1\)</span>, <span class="math inline">\(wz2\)</span>, etc.) and a between-component (a random intercept for <span class="math inline">\(Z\)</span>; e.g.&nbsp;<span class="math inline">\(RI_{z}\)</span>) and model these components separately. However, if you want to control for many TVCs, this approach can quickly become unwieldly, leading to large statistical models that rely on many causal and statistical assumptions, and that can be hard to estimate. For researchers who want to adjust for a larger time-varying covariates, it might be worthwhile to consider alternative modeling approaches that have been proposed in the causal inference literature, such as those based on propensity scores.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="How do I include *time-invariant* covariates with the RI-CLPM?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How do I include <em>time-invariant</em> covariates with the RI-CLPM?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For time-invariant covariates, you can differentiate between those that have a stable effect across time, and those that have a time-varying effect across time. Take gender for example. When studying adolescents across years, you might expect that gender plays an increasingly important role for the <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> variables as children reach puberty. In this case, gender can be considered a time-invariant covariate that has a time-varying effect. For these covariates, it might be best to include these as predictors of the observed <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in order to control for their potentially confounding effect—however, research on this topic is still very much ongoing, see for example, <span class="citation" data-cites="murayama_thinking_2022">Murayama and Gfrörer (<a href="#ref-murayama_thinking_2022" role="doc-biblioref">2022</a>)</span>. However, when you are studying a much shorter time span—for example, studying adolescents across a couple of weeks, or adults—then gender might be considered to be a time-invariant covariate with a stable effect on <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. For this type of covariate, the RI-CLPM controls by default through the inclusion of the random intercept factor. <span class="citation" data-cites="usami_differences_2021">Usami (<a href="#ref-usami_differences_2021" role="doc-biblioref">2021</a>)</span> covers this in detail.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="Is it possible to run an RI-CLPM with three (or more) outcomes?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -203,9 +219,9 @@ Is it possible to run an RI-CLPM with three (or more) outcomes?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Yes, it is statistically possible to run a “trivariate” RI-CLPM and empirical researchers have done so, see for example <span class="citation" data-cites="van_lissa_role_2019">Van Lissa et al. (<a href="#ref-van_lissa_role_2019" role="doc-biblioref">2019</a>)</span>, <span class="citation" data-cites="flouri_developmental_2019">Flouri et al. (<a href="#ref-flouri_developmental_2019" role="doc-biblioref">2019</a>)</span>, and <span class="citation" data-cites="hygen_longitudinal_2022">Hygen et al. (<a href="#ref-hygen_longitudinal_2022" role="doc-biblioref">2022</a>)</span>. We don’t provide model code here for this mode, but extension to a trivariate RI-CLPM should be relatively straight forwards. That is, all variables should be decomponsed into between- (random intercepts) and within-components, and relevant lagged effects, as well as (residual) variances and covariances, should be included in the model.</p>
+<p>Yes, it is statistically possible to run a “trivariate” RI-CLPM and empirical researchers have done so, see for example <span class="citation" data-cites="van_lissa_role_2019">Van Lissa et al. (<a href="#ref-van_lissa_role_2019" role="doc-biblioref">2019</a>)</span>, <span class="citation" data-cites="flouri_developmental_2019">Flouri et al. (<a href="#ref-flouri_developmental_2019" role="doc-biblioref">2019</a>)</span>, and <span class="citation" data-cites="hygen_longitudinal_2022">Hygen et al. (<a href="#ref-hygen_longitudinal_2022" role="doc-biblioref">2022</a>)</span>. We don’t provide model code here for this mode, but extension to a trivariate RI-CLPM should be relatively straight forwards. That is, all variables should be decomposed into between- (random intercepts) and within-components, and relevant lagged effects, as well as (residual) variances and covariances, should be included in the model.</p>
 </div>
 </div>
 </div>
@@ -213,7 +229,7 @@ Is it possible to run an RI-CLPM with three (or more) outcomes?
 <section id="moderation-and-mediation" class="level3">
 <h3 class="anchored" data-anchor-id="moderation-and-mediation">Moderation and mediation</h3>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="Is it possible to specify a moderator within the RI-CLPM?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -222,7 +238,7 @@ Is it possible to specify a moderator within the RI-CLPM?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>There are various approaches for studying moderation within the RI-CLPM, depending on the measurement level of the moderator variable. Moderation by a time-invariant, categorical variable can be investigated using a multiple group RI-CLPM, as described in Extension 2 of <span class="citation" data-cites="mulder_three_2021">Mulder and Hamaker (<a href="#ref-mulder_three_2021" role="doc-biblioref">2021</a>)</span>. Moderation by a time-varying, continuous variable can be investigating by creating latent interactions of the moderator <span class="math inline">\(\times\)</span> within-components, or the moderator <span class="math inline">\(\times\)</span> random intercept factor(s). See <span class="citation" data-cites="ozkok_interaction_2022">Ozkok et al. (<a href="#ref-ozkok_interaction_2022" role="doc-biblioref">2022</a>)</span> and <span class="citation" data-cites="speyer_testing_2023">Speyer et al. (<a href="#ref-speyer_testing_2023" role="doc-biblioref">2023</a>)</span> for detailed information on how to this.</p>
 <p>Due to the high computational burden that the inclusion of a continuous time-varying moderator places on the estimation, <span class="citation" data-cites="ozkok_interaction_2022">Ozkok et al. (<a href="#ref-ozkok_interaction_2022" role="doc-biblioref">2022</a>)</span> make use of a Bayesian estimator. Their supplemental materials, including the Mplus model syntax, can be found at <a href="https://journals.sagepub.com/doi/suppl/10.1177/10944281211043733">https://journals.sagepub.com/doi/suppl/10.1177/10944281211043733</a>. They note that currently only Mplus supports the use of latent interactions as used here.</p>
@@ -230,7 +246,7 @@ Is it possible to specify a moderator within the RI-CLPM?
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="Is it possible to test for mediation effects in the RI-CLPM?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -239,7 +255,7 @@ Is it possible to test for mediation effects in the RI-CLPM?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>While it is statistically possible to include a third time-varying covariate into the RI-CLPM (which can be used to investigate mediation at the within-person level), there are multiple theoretical concerns that complicate the interpretation of estimates related to mediation. Researchers are strongly advised to give these concerns due consideration when interested in studying mediation using the RI-CLPM.</p>
 <p>First, there are multiple options for defining a direct effect, and it might not be straightforward which option is appropriate for a particular research question. That is, there are multiple paths not through the mediator variable <span class="math inline">\(M\)</span> that represent an effect of <span class="math inline">\(X\)</span> on a <span class="math inline">\(Y\)</span> at a later occasion. For example, is the direct effect only the lag-2 effect <span class="math inline">\(X_{1} \rightarrow Y_{3}\)</span>, or is the combination of the effects <span class="math inline">\(X_{1} \rightarrow Y_{2} \rightarrow Y_{3}\)</span>, <span class="math inline">\(X_{1} \rightarrow X_{2} \rightarrow Y_{3}\)</span> <em>and</em> <span class="math inline">\(X_{1} \rightarrow Y_{3}\)</span>?</p>
@@ -251,7 +267,7 @@ Is it possible to test for mediation effects in the RI-CLPM?
 <section id="standardization" class="level3">
 <h3 class="anchored" data-anchor-id="standardization">Standardization</h3>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="How should I interpret the standardized cross-lagged and autoregressive parameters?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -260,14 +276,14 @@ How should I interpret the standardized cross-lagged and autoregressive paramete
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>In the RI-CLPM, the standardized effects are reflective/representative of how much within-person variance in <span class="math inline">\(y_{t}\)</span> is <em>uniquely</em> explained (i.e., not also explained by other predictors) by the predictor <span class="math inline">\(x_{t-1}\)</span>. Please note that this does not imply that one can make a one-on-one comparison with the percentage of explained variance. However, the standardized effects can be used to compare which effect is relatively stronger <span class="citation" data-cites="schuurman_how_2016">(<a href="#ref-schuurman_how_2016" role="doc-biblioref">Schuurman et al. 2016</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="How do standardized cross-lagged and autoregressive parameters compare to explained variance?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -276,7 +292,7 @@ How do standardized cross-lagged and autoregressive parameters compare to explai
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The standardized lagged parameters are not equal to the (squared) semipartial correlation. Only under special circumstances, a standardized regression coefficient is equal to the pairwise correlation between the outcome and predictor, and the square of the standardized regression coefficient would then be the explained variance (<span class="math inline">\(R^{2}\)</span>). This only applies in the case of (a) a simple regression, where there is only one predictor in the model, or (b) a multiple regression where the predictors are independent of each other. In the RI-CLPM, however, the multiple predictors are not independent of each other, and therefore the standardized regression coefficients are not equal to the pairwise correlation, (semi)partial correlation, or the unique explained variance.</p>
 <p>However, the standardized coefficient is closely related to the semipartial correlation, as demonstrated in footnote 3 of <span class="citation" data-cites="schuurman_how_2016">Schuurman et al. (<a href="#ref-schuurman_how_2016" role="doc-biblioref">2016</a>)</span>. The standardized coefficient is expressed in terms of pairwise correlations in the first equation there, and the semipartial correlation expressed in terms of pairwise correlations in the second equation. They are very similar, but there is a subtle difference in the denominator.</p>
@@ -286,7 +302,7 @@ How do standardized cross-lagged and autoregressive parameters compare to explai
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="How can I constrain the *standardized* parameters to be invariant over time?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -295,7 +311,7 @@ How can I constrain the <em>standardized</em> parameters to be invariant over ti
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>While the lagged parameters can be constrained to be invariant over time, this does not imply that the standardized parameters will be invariant over time as well. The reason for this is that a standardized parameter is a function of the unstandardized parameter, and of the standard deviations of the predictor and the outcome variable, <span class="math inline">\(\beta_{standardized} = \frac{SD(x)}{SD(y)}\beta\)</span>. Since the variances of the within-components <em>themselves</em> are not constrained to be invariant over time, the standard deviations of the predictor and the outcome variable for the lagged effects can vary over time. Therefore, the standardized lagged effects can vary even while the unstandardized lagged effects are constrained to be equal over time.</p>
 <p>To make the standardized lagged parameters time invariant, the within-person components need to have a variance of 1 at every occasion. In that case, the lagged parameters are already the standardized lagged parameters, and it becomes possible to impose time-constraints on them. At the first wave, the variances of the within-components can be set directly as these variables are exogenous. However, for <span class="math inline">\(t &gt; 1\)</span>, the variances of the within-components are functions of the lagged parameters, and the covariance between the lagged predictors. Specifically, using <em>the path tracing rules</em> <span class="citation" data-cites="wright_method_1934">(<a href="#ref-wright_method_1934" role="doc-biblioref">Wright 1934</a>)</span> and assuming the variance of lagged within-component is in fact 1, the variance of <span class="math inline">\(wx_{it}\)</span> can be expressed as <span class="math display">\[Var[wx_{it}] = \alpha^{2}_{t} + \gamma^{2}_{t} + 2 \alpha_{t} \gamma_{t} Cov[wx_{i,t-1}, wy_{i,t-1}] + Var[u_{it}]\]</span> where <span class="math inline">\(\alpha_{t}\)</span> is the autoregressive effect of <span class="math inline">\(wx\)</span>, <span class="math inline">\(\gamma{t}\)</span> is the cross-lagged effect from <span class="math inline">\(wy_{i,t-1}\)</span> to <span class="math inline">\(wx_{it}\)</span>, and <span class="math inline">\(u_{Xit}\)</span> is the residual of <span class="math inline">\(wx\)</span>. So, the variance of <span class="math inline">\(wx_{it}\)</span> itself can be set to 1 by imposing a constrain on the residual variance <span class="math inline">\(Var[u_{it}]\)</span>, that is <span class="math display">\[Var[u_{it}] = 1 - (\alpha^{2}_{t} + \gamma^{2}_{t} + 2 \alpha_{t} \gamma_{t} Cov[wx_{i,t-1}, wy_{i,t-1}])\]</span>.</p>
@@ -309,7 +325,7 @@ How can I constrain the <em>standardized</em> parameters to be invariant over ti
 <section id="non-continuous-outcomes" class="level3">
 <h3 class="anchored" data-anchor-id="non-continuous-outcomes">Non-continuous outcomes</h3>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="Can I run the RI-CLPM with binary/categorical/count outcomes?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -318,7 +334,7 @@ Can I run the RI-CLPM with binary/categorical/count outcomes?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>With Mplus version 8.7 and later, it is possible to estimate the RI-CLPM for binary and ordinal variables as well <span class="citation" data-cites="asparouhov_residual_2021">(<a href="#ref-asparouhov_residual_2021" role="doc-biblioref">Asparouhov and Muthén 2021</a>)</span>. Compared to the RI-CLPM for continuous variables, there are two important differences:</p>
 <ul>
@@ -333,7 +349,7 @@ Can I run the RI-CLPM with binary/categorical/count outcomes?
 <section id="power" class="level3">
 <h3 class="anchored" data-anchor-id="power">Power</h3>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="How do I perform a power analysis for the RI-CLPM?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -342,7 +358,7 @@ How do I perform a power analysis for the RI-CLPM?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><code>powRICLPM</code> is an R-package that performs a power analysis for the RI-CLPM in a simple and user-friendly way. It implements the strategy as proposed by <span class="citation" data-cites="mulder_power_2023">Mulder (<a href="#ref-mulder_power_2023" role="doc-biblioref">2023</a>)</span>, and includes various extensions such as the inclusion of measurement error (leading to the stable trait autoregressive trait state model by <span class="citation" data-cites="collins_traitstate_2001">Kenny and Zautra (<a href="#ref-collins_traitstate_2001" role="doc-biblioref">2001</a>)</span>, and multiple constraints over time. <code>powRICLPM</code> is available from the Comprehensive R Archive Network (CRAN). More information can be found at <a href="https://jeroendmulder.github.io/powRICLPM/">https://jeroendmulder.github.io/powRICLPM/</a>.</p>
 </div>
@@ -352,7 +368,7 @@ How do I perform a power analysis for the RI-CLPM?
 <section id="clpm-v.-riclpm" class="level3">
 <h3 class="anchored" data-anchor-id="clpm-v.-riclpm">CLPM v. RICLPM</h3>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="Why are the autoregressive effects in the RI-CLPM typically smaller than in the CLPM?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -361,14 +377,14 @@ Why are the autoregressive effects in the RI-CLPM typically smaller than in the 
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The autoregressive effects in the CLPM and the RI-CLPM capture two distinct phenomena. In the traditional CLPM, the autoregressive effects capture both within- and between-unit effects, and it can be interpreted as rank-order stability. In the RI-CLPM, the stable, between-person variance is separated from the within-person variance such that the autoregressive effects only capture within-person carry-over. In other words, in the RI-CLPM the autoregressive effects are typically smaller because the stable, trait-like stability is not captured anymore by the autoregressive effects (as in the CLPM), but by the random intercepts.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="Is it a bad sign that the standard errors are typically larger in the RI-CLPM than in the CLPM?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -377,7 +393,7 @@ Is it a bad sign that the standard errors are typically larger in the RI-CLPM th
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>No, this is to be expected because the RI-CLPM is a more complex model than the CLPM. Therefore, the point estimates are less certain, but this does not imply that the estimates are biased and the model does not give us any insight in the underlying mechanism under study. In contrast, the RI-CLPM is likely less biased than results from the CLPM because the RI-CLM accounts for stable, unobserved factors that create lasting between-person differences, which can create spurious empirical relationships between the constructs under investigation when not properly accounted for.</p>
 </div>
@@ -387,7 +403,7 @@ Is it a bad sign that the standard errors are typically larger in the RI-CLPM th
 <section id="growth-and-development" class="level3">
 <h3 class="anchored" data-anchor-id="growth-and-development">Growth and development</h3>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="How can the RI-CLPM incorporate growth over time?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -396,7 +412,7 @@ How can the RI-CLPM incorporate growth over time?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The RI-CLPM estimates grand means at each time point. If these are constrained to be time-invariant, this would imply that on average there is no change. However, if these constraints cannot be imposed on the model, this means that on average there is some kind of change (e.g., growth, decline, U-shape, sudden jump between two waves, etc.). In this case, the model implies that <strong>every person</strong> is modeled to have the exact same underlying trend over time, but at a constant deviation from the average trend (as captured by the random intercept factor). Hence, instead of talking about constant means over time, one would have to talk about constant deviations from an average trend.</p>
 <p>In the latent growth curve model (LGCM) and its extension, the latent curve model with structured residuals (LCM-SR), it is assumed that individual have the same kind of trend (e.g., a linear or quadratic trend), but there can be individual differences in the parameters of this trend; as a result, the differences between individuals change over time (i.e., they may increase or decrease). When the variance of the slope components (i.e., the slope factor of both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in the bivariate case) is fixed to zero, the LGCM and LCS-SR become special cases of the RI-CLPM; if the grand means in the RI-CLPM are fixed to be invariant over time, then this is a special case of the LCM-SR <span class="citation" data-cites="usami_unified_2019">(<a href="#ref-usami_unified_2019" role="doc-biblioref">Usami, Murayama, and Hamaker 2019</a>)</span>.</p>
@@ -408,7 +424,7 @@ How can the RI-CLPM incorporate growth over time?
 <h3 class="anchored" data-anchor-id="response-to-orth_testing_2021">Response to <span class="citation" data-cites="orth_testing_2021">Orth et al. (<a href="#ref-orth_testing_2021" role="doc-biblioref">2021</a>)</span></h3>
 <p>Lately, we have received numerous questions about statements regarding the use and appropriateness of the CLPM and RI-CLPM in “Testing Prospective Effects in Longitudinal Research: Comparing Seven Competing Cross-Lagged Models” by <span class="citation" data-cites="orth_testing_2021">Orth et al. (<a href="#ref-orth_testing_2021" role="doc-biblioref">2021</a>)</span>. In our opinion, numerous conclusions herein are incorrect. Below we elaborate on some of their most prominent conclusions. For another reaction to this article, see <a href="https://replicationindex.com/2020/08/22/cross-lagged/">https://replicationindex.com/2020/08/22/cross-lagged</a>.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="The RI-CLPM is not suited for studying prospective between-person effects, whereas the CLPM is.">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -417,7 +433,7 @@ The RI-CLPM is not suited for studying prospective between-person effects, where
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>On page 1026, <span class="citation" data-cites="orth_testing_2021">Orth et al. (<a href="#ref-orth_testing_2021" role="doc-biblioref">2021</a>)</span> state that the RI-CLPM does not allow for the testing of prospective between-person effects because “(…) <em>the random intercept factors provide information only about correlational associations between the constructs</em> (…)<em>, but not about time-lagged (i.e, longitudinal) and directional between-person effects.</em>” It is true that the RI-CLPM separates stable, between-person differences from temporal, within-person fluctuations. Only the latter allow one to look at prospective effects over time, while the stable between-person differences have no particular time-order.</p>
 <p>The reasoning that <span class="citation" data-cites="orth_testing_2021">Orth et al. (<a href="#ref-orth_testing_2021" role="doc-biblioref">2021</a>)</span> seem to follow is this: If one is interested in trait-changes, we should not separate the stable trait components from the temporary fluctuations, as the first does not allow for the study of prospective effects and are not of interest because they are entirely stable, while the latter only contain state-like fluctuations that are less interesting to researchers who want to study in trait-changes. <span class="citation" data-cites="orth_testing_2021">Orth et al. (<a href="#ref-orth_testing_2021" role="doc-biblioref">2021</a>)</span> seem to consider both components separately not to be of interest, but nevertheless argue that a blend of both components is of key interest. We disagree with this reasoning.</p>
@@ -428,7 +444,7 @@ The RI-CLPM is not suited for studying prospective between-person effects, where
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="The RI-CLPM is better suited for short-term studies because it cannot detect sustained prospective effects.">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -437,7 +453,7 @@ The RI-CLPM is better suited for short-term studies because it cannot detect sus
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The characterization of the lagged effects as short- or long-term depends on the time scale at which the measurements are made. When using annual data, lagged effects capture the fluctuation from year to year; when dealing with data that were obtained every decade, the within-person fluctuations will concern the changes from decade to decade. It is all relative to how the data were measured, and even when we are focusing on trait changes by measuring people once every 10 years, for say 40 years, there will still be stable between-person differences between individuals that need to be controlled for.</p>
 <p>Hence, the need to decompose the observations into a stable between-person component and temporal within-person components is independent of the time scale at which measurements were obtained.</p>
@@ -445,7 +461,7 @@ The RI-CLPM is better suited for short-term studies because it cannot detect sus
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="There should be a match between the type of research question asked and the model used: The CLPM is for the analysis of between-person prospective effects whereas the RI-CLPM should be used for within-person prospective effects.">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -454,14 +470,14 @@ There should be a match between the type of research question asked and the mode
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We agree with the authors in so far that there should be a match between the research question and the statistical model used. However, the critical distinction here is not whether one is interested in within-person or between-person prospective effects (as argued above, the RI-CLPM can capture trait-changes depending on the time scale at which measurements are gathered). Rather, we should distinguish between descriptive, predictive, and causal research questions <span class="citation" data-cites="hamaker_description_2020">(<a href="#ref-hamaker_description_2020" role="doc-biblioref">Hamaker, Mulder, and Van IJzendoorn 2020</a>)</span>. The CLPM is suitable for predictive research questions: e.g., “Who is at risk for heightened <span class="math inline">\(X\)</span>?” and “Who should get an intervention to reduce <span class="math inline">\(Y\)</span>?”. However, for answering causal research questions, other models should be used, because the CLPM does not control for stable, between-person difference. This is problematic as failing to properly account for such confounding effects can lead to finding spurious lagged effects, a failure to find true relationships, or more generally, biased estimates <span class="citation" data-cites="hamaker_critique_2015">(<a href="#ref-hamaker_critique_2015" role="doc-biblioref">Hamaker, Kuiper, and Grasman 2015</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="The parameters from the CLPM tend to have smaller standard errors than the parameters from the RI-CLPM; hence, the results from the CLPM are easier to replicate, which may be a reason to prefer this model.">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -470,7 +486,7 @@ The parameters from the CLPM tend to have smaller standard errors than the param
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>On page 1028, <span class="citation" data-cites="orth_testing_2021">Orth et al. (<a href="#ref-orth_testing_2021" role="doc-biblioref">2021</a>)</span> state that “For the CLPM, the structural coefficients were much more consistent compared to the RI-CLPM, both across and within samples, which is important with regard to replicability of research findings (Asendorf et al., 2013). Even if theoretical consideration have priority over replicability in model selection, replicability of estimates is—other things being equal—an important criterion of the quality of statistical models.”</p>
 <p>When the goal is prediction, this may indeed be an important consideration. However, when the goal is to gain insight in the underlying mechanism, we should not prefer a model simply based on its ability to replicate results: Replicating biased results is only giving us false confidence in erroneous conclusions.</p>
@@ -512,6 +528,9 @@ Mulder, Jeroen D. 2023. <span>“Power Analysis for the Random Intercept Cross-L
 <div id="ref-mulder_three_2021" class="csl-entry" role="listitem">
 Mulder, Jeroen D., and Ellen L. Hamaker. 2021. <span>“Three Extensions of the Random Intercept Cross-Lagged Panel Model.”</span> <em>Structural Equation Modeling: A Multidisciplinary Journal</em> 28 (4): 638–48. <a href="https://doi.org/10.1080/10705511.2020.1784738">https://doi.org/10.1080/10705511.2020.1784738</a>.
 </div>
+<div id="ref-murayama_thinking_2022" class="csl-entry" role="listitem">
+Murayama, Kou, and Thomas Gfrörer. 2022. <span>“Thinking Clearly about Time-Invariant Confounders in Cross-Lagged Panel Models: A Guide for Choosing a Statistical Model from a Causal Inference Perspective.”</span> PsyArXiv. <a href="https://doi.org/10.31234/osf.io/bt9xr">https://doi.org/10.31234/osf.io/bt9xr</a>.
+</div>
 <div id="ref-orth_testing_2021" class="csl-entry" role="listitem">
 Orth, Ulrich, D. Angus Clark, M. Brent Donnellan, and Richard W. Robins. 2021. <span>“Testing Prospective Effects in Longitudinal Research: <span>Comparing</span> Seven Competing Cross-Lagged Models.”</span> <em>Journal of Personality and Social Psychology</em> 120 (4): 1013–34. <a href="https://doi.org/10.1037/pspp0000358">https://doi.org/10.1037/pspp0000358</a>.
 </div>
@@ -523,6 +542,9 @@ Schuurman, Noémi K., Emilio Ferrer, Mieke De Boer-Sonnenschein, and Ellen L. Ha
 </div>
 <div id="ref-speyer_testing_2023" class="csl-entry" role="listitem">
 Speyer, Lydia Gabriela, Anastasia Ushakova, Sarah-Jayne Blakemore, Aja Louise Murray, and Rogier Kievit. 2023. <span>“Testing for <em><span>Within</span> × <span>Within</span></em> and <em><span>Between</span> × <span>Within</span></em> <span>Moderation</span> <span>Using</span> <span>Random</span> <span>Intercept</span> <span>Cross</span>-<span>Lagged</span> <span>Panel</span> <span>Models</span>.”</span> <em>Structural Equation Modeling: A Multidisciplinary Journal</em> 30 (2): 315–27. <a href="https://doi.org/10.1080/10705511.2022.2096613">https://doi.org/10.1080/10705511.2022.2096613</a>.
+</div>
+<div id="ref-usami_differences_2021" class="csl-entry" role="listitem">
+Usami, Satoshi. 2021. <span>“On the Differences Between General Cross-Lagged Panel Model and Random-Intercept Cross-Lagged Panel Model: Interpretation of Cross-Lagged Parameters and Model Choice.”</span> <em>Structural Equation Modeling: A Multidisciplinary Journal</em> 28 (3): 331–44. <a href="https://doi.org/10.1080/10705511.2020.1821690">https://doi.org/10.1080/10705511.2020.1821690</a>.
 </div>
 <div id="ref-usami_unified_2019" class="csl-entry" role="listitem">
 Usami, Satoshi, Kou Murayama, and Ellen L. Hamaker. 2019. <span>“A Unified Framework of Longitudinal Models to Examine Reciprocal Relations.”</span> <em>Psychological Methods</em> 24 (5): 637–57. <a href="https://doi.org/10.1037/met0000210">https://doi.org/10.1037/met0000210</a>.
