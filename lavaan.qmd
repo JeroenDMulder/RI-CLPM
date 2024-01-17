@@ -1501,12 +1501,12 @@ ChiBar2DiffTest$p_value
 ---
 
 # GORICA
-Rather than evaluating a null-hypothesis of no effect, researchers may be interested in evaluating a theory-based, informative hypothesis [@altinisik_evaluation_2021]. Informative hypotheses can reflect a priori theories, and often contain orderings of (standardized) parameters. For example, one may hypothesize that one cross-lagged relationship is higher than another one; often referred to as "causal dominance". Such a causal dominance hypothesis can be evaluated with an AIC-type criterion called the GORICA [@sukpan_evaluate_2023]. Below you find code for evaluating a causal dominance hypothesis using the GORICA, for both the RI-CLPM with time-independent and time-specific parameters. We make use of the example data provided with these online supplementary materials. For more information, we refer to [https://github.com/rebeccakuiper/Tutorials](https://github.com/rebeccakuiper/Tutorials).
+Rather than evaluating a null-hypothesis of no effect, researchers may be interested in evaluating a theory-based, informative hypothesis [@altinisik_evaluation_2021]. Informative hypotheses can reflect a priori theories, and often contain orderings of (standardized) parameters. For example, one may hypothesize that one cross-lagged relationship is higher than another one; often referred to as "causal dominance". Such a causal dominance hypothesis can be evaluated with an AIC-type criterion called the GORICA [@altinisik_evaluation_2021; @sukpan_evaluate_2023]. Below you find code for evaluating a causal dominance hypothesis using the GORICA, for both the RI-CLPM with time-independent and time-specific parameters. We make use of the example data provided with these online supplementary materials. For more information, we refer to [https://github.com/rebeccakuiper/Tutorials](https://github.com/rebeccakuiper/Tutorials).
 
 ::: {.panel-tabset}
 
-### Time-varying lagged-effects
-Rather than evaluating a null-hypothesis of no effect, researchers may be interested in evaluating a theory-based, informative hypothesis [@altinisik_evaluation_2021]. Informative hypotheses can reflect a priori theories, and often contain orderings of (standardized) parameters. For example, one may hypothesize that one cross-lagged relationship is higher than another one; often referred to as "causal dominance". Such a causal dominance hypothesis can be evaluated with an AIC-type criterion called the GORICA [@sukpan_evaluate_2023]. Below you find code for evaluating a causal dominance hypothesis using the GORICA, for both the RI-CLPM with time-independent and time-specific parameters. We make use of the example data provided with these online supplementary materials. For more information, we refer to [https://github.com/rebeccakuiper/Tutorials](https://github.com/rebeccakuiper/Tutorials).
+### The basic model
+In the below R code we use the GORICA to test the informative hypothesis that the cross-lagged effects from $X$ to $Y$ are stronger than those from $Y$ to $X$ (i.e., $X$ is causally dominant). To specify the informative hypothesis, we use the labels of parameters as used in the model syntax: `b2`, `c2`, `b3`, `c3`, etc. Analysis shows that the informative hypothesis has 13.137 times more support than its complement (i.e., that there is no causal dominance, or that $Y$ is causally dominant). 
 
 ```{r GORICA1, eval = F, message = F}
 # R package for testing of linear (in)equality restrictions on parameters in linear models
@@ -1598,8 +1598,8 @@ GORICA_H1 <- goric(
 GORICA_H1
 ```
 
-### Constrained parameters
-The GORICA can also be used to test informative hypotheses when parameters are constrained over time. In the below R code, the lagged effects, residuals variances, and intercepts are restricted to be time-invariant. We again use the GORICA to test the informative hypothesis that the cross-lagged effects from $X$ to $Y$ are stronger than those from $Y$ to $X$ (i.e., $X$ is causally dominant). Analysis shows that the informative hypothesis has 785.564 times more support than its complement. (i.e., that there is no causal dominance, or that $Y$ is causally dominant). 
+### Constraints over time
+The GORICA can also be used to test informative hypotheses when parameters are constrained over time. In the below R code, the lagged effects, residuals variances, and intercepts are restricted to be time-invariant. We again use the GORICA to test the informative hypothesis that the cross-lagged effects from $X$ to $Y$ are stronger than those from $Y$ to $X$ (i.e., $X$ is causally dominant). Analysis shows that the informative hypothesis has 785.564 times more support than its complement (i.e., that there is no causal dominance, or that $Y$ is causally dominant). 
 
 ```{r GORICA2, eval = F, message = F}
 # Informative hypothesis about time-invariant cross-lagged effects 
