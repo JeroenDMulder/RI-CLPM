@@ -7,6 +7,7 @@ This page documents important updates and additions to the Mplus syntax, *lavaan
 
 | |    |
 |--|:----|
+| **April 14, 2024** | The [FAQ](https://jeroendmulder.github.io/RI-CLPM/faq.html) has been updated with a question about causal interpretation of estimates from the RI-CLPM. 
 | **January 16, 2024** | The [FAQ](https://jeroendmulder.github.io/RI-CLPM/faq.html) about inclusion of covariates in the RI-CLPM has been updated. The [lavaan](https://jeroendmulder.github.io/RI-CLPM/lavaan.html#GORICA) tab now contains additional explanation about informative hypothesis testing using the GORICA. |
 | **July 6, 2023** | The [FAQ](https://jeroendmulder.github.io/RI-CLPM/faq.html#Moderation) has been updated with information on investgating moderation with the RI-CLPM. |
 | **July 21, 2022** | The [FAQ](https://jeroendmulder.github.io/RI-CLPM/faq.html#Standardization) has been updated with information on how to impose constraints such that the *standardized* lagged effects can be made time-invariant. [Mplus](https://jeroendmulder.github.io/RI-CLPM/mplus.html#The_RI-CLPM) and [lavaan](https://jeroendmulder.github.io/RI-CLPM/lavaan.html#The_RI-CLPM) model syntax for specifying such a model have been added as well. |
