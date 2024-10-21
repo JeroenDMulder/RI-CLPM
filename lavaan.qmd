@@ -1506,7 +1506,7 @@ Rather than evaluating a null-hypothesis of no effect, researchers may be intere
 ::: {.panel-tabset}
 
 ### The basic model
-In the below R code we use the GORICA to test the informative hypothesis that the cross-lagged effects from $X$ to $Y$ are stronger than those from $Y$ to $X$ (i.e., $X$ is causally dominant). To specify the informative hypothesis, we use the labels of parameters as used in the model syntax: `b2`, `c2`, `b3`, `c3`, etc. Analysis shows that the informative hypothesis has 13.137 times more support than its complement (i.e., that there is no causal dominance, or that $Y$ is causally dominant). 
+In the below R code, we use the GORICA to evaluate the informative hypothesis that the cross-lagged effects from $X$ to $Y$ are stronger than those from $Y$ to $X$ (i.e., $X$ is causally dominant). To specify the informative hypothesis, we use the labels of parameters as used in the model syntax: `b2`, `c2`, `b3`, `c3`, etc. Analysis shows that the informative hypothesis (i.e., $X$ is causally dominant) has 13.137 times more support than its complement (i.e., $Y$ is causally dominant). 
 
 ```{r GORICA1, eval = F, message = F}
 # R package for testing of linear (in)equality restrictions on parameters in linear models
@@ -1599,7 +1599,7 @@ GORICA_H1
 ```
 
 ### Constraints over time
-The GORICA can also be used to test informative hypotheses when parameters are constrained over time. In the below R code, the lagged effects, residuals variances, and intercepts are restricted to be time-invariant. We again use the GORICA to test the informative hypothesis that the cross-lagged effects from $X$ to $Y$ are stronger than those from $Y$ to $X$ (i.e., $X$ is causally dominant). Analysis shows that the informative hypothesis has 785.564 times more support than its complement (i.e., that there is no causal dominance, or that $Y$ is causally dominant). 
+The GORICA can also be used to evaluate informative hypotheses when parameters are constrained over time. In the below R code, the lagged effects, residuals variances, and intercepts are restricted to be time-invariant. We again use the GORICA to evaluate the informative hypothesis that the cross-lagged effects from $X$ to $Y$ are stronger than those from $Y$ to $X$ (i.e., $X$ is causally dominant). Analysis shows that the informative hypothesis (i.e., $X$ is causally dominant) has 785.564 times more support than its complement (i.e., $Y$ is causally dominant). 
 
 ```{r GORICA2, eval = F, message = F}
 # Informative hypothesis about time-invariant cross-lagged effects 
